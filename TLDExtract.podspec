@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.frameworks             = 'Foundation'
   s.requires_arc           = true
   s.source                 = { :git => "https://github.com/gumob/TLDExtractSwift.git", :tag => "#{s.version}" }
-  s.source_files           = "Source/*"
+  s.source_files           = "Source/*.{swift}"
   s.resources              = "Resources/*.dat"
   s.ios.deployment_target  = "9.3"
   s.osx.deployment_target  = "10.12"
