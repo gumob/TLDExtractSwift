@@ -16,16 +16,26 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios build_carthage
-```
-fastlane ios build_carthage
-```
-Build Carthage
 ### ios tests
 ```
 fastlane ios tests
 ```
 Run Tests
+### ios build_carthage
+```
+fastlane ios build_carthage
+```
+Build Carthage
+### ios lint_cocoapods
+```
+fastlane ios lint_cocoapods
+```
+Lint Cocoapods
+### ios push_cocoapods
+```
+fastlane ios push_cocoapods
+```
+Push Cocoapods
 
 ----
 
