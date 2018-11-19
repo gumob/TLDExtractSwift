@@ -186,16 +186,15 @@ class TLDExtractTests: XCTestCase {
         checkPublicSuffix("shishi.中国", "shishi.中国", "中国", "shishi", nil, quick: quick)
         checkPublicSuffix("中国", nil, nil, nil, nil, quick: quick)
         /// Same as above, but punycoded.
-        /// TLDExtractor does not support punyCoded URLs for now.
-//        checkPublicSuffix("xn--85x722f.com.cn", "xn--85x722f.com.cn", nil, nil, nil, quick: quick);
-//        checkPublicSuffix("xn--85x722f.xn--55qx5d.cn", "xn--85x722f.xn--55qx5d.cn", nil, nil, nil, quick: quick);
-//        checkPublicSuffix("www.xn--85x722f.xn--55qx5d.cn", "xn--85x722f.xn--55qx5d.cn", nil, nil, nil, quick: quick);
-//        checkPublicSuffix("shishi.xn--55qx5d.cn", "shishi.xn--55qx5d.cn", nil, nil, nil, quick: quick);
-//        checkPublicSuffix("xn--55qx5d.cn", nil, nil, nil, nil, quick: quick);
-//        checkPublicSuffix("xn--85x722f.xn--fiqs8s", "xn--85x722f.xn--fiqs8s", nil, nil, nil, quick: quick);
-//        checkPublicSuffix("www.xn--85x722f.xn--fiqs8s", "xn--85x722f.xn--fiqs8s", nil, nil, nil, quick: quick);
-//        checkPublicSuffix("shishi.xn--fiqs8s", "shishi.xn--fiqs8s", nil, nil, nil, quick: quick);
-//        checkPublicSuffix("xn--fiqs8s", nil, nil, nil, nil, quick: quick);
+        checkPublicSuffix("xn--85x722f.com.cn", "xn--85x722f.com.cn", "com.cn", "xn--85x722f", nil, quick: quick)
+        checkPublicSuffix("xn--85x722f.xn--55qx5d.cn", "xn--85x722f.xn--55qx5d.cn", "xn--55qx5d.cn", "xn--85x722f", nil, quick: quick)
+        checkPublicSuffix("www.xn--85x722f.xn--55qx5d.cn", "xn--85x722f.xn--55qx5d.cn", "xn--55qx5d.cn", "xn--85x722f", "www", quick: quick)
+        checkPublicSuffix("shishi.xn--55qx5d.cn", "shishi.xn--55qx5d.cn", "xn--55qx5d.cn", "shishi", nil, quick: quick)
+        checkPublicSuffix("xn--55qx5d.cn", nil, nil, nil, nil, quick: quick)
+        checkPublicSuffix("xn--85x722f.xn--fiqs8s", "xn--85x722f.xn--fiqs8s", "xn--fiqs8s", "xn--85x722f", nil, quick: quick)
+        checkPublicSuffix("www.xn--85x722f.xn--fiqs8s", "xn--85x722f.xn--fiqs8s", "xn--fiqs8s", "xn--85x722f", "www", quick: quick)
+        checkPublicSuffix("shishi.xn--fiqs8s", "shishi.xn--fiqs8s", "xn--fiqs8s", "shishi", nil, quick: quick)
+        checkPublicSuffix("xn--fiqs8s", nil, nil, nil, nil, quick: quick)
 
         /// Japanese IDN labels.
         checkPublicSuffix("忍者.jp", "忍者.jp", "jp", "忍者", nil, quick: quick)
@@ -211,6 +210,20 @@ class TLDExtractTests: XCTestCase {
         checkPublicSuffix("www.表参道.青山.ファッション", "青山.ファッション", "ファッション", "青山", "www.表参道", quick: quick)
         checkPublicSuffix("www.おしゃれ.表参道.青山.ファッション", "青山.ファッション", "ファッション", "青山", "www.おしゃれ.表参道", quick: quick)
         checkPublicSuffix("日本", nil, nil, nil, nil, quick: quick)
+        /// Same as above, but punycoded.
+        checkPublicSuffix("xn--c6t203e.jp", "xn--c6t203e.jp", "jp", "xn--c6t203e", nil, quick: quick)
+        checkPublicSuffix("xn--eck7azimb.xn--c6t203e.jp", "xn--c6t203e.jp", "jp", "xn--c6t203e", "xn--eck7azimb", quick: quick)
+        checkPublicSuffix("www.xn--eck7azimb.xn--c6t203e.jp", "xn--c6t203e.jp", "jp", "xn--c6t203e", "www.xn--eck7azimb", quick: quick)
+        checkPublicSuffix("xn--4dkp5a8a.xn--sprr0q.co.jp", "xn--sprr0q.co.jp", "co.jp", "xn--sprr0q", "xn--4dkp5a8a", quick: quick)
+        checkPublicSuffix("www.xn--4dkp5a8a.xn--sprr0q.co.jp", "xn--sprr0q.co.jp", "co.jp", "xn--sprr0q", "www.xn--4dkp5a8a", quick: quick)
+        checkPublicSuffix("xn--i8st94l.xn--jvr189m", "xn--i8st94l.xn--jvr189m", "xn--jvr189m", "xn--i8st94l", nil, quick: quick)
+        checkPublicSuffix("xn--7ck2a9c3czb.xn--i8st94l.xn--jvr189m", "xn--i8st94l.xn--jvr189m", "xn--jvr189m", "xn--i8st94l", "xn--7ck2a9c3czb", quick: quick)
+        checkPublicSuffix("www.xn--7ck2a9c3czb.xn--i8st94l.xn--jvr189m", "xn--i8st94l.xn--jvr189m", "xn--jvr189m", "xn--i8st94l", "www.xn--7ck2a9c3czb", quick: quick)
+        checkPublicSuffix("xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", nil, quick: quick)
+        checkPublicSuffix("xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "xn--8nr183j17e", quick: quick)
+        checkPublicSuffix("www.xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "www.xn--8nr183j17e", quick: quick)
+        checkPublicSuffix("www.xn--t8j0ayjlb.xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "www.xn--t8j0ayjlb.xn--8nr183j17e", quick: quick)
+        checkPublicSuffix("xn--wgv71a", nil, nil, nil, nil, quick: quick)
     }
 
     func checkPublicSuffix(_ host: String?,
@@ -223,29 +236,39 @@ class TLDExtractTests: XCTestCase {
         guard let host = host else { return }
         let result: TLDResult? = tldExtractor.parse(host: host.lowercased(), quick: quick)
 
-        /// For debugging
-//        let hostStr: String = host.padding(toLength: 20, withPad: " ", startingAt: 0)
-//
-//        let expectedRootStr: String = "\(expectedRootDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
-//        let expectedTopStr: String = "\(expectedTopLevelDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
-//        let expectedSecondStr: String = "\(expectedSecondDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
-//        let expectedSubStr: String = "\(expectedSubDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
-//
-//        let resultRootStr: String = "\(result?.rootDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
-//        let resultTopStr: String = "\(result?.topLevelDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
-//        let resultSecondStr: String = "\(result?.secondLevelDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
-//        let resultSubStr: String = "\(result?.subDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
-//
-//        print("----------------------------")
-//        print("hostStr:             \(hostStr)")
-//        print("Root domain:         \(expectedRootStr) => \(resultRootStr)")
-//        print("Top level domain:    \(expectedTopStr) => \(resultTopStr)")
-//        print("Second level domain: \(expectedSecondStr) => \(resultSecondStr)")
-//        print("Sub domain:          \(expectedSubStr) => \(resultSubStr)")
+        logResult(host, expectedRootDomain, expectedTopLevelDomain, expectedSecondDomain, expectedSubDomain, result)
 
         XCTAssertEqual(result?.rootDomain, expectedRootDomain, file: file, line: line)
         XCTAssertEqual(result?.topLevelDomain, expectedTopLevelDomain, file: file, line: line)
         XCTAssertEqual(result?.secondLevelDomain, expectedSecondDomain, file: file, line: line)
         XCTAssertEqual(result?.subDomain, expectedSubDomain, file: file, line: line)
+    }
+
+    /// For debugging
+    func logResult(_ host: String?,
+                   _ expectedRootDomain: String?,
+                   _ expectedTopLevelDomain: String?,
+                   _ expectedSecondDomain: String?,
+                   _ expectedSubDomain: String?,
+                   _ result: TLDResult?) {
+        guard let host = host else { return }
+        let hostStr: String = host.padding(toLength: 20, withPad: " ", startingAt: 0)
+
+        let expectedRootStr: String = "\(expectedRootDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
+        let expectedTopStr: String = "\(expectedTopLevelDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
+        let expectedSecondStr: String = "\(expectedSecondDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
+        let expectedSubStr: String = "\(expectedSubDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
+
+        let resultRootStr: String = "\(result?.rootDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
+        let resultTopStr: String = "\(result?.topLevelDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
+        let resultSecondStr: String = "\(result?.secondLevelDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
+        let resultSubStr: String = "\(result?.subDomain ?? "nil")".padding(toLength: 20, withPad: " ", startingAt: 0)
+
+        print("----------------------------")
+        print("hostStr:             \(hostStr)")
+        print("Root domain:         \(expectedRootStr) => \(resultRootStr)")
+        print("Top level domain:    \(expectedTopStr) => \(resultTopStr)")
+        print("Second level domain: \(expectedSecondStr) => \(resultSecondStr)")
+        print("Sub domain:          \(expectedSubStr) => \(resultSubStr)")
     }
 }
