@@ -36,7 +36,7 @@ if __name__ == '__main__':
         lines = psl_str.splitlines()
         insert_count = 0
         for index, line in enumerate(lines[:]):
-            line_punycoded = line.encode('idna')
+            line_punycoded = line.encode('idna').decode('utf-8')
             if line != line_punycoded:
                 # print("line", line, "line_punycoded", line_punycoded, type(line_punycoded))
                 insert_at = index + insert_count + 1
