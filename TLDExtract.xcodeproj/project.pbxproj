@@ -529,7 +529,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/tvOS/Punycode.framework\n",
+				"$(SRCROOT)/Carthage/Build/tvOS/Punycode.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
