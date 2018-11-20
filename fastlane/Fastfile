@@ -14,47 +14,22 @@ ENV["EXPANDED_CODE_SIGN_IDENTITY_NAME"] = ""
 ENV["EXPANDED_PROVISIONING_PROFILE"] = ""
 
 default_xcodeproj = ENV["DEFAULT_XCODEPROJ"]
+default_podspec = ENV["DEFAULT_PODSPEC"]
 framework_info_plist = ENV["FRAMEWORK_INFO_PLIST"]
 test_info_plist = ENV["TEST_INFO_PLIST"]
 
 platform :ios do
 
-    desc "Run Tests"
-    lane :tests do
-        xcclean
-        run_tests(
-            scheme: "Punycode-iOS",
-            devices: ["iPhone X"]
-        )
-        run_tests(
-            scheme: "Punycode-macOS",
-            destination: "platform=macOS"
-        )
-        run_tests(
-            scheme: "Punycode-tvOS",
-            devices: ["Apple TV"]
-        )
+    desc "Prebuild"
+    lane :prebuild do
+        tests
+        build_carthage
+        lint_cocoapods
     end
 
-    desc "Build Carthage"
-    lane :build_carthage do |options|
-        carthage(
-            command: "build",
-            verbose: true,
-            no_skip_current: true
-        )
-    end
-
-    desc "Lint Cocoapods"
-    lane :lint_cocoapods do |options|
-        pod_lib_lint(verbose: true)
-    end
-
-    desc "Push Cocoapods"
-    lane :push_cocoapods do |options|
-        pod_lib_lint(verbose: true)
-        pod_push(path: "Punycode.podspec")
-    end
+    ##########################################
+    # Versioning
+    ##########################################
 
     desc "Set version number"
     lane :set_version do
@@ -68,6 +43,7 @@ platform :ios do
         if matched then
             set_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
             set_info_plist_value(path: test_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
+            version_bump_podspec(path: default_podspec, version_number: new_app_version)
             UI.message("Changed version from #{current_app_version} to #{new_app_version} ")
         else
             UI.error("Invalid version number. #{new_app_version}")
@@ -96,6 +72,52 @@ platform :ios do
         new_app_version = [current_app_version_major, current_app_version_minor, current_app_version_patch].join(".")
         set_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
         set_info_plist_value(path: test_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
+        version_bump_podspec(path: default_podspec, version_number: new_app_version)
         UI.message("Changed version from #{current_app_version_major} to #{new_app_version} ")
+    end
+
+    ##########################################
+    # Test
+    ##########################################
+
+    desc "Run Tests"
+    lane :tests do
+        xcclean
+        run_tests(
+            scheme: "Punycode-iOS",
+            devices: ["iPhone X"]
+        )
+        run_tests(
+            scheme: "Punycode-macOS",
+            destination: "platform=macOS"
+        )
+        run_tests(
+            scheme: "Punycode-tvOS",
+            devices: ["Apple TV"]
+        )
+    end
+
+    ##########################################
+    # Package Manager
+    ##########################################
+
+    desc "Build Carthage"
+    lane :build_carthage do |options|
+        carthage(
+            command: "build",
+            verbose: true,
+            no_skip_current: true
+        )
+    end
+
+    desc "Lint Cocoapods"
+    lane :lint_cocoapods do |options|
+        pod_lib_lint(verbose: true)
+    end
+
+    desc "Push Cocoapods"
+    lane :push_cocoapods do |options|
+        pod_lib_lint(verbose: true)
+        pod_push(path: "Punycode.podspec")
     end
 end
