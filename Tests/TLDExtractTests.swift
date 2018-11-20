@@ -58,23 +58,129 @@ class TLDExtractTests: XCTestCase {
         XCTAssertFalse(exception1 == wildcard1)
     }
 
+    func testMeasureExtractable() {
+        self.measure {
+            testExtractableURL()
+            testExtractableString()
+        }
+    }
+
     func testMeasureParser() {
-        NSLog("Quick option is disabled.")
         self.measure {
             testParser(quick: false)
         }
     }
 
     func testMeasureParserQuick() {
-        NSLog("Quick option is enabled.")
         self.measure {
             testParser(quick: true)
         }
     }
 
+    /// Test TLDExtractable.
+    func testExtractableURL(file: StaticString = #file, line: UInt = #line) {
+        /// URL
+        checkTLDExtractable(URL(string: "http://example.com"), "example.com")
+        checkTLDExtractable(URL(string: "https://example.com"), "example.com")
+
+        checkTLDExtractable(URL(string: "http://www.example.com"), "www.example.com")
+        checkTLDExtractable(URL(string: "https://www.example.com"), "www.example.com")
+
+        checkTLDExtractable(URL(string: "http://example.com/a/b/"), "example.com")
+        checkTLDExtractable(URL(string: "http://example.com/a/b/index.html"), "example.com")
+
+        /// URL without scheme
+        checkTLDExtractable(URL(string: "//example.com"), "example.com")
+        checkTLDExtractable(URL(string: "//example.com/a/b/"), "example.com")
+        checkTLDExtractable(URL(string: "//example.com/a/b/index.html"), "example.com")
+
+        /// URL with localhost
+        checkTLDExtractable(URL(string: "http://localhost"), "localhost")
+        checkTLDExtractable(URL(string: "//localhost"), "localhost")
+        checkTLDExtractable(URL(string: "localhost"), "localhost")
+
+        /// Only URL scheme
+        checkTLDExtractable(URL(string: "http"), "http")
+        checkTLDExtractable(URL(string: "http:"), nil)
+        checkTLDExtractable(URL(string: "http://"), nil)
+
+        /// Only TLD
+        checkTLDExtractable(URL(string: "com"), "com")
+
+        /// Hostname only
+        checkTLDExtractable(URL(string: "example.com"), "example.com")
+        checkTLDExtractable(URL(string: "www.example.com"), "www.example.com")
+
+        /// IDNA
+        checkTLDExtractable(URL(unicodeString: "表参道.青山.ファッション"), "表参道.青山.ファッション")
+        checkTLDExtractable(URL(unicodeString: "//表参道.青山.ファッション"), "表参道.青山.ファッション")
+        checkTLDExtractable(URL(unicodeString: "http://表参道.青山.ファッション"), "表参道.青山.ファッション")
+        checkTLDExtractable(URL(unicodeString: "http://表参道.青山.ファッション/横浜/ヤンキー/"), "表参道.青山.ファッション")
+        checkTLDExtractable(URL(unicodeString: "青山.ファッション/川崎/チンピラ/"), "青山.ファッション")
+        checkTLDExtractable(URL(unicodeString: "ファッション/埼玉/ダサイタマ/"), "ファッション")
+        /// Same as above, but punycoded
+        checkTLDExtractable(URL(string: "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c"), "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable(URL(string: "//xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c"), "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable(URL(string: "http://xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c"), "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable(URL(string: "http://xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c/xn--4cw21e/xn--nckyfvbwb/"), "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable(URL(string: "xn--rht138k.xn--bck1b9a5dre4c/xn--8ltrs/xn--7ckvb7cub/"), "xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable(URL(string: "xn--bck1b9a5dre4c/xn--5js045d/xn--eck7a5ab7m/"), "xn--bck1b9a5dre4c")
+    }
+
+    func testExtractableString(file: StaticString = #file, line: UInt = #line) {
+        /// URL
+        checkTLDExtractable("http://example.com", "example.com")
+        checkTLDExtractable("https://example.com", "example.com")
+
+        checkTLDExtractable("http://www.example.com", "www.example.com")
+        checkTLDExtractable("https://www.example.com", "www.example.com")
+
+        checkTLDExtractable("http://example.com/a/b/", "example.com")
+        checkTLDExtractable("http://example.com/a/b/index.html", "example.com")
+
+        /// URL without scheme
+        checkTLDExtractable("//example.com", "example.com")
+        checkTLDExtractable("//example.com/a/b/", "example.com")
+        checkTLDExtractable("//example.com/a/b/index.html", "example.com")
+
+        /// URL with localhost
+        checkTLDExtractable("http://localhost", "localhost")
+        checkTLDExtractable("//localhost", "localhost")
+        checkTLDExtractable("localhost", "localhost")
+
+        /// Only URL scheme
+        checkTLDExtractable("http", "http")
+        checkTLDExtractable("http:", nil)
+        checkTLDExtractable("http://", nil)
+
+        /// Only TLD
+        checkTLDExtractable("com", "com")
+
+        /// Hostname only
+        checkTLDExtractable("example.com", "example.com")
+        checkTLDExtractable("www.example.com", "www.example.com")
+
+        /// IDNA
+        checkTLDExtractable("表参道.青山.ファッション", "表参道.青山.ファッション")
+        checkTLDExtractable("//表参道.青山.ファッション", "表参道.青山.ファッション")
+        checkTLDExtractable("http://表参道.青山.ファッション", "表参道.青山.ファッション")
+        checkTLDExtractable("http://表参道.青山.ファッション/横浜/ヤンキー/", "表参道.青山.ファッション")
+        checkTLDExtractable("青山.ファッション/川崎/チンピラ/", "青山.ファッション")
+        checkTLDExtractable("ファッション/埼玉/ダサイタマ/", "ファッション")
+        /// Same as above, but punycoded
+        checkTLDExtractable("xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable("//xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable("http://xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable("http://xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c/xn--4cw21e/xn--nckyfvbwb/", "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable("xn--rht138k.xn--bck1b9a5dre4c/xn--8ltrs/xn--7ckvb7cub/", "xn--rht138k.xn--bck1b9a5dre4c")
+        checkTLDExtractable("xn--bck1b9a5dre4c/xn--5js045d/xn--eck7a5ab7m/", "xn--bck1b9a5dre4c")
+    }
+
     /// Common PSL Unit Test case.
     /// Source: https://raw.githubusercontent.com/publicsuffix/list/master/tests/test_psl.txt
     func testParser(quick: Bool) {
+        NSLog("Quick option is \(quick ? "enabled" : "disabled").")
+
         /// nil input.
         checkPublicSuffix(nil, nil, nil, nil, nil, quick: quick)
 
@@ -226,6 +332,14 @@ class TLDExtractTests: XCTestCase {
         checkPublicSuffix("xn--wgv71a", nil, nil, nil, nil, quick: quick)
     }
 
+    func checkTLDExtractable(_ input: TLDExtractable?,
+                             _ expected: String?,
+                             file: StaticString = #file, line: UInt = #line) {
+        let result: String? = input?.hostname
+        logTLDExtractable(input, result, expected)
+        XCTAssertEqual(result, expected, file: file, line: line)
+    }
+
     func checkPublicSuffix(_ host: String?,
                            _ expectedRootDomain: String?,
                            _ expectedTopLevelDomain: String?,
@@ -234,9 +348,9 @@ class TLDExtractTests: XCTestCase {
                            quick: Bool = false,
                            file: StaticString = #file, line: UInt = #line) {
         guard let host = host else { return }
-        let result: TLDResult? = tldExtractor.parse(host: host.lowercased(), quick: quick)
+        let result: TLDResult? = tldExtractor.parse(input: host.lowercased(), quick: quick)
 
-        logResult(host, expectedRootDomain, expectedTopLevelDomain, expectedSecondDomain, expectedSubDomain, result)
+//        logTLDResult(host, expectedRootDomain, expectedTopLevelDomain, expectedSecondDomain, expectedSubDomain, result)
 
         XCTAssertEqual(result?.rootDomain, expectedRootDomain, file: file, line: line)
         XCTAssertEqual(result?.topLevelDomain, expectedTopLevelDomain, file: file, line: line)
@@ -245,12 +359,23 @@ class TLDExtractTests: XCTestCase {
     }
 
     /// For debugging
-    func logResult(_ host: String?,
-                   _ expectedRootDomain: String?,
-                   _ expectedTopLevelDomain: String?,
-                   _ expectedSecondDomain: String?,
-                   _ expectedSubDomain: String?,
-                   _ result: TLDResult?) {
+    func logTLDExtractable(_ input: TLDExtractable?,
+                           _ result: String?,
+                           _ expected: String?) {
+
+        print("----------------------------")
+        print("input:            \(input ?? "nil")")
+        print("result:           \(result ?? "nil")")
+        print("expected:         \(expected ?? "nil")")
+        print("")
+    }
+
+    func logTLDResult(_ host: String?,
+                      _ expectedRootDomain: String?,
+                      _ expectedTopLevelDomain: String?,
+                      _ expectedSecondDomain: String?,
+                      _ expectedSubDomain: String?,
+                      _ result: TLDResult?) {
         guard let host = host else { return }
         let hostStr: String = host.padding(toLength: 20, withPad: " ", startingAt: 0)
 
