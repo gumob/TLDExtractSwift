@@ -62,6 +62,7 @@ before_install:
     brew update;
     brew outdated carthage || brew upgrade carthage;
     carthage bootstrap --platform "$CARTHAGE_PLATFORM" --cache-builds --verbose;
+    pod repo update;
     fi
 
 install:
