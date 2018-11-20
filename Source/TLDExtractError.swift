@@ -6,6 +6,5 @@
 import Foundation
 
 enum TLDExtractError: Error {
-    case pslNotFound
-    case pslParseError(details: Error?)
+    case pslParseError(message: Error?)
 }
