@@ -13,24 +13,98 @@ ENV["EXPANDED_CODE_SIGN_IDENTITY"] = ""
 ENV["EXPANDED_CODE_SIGN_IDENTITY_NAME"] = ""
 ENV["EXPANDED_PROVISIONING_PROFILE"] = ""
 
+default_xcodeproj = ENV["DEFAULT_XCODEPROJ"]
+default_podspec = ENV["DEFAULT_PODSPEC"]
+
+scheme_iOS = ENV["SCHEME_IOS"]
+scheme_macOS = ENV["SCHEME_MACOS"]
+scheme_tvOS = ENV["SCHEME_TVOS"]
+
+framework_info_plist = ENV["FRAMEWORK_INFO_PLIST"]
+test_info_plist = ENV["TEST_INFO_PLIST"]
+
 platform :ios do
+
+    desc "Prebuild"
+    lane :prebuild do
+        tests
+        build_carthage
+        lint_cocoapods
+    end
+
+    ##########################################
+    # Versioning
+    ##########################################
+
+    desc "Set version number"
+    lane :set_version do
+        current_app_version = get_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString')
+        new_app_version = prompt(
+          text: "Please enter version number (Current: #{current_app_version}): ",
+          ci_input: current_app_version
+        )
+        regexp = Regexp.new("[0-9]+\.[0-9]+\.[0-9]+")
+        matched = regexp.match(new_app_version)
+        if matched then
+            set_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
+            set_info_plist_value(path: test_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
+            version_bump_podspec(path: default_podspec, version_number: new_app_version)
+            UI.message("Changed version from #{current_app_version} to #{new_app_version} ")
+        else
+            UI.error("Invalid version number. #{new_app_version}")
+        end
+    end
+
+    desc "Bump version number"
+    lane :bump_version do
+        bump_type = UI.select("Select version position to be upgraded: ", ["patch", "minor", "major"])
+        current_app_version = get_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString')
+        current_app_versions = current_app_version.split(".")
+        current_app_version_patch = current_app_versions[2].to_i
+        current_app_version_minor = current_app_versions[1].to_i
+        current_app_version_major = current_app_versions[0].to_i
+        UI.message(current_app_versions)
+        if bump_type == "patch" then
+            current_app_version_patch += 1
+        elsif bump_type == "minor" then
+            current_app_version_patch = 0
+            current_app_version_minor += 1
+        elsif bump_type == "major" then
+            current_app_version_patch = 0
+            current_app_version_minor = 0
+            current_app_version_major += 1
+        end
+        new_app_version = [current_app_version_major, current_app_version_minor, current_app_version_patch].join(".")
+        set_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
+        set_info_plist_value(path: test_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
+        version_bump_podspec(path: default_podspec, version_number: new_app_version)
+        UI.message("Changed version from #{current_app_version_major} to #{new_app_version} ")
+    end
+
+    ##########################################
+    # Test
+    ##########################################
 
     desc "Run Tests"
     lane :tests do
         xcclean
         run_tests(
-            scheme: "TLDExtract-iOS",
+            scheme: scheme_iOS,
             devices: ["iPhone X"]
         )
         run_tests(
-            scheme: "TLDExtract-macOS",
+            scheme: scheme_macOS,
             destination: "platform=macOS"
         )
         run_tests(
-            scheme: "TLDExtract-tvOS",
+            scheme: scheme_tvOS,
             devices: ["Apple TV"]
         )
     end
+
+    ##########################################
+    # Package Manager
+    ##########################################
 
     desc "Build Carthage"
     lane :build_carthage do |options|
@@ -49,6 +123,6 @@ platform :ios do
     desc "Push Cocoapods"
     lane :push_cocoapods do |options|
         pod_lib_lint(verbose: true)
-        pod_push(path: "TLDExtract.podspec")
+        pod_push(path: "Punycode.podspec")
     end
 end

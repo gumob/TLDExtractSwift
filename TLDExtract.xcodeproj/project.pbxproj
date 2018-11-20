@@ -10,6 +10,9 @@
 		A720FBC921A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */ = {isa = PBXBuildFile; fileRef = A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */; };
 		A720FBCA21A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */ = {isa = PBXBuildFile; fileRef = A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */; };
 		A720FBCB21A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */ = {isa = PBXBuildFile; fileRef = A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */; };
+		A7948D6E21A310E40016DFB7 /* Punycode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7948D6B21A310CE0016DFB7 /* Punycode.framework */; };
+		A7948D6F21A310E60016DFB7 /* Punycode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7948D6821A310CE0016DFB7 /* Punycode.framework */; };
+		A7948D7021A310E90016DFB7 /* Punycode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7948D6421A310CE0016DFB7 /* Punycode.framework */; };
 		A7A0ECE7219EB279004FBE05 /* TLDExtract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A0ECDD219EB279004FBE05 /* TLDExtract.framework */; };
 		A7A0ED3A219EC0FD004FBE05 /* TLDExtract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A0ED14219EB6C8004FBE05 /* TLDExtract.framework */; };
 		A7A0ED65219EC8D1004FBE05 /* TLDExtract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A0ED42219EC3E3004FBE05 /* TLDExtract.framework */; };
@@ -65,6 +68,9 @@
 
 /* Begin PBXFileReference section */
 		A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = public_suffix_list_frozen.dat; sourceTree = "<group>"; };
+		A7948D6421A310CE0016DFB7 /* Punycode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Punycode.framework; sourceTree = "<group>"; };
+		A7948D6821A310CE0016DFB7 /* Punycode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Punycode.framework; sourceTree = "<group>"; };
+		A7948D6B21A310CE0016DFB7 /* Punycode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Punycode.framework; sourceTree = "<group>"; };
 		A7A0ECDD219EB279004FBE05 /* TLDExtract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLDExtract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7A0ECE6219EB279004FBE05 /* TLDExtract-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TLDExtract-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7A0ED14219EB6C8004FBE05 /* TLDExtract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLDExtract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7948D6E21A310E40016DFB7 /* Punycode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7948D6F21A310E60016DFB7 /* Punycode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7948D7021A310E90016DFB7 /* Punycode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +141,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7948D6221A310CE0016DFB7 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				A7948D6421A310CE0016DFB7 /* Punycode.framework */,
+			);
+			name = tvOS;
+			path = Carthage/Build/tvOS;
+			sourceTree = "<group>";
+		};
+		A7948D6621A310CE0016DFB7 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				A7948D6821A310CE0016DFB7 /* Punycode.framework */,
+			);
+			name = Mac;
+			path = Carthage/Build/Mac;
+			sourceTree = "<group>";
+		};
+		A7948D6921A310CE0016DFB7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A7948D6B21A310CE0016DFB7 /* Punycode.framework */,
+			);
+			name = iOS;
+			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
 		A7A0ECD3219EB279004FBE05 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +195,9 @@
 		A7A0ED36219EB9FD004FBE05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7948D6921A310CE0016DFB7 /* iOS */,
+				A7948D6621A310CE0016DFB7 /* Mac */,
+				A7948D6221A310CE0016DFB7 /* tvOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -251,6 +290,7 @@
 				A7A0ECE2219EB279004FBE05 /* Sources */,
 				A7A0ECE3219EB279004FBE05 /* Frameworks */,
 				A7A0ECE4219EB279004FBE05 /* Resources */,
+				A7948D7121A32A990016DFB7 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -288,6 +328,7 @@
 				A7A0ED18219EB6C9004FBE05 /* Sources */,
 				A7A0ED19219EB6C9004FBE05 /* Frameworks */,
 				A7A0ED1A219EB6C9004FBE05 /* Resources */,
+				A7948D7221A32ADA0016DFB7 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -325,6 +366,7 @@
 				A7A0ED46219EC3E3004FBE05 /* Sources */,
 				A7A0ED47219EC3E3004FBE05 /* Frameworks */,
 				A7A0ED48219EC3E3004FBE05 /* Resources */,
+				A7948D7421A32B070016DFB7 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -441,6 +483,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A7948D7121A32A990016DFB7 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Punycode.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		A7948D7221A32ADA0016DFB7 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Punycode.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		A7948D7421A32B070016DFB7 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Punycode.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 		A7A0ED0E219EB3AD004FBE05 /* Update Public Suffix List */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -714,6 +813,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -742,6 +845,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -765,6 +872,10 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -785,6 +896,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -810,6 +925,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -838,6 +957,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -863,6 +986,10 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -886,6 +1013,10 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -911,6 +1042,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -939,6 +1074,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -964,6 +1103,10 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -986,6 +1129,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
