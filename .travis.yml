@@ -62,7 +62,7 @@ before_install:
     gem install slather;
     brew update;
     brew outdated carthage || brew upgrade carthage;
-    carthage bootstrap --platform "$CARTHAGE_PLATFORM" --verbose --cache-builds;
+    carthage bootstrap --platform "$CARTHAGE_PLATFORM" --cache-builds --verbose;
     fi
 
 install:
@@ -85,7 +85,7 @@ script:
 
   - if [ "$LINT" == "YES" ]; then
     swiftlint;
-    carthage build --no-skip-current;
+    carthage build --platform "$CARTHAGE_PLATFORM" --no-skip-current --cache-builds --verbose;
     pod lib lint --verbose;
     fi
 
