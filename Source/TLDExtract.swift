@@ -13,7 +13,7 @@ public class TLDExtract {
     private let tldParser: TLDParser
 
     public init(useFrozenData: Bool = false) throws {
-        let url = Bundle.current.url(
+        let url: URL = Bundle.current.url(
                 forResource: useFrozenData ? "public_suffix_list_frozen" : "public_suffix_list",
                 withExtension: "dat")!
         let data: Data = try Data(contentsOf: url)

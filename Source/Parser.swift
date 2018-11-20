@@ -7,15 +7,15 @@ import Foundation
 
 internal class PSLParser {
 
-    var exceptions = [PSLData]()
-    var wildcards = [PSLData]()
+    var exceptions: [PSLData] = [PSLData]()
+    var wildcards: [PSLData] = [PSLData]()
     var normals = Set<String>()
 
     internal func parse(data: Data?) throws -> PSLDataSet {
         guard let data: Data = data,
-              let str = String(data: data, encoding: .utf8),
+              let str: String = String(data: data, encoding: .utf8),
               str.count > 0 else {
-            throw TLDExtractError.pslParseError(details: nil)
+            throw TLDExtractError.pslParseError(message: nil)
         }
         str.components(separatedBy: .newlines).forEach { [weak self] (line: String) in
             if line.contains("*") {
@@ -43,11 +43,11 @@ internal class TLDParser {
     }
 
     internal func parseExceptionsAndWildcards(host: String) -> TLDResult? {
-        let hostComponents = host.lowercased().components(separatedBy: ".")
+        let hostComponents: [String] = host.lowercased().components(separatedBy: ".")
         /// Search exceptions first, then search wildcards if not match
         let matchClosure: (PSLData) -> Bool = { $0.matches(hostComponents: hostComponents) }
-        let pslData = self.pslDataSet.exceptions.first(where: matchClosure) ??
-                      self.pslDataSet.wildcards.first(where: matchClosure)
+        let pslData: PSLData? = self.pslDataSet.exceptions.first(where: matchClosure) ??
+                                self.pslDataSet.wildcards.first(where: matchClosure)
         return pslData?.parse(hostComponents: hostComponents)
     }
 
@@ -69,13 +69,13 @@ internal class TLDParser {
         if topLevelDomain == host { topLevelDomain = nil }
 
         /// Extract the host name to each level domain
-        let rootDomainRange = (copiedHostComponents.startIndex - 2)..<hostComponents.endIndex
+        let rootDomainRange: Range<Int> = (copiedHostComponents.startIndex - 2)..<hostComponents.endIndex
         let rootDomain: String? = rootDomainRange.startIndex >= 0 ? hostComponents[rootDomainRange].joined(separator: ".") : nil
 
-        let secondDomainRange = (rootDomainRange.lowerBound)..<(rootDomainRange.lowerBound + 1)
+        let secondDomainRange: Range<Int> = (rootDomainRange.lowerBound)..<(rootDomainRange.lowerBound + 1)
         let secondDomain: String? = secondDomainRange.startIndex >= 0 ? hostComponents[secondDomainRange].joined(separator: ".") : nil
 
-        let subDomainRange = (hostComponents.startIndex)..<(max(secondDomainRange.lowerBound, hostComponents.startIndex))
+        let subDomainRange: Range<Int> = (hostComponents.startIndex)..<(max(secondDomainRange.lowerBound, hostComponents.startIndex))
         let subDomain: String? = subDomainRange.endIndex >= 1 ? hostComponents[subDomainRange].joined(separator: ".") : nil
 
         return TLDResult(rootDomain: rootDomain,
