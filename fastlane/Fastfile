@@ -95,7 +95,7 @@ platform :ios do
         run_tests(
             scheme: scheme_iOS,
             devices: ["iPhone X"],
-            clean: true,
+#             clean: true,
             code_coverage: true
         )
 #         slather(
@@ -108,7 +108,7 @@ platform :ios do
         run_tests(
             scheme: scheme_macOS,
             destination: "platform=macOS",
-            clean: true,
+#             clean: true,
             code_coverage: true
         )
 #         slather(
@@ -121,7 +121,7 @@ platform :ios do
         run_tests(
             scheme: scheme_tvOS,
             devices: ["Apple TV"],
-            clean: true,
+#             clean: true,
             code_coverage: true
         )
 #         slather(
