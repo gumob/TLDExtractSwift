@@ -15,6 +15,11 @@ ENV["EXPANDED_PROVISIONING_PROFILE"] = ""
 
 default_xcodeproj = ENV["DEFAULT_XCODEPROJ"]
 default_podspec = ENV["DEFAULT_PODSPEC"]
+
+scheme_iOS = ENV["SCHEME_IOS"]
+scheme_macOS = ENV["SCHEME_MACOS"]
+scheme_tvOS = ENV["SCHEME_TVOS"]
+
 framework_info_plist = ENV["FRAMEWORK_INFO_PLIST"]
 test_info_plist = ENV["TEST_INFO_PLIST"]
 
@@ -84,15 +89,15 @@ platform :ios do
     lane :tests do
         xcclean
         run_tests(
-            scheme: "Punycode-iOS",
+            scheme: scheme_iOS,
             devices: ["iPhone X"]
         )
         run_tests(
-            scheme: "Punycode-macOS",
+            scheme: scheme_macOS,
             destination: "platform=macOS"
         )
         run_tests(
-            scheme: "Punycode-tvOS",
+            scheme: scheme_tvOS,
             devices: ["Apple TV"]
         )
     end
