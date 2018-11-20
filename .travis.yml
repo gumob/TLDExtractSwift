@@ -93,5 +93,4 @@ script:
 after_success:
   - if [ "$COVERAGE" == "YES" ]; then
     bash <(curl -s https://codecov.io/bash) -J 'TLDExtract' -cF "$CODECOV_FLAG";
-    #    slather;
     fi
