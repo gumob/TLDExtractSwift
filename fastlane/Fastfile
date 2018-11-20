@@ -20,6 +20,10 @@ scheme_iOS = ENV["SCHEME_IOS"]
 scheme_macOS = ENV["SCHEME_MACOS"]
 scheme_tvOS = ENV["SCHEME_TVOS"]
 
+scheme_iOSTests = ENV["SCHEME_IOS_TEST"]
+scheme_macOSTests = ENV["SCHEME_MACOS_TEST"]
+scheme_tvOSTests = ENV["SCHEME_TVOS_TEST"]
+
 framework_info_plist = ENV["FRAMEWORK_INFO_PLIST"]
 test_info_plist = ENV["TEST_INFO_PLIST"]
 
@@ -90,16 +94,43 @@ platform :ios do
         xcclean
         run_tests(
             scheme: scheme_iOS,
-            devices: ["iPhone X"]
+            devices: ["iPhone X"],
+#             clean: true,
+            code_coverage: true
         )
+#         slather(
+#             scheme: scheme_iOS,
+#             proj: default_xcodeproj,
+#             output_directory: "./reports/iOS",
+#             html: true,
+#             show: true
+#         )
         run_tests(
             scheme: scheme_macOS,
-            destination: "platform=macOS"
+            destination: "platform=macOS",
+#             clean: true,
+            code_coverage: true
         )
+#         slather(
+#             scheme: scheme_macOS,
+#             proj: default_xcodeproj,
+#             output_directory: "./reports/macOS",
+#             html: true,
+#             show: true
+#         )
         run_tests(
             scheme: scheme_tvOS,
-            devices: ["Apple TV"]
+            devices: ["Apple TV"],
+#             clean: true,
+            code_coverage: true
         )
+#         slather(
+#             scheme: scheme_tvOS,
+#             proj: default_xcodeproj,
+#             output_directory: "./reports/tvOS",
+#             html: true,
+#             show: true
+#         )
     end
 
     ##########################################
