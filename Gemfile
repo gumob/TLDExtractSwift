@@ -8,4 +8,4 @@ gem "cocoapods"
 gem "cocoapods-deintegrate"
 gem "cocoapods-clean"
 gem "fastlane"
-
+gem "slather"
