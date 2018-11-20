@@ -1,1 +1,1 @@
-github "gumob/PunycodeSwift"
+github "gumob/PunycodeSwift" ~> 1.0
