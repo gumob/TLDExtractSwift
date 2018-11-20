@@ -21,39 +21,39 @@ matrix:
     - os: osx
       language: objective-c
       osx_image: xcode10.1
-      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=12.1,name=iPhone X" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" LINT="NO" COVERAGE="YES" CODECOV_FLAG="ios12"
+      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=12.1,name=iPhone X" SCHEME="$IOS_SCHEME" CARTHAGE_PLATFORM="iOS" RUN_TESTS="YES" LINT="NO" COVERAGE="YES" CODECOV_FLAG="ios12"
     - os: osx
       language: objective-c
       osx_image: xcode10.1
-      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=11.4,name=iPhone 7 Plus" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" LINT="YES" COVERAGE="NO" CODECOV_FLAG="ios11"
+      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=11.4,name=iPhone 7 Plus" SCHEME="$IOS_SCHEME" CARTHAGE_PLATFORM="iOS" RUN_TESTS="YES" LINT="YES" COVERAGE="NO" CODECOV_FLAG="ios11"
     - os: osx
       language: objective-c
       osx_image: xcode10.1
-      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=10.3.1,name=iPhone 6" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="ios10"
+      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=10.3.1,name=iPhone 6" SCHEME="$IOS_SCHEME" CARTHAGE_PLATFORM="iOS" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="ios10"
     - os: osx
       language: objective-c
       osx_image: xcode10.1
-      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=9.3,name=iPhone 5s" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="ios9"
+      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=9.3,name=iPhone 5s" SCHEME="$IOS_SCHEME" CARTHAGE_PLATFORM="iOS" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="ios9"
 
     # tvOS Tests
     - os: osx
       language: objective-c
       osx_image: xcode10.1
-      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=12.1,name=Apple TV 4K" SCHEME="$TVOS_SCHEME" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="tvos12"
+      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=12.1,name=Apple TV 4K" SCHEME="$TVOS_SCHEME" CARTHAGE_PLATFORM="tvOS" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="tvos12"
 #    - os: osx
 #      language: objective-c
 #      osx_image: xcode10.1
-#      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=11.4,name=Apple TV 4K" SCHEME="$TVOS_SCHEME" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="tvos11"
+#      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=11.4,name=Apple TV 4K" SCHEME="$TVOS_SCHEME" CARTHAGE_PLATFORM="tvOS" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="tvos11"
 #    - os: osx
 #      language: objective-c
 #      osx_image: xcode10.1
-#      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=10.2,name=Apple TV 1080p" SCHEME="$TVOS_SCHEME" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="tvos10"
+#      env: PROJ="TLDExtract.xcodeproj" DESTINATION="OS=10.2,name=Apple TV 1080p" SCHEME="$TVOS_SCHEME" CARTHAGE_PLATFORM="tvOS" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="tvos10"
 
     # macOS Tests
     - os: osx
       language: objective-c
       osx_image: xcode10.1
-      env: PROJ="TLDExtract.xcodeproj" DESTINATION="arch=x86_64" SCHEME="$MACOS_SCHEME" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="macos"
+      env: PROJ="TLDExtract.xcodeproj" DESTINATION="arch=x86_64" SCHEME="$MACOS_SCHEME" CARTHAGE_PLATFORM="Mac" RUN_TESTS="YES" LINT="NO" COVERAGE="NO" CODECOV_FLAG="macos"
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
@@ -62,7 +62,7 @@ before_install:
     gem install slather;
     brew update;
     brew outdated carthage || brew upgrade carthage;
-    carthage bootstrap --platform "$SCHEME" --verbose --cache-builds;
+    carthage bootstrap --platform "$CARTHAGE_PLATFORM" --verbose --cache-builds;
     fi
 
 install:
