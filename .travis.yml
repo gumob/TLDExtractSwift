@@ -4,6 +4,10 @@ branches:
     - develop
     - "/^v?[0-9\\.]+/"
 
+cache:
+  directories:
+    - Carthage
+
 env:
   global:
     - IOS_SCHEME="TLDExtract-iOS"
@@ -58,7 +62,7 @@ before_install:
     gem install slather;
     brew update;
     brew outdated carthage || brew upgrade carthage;
-    carthage bootstrap --platform "$SCHEME" --verbose;
+    carthage bootstrap --platform "$SCHEME" --verbose --cache-builds;
     fi
 
 install:
