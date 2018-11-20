@@ -90,19 +90,32 @@ platform :ios do
         xcclean
         run_tests(
             scheme: scheme_iOS,
-            devices: ["iPhone X"]
-        )
-        run_tests(
-            scheme: scheme_macOS,
-            destination: "platform=macOS"
-        )
-        run_tests(
-            scheme: scheme_tvOS,
-            devices: ["Apple TV"]
+            devices: ["iPhone X"],
+            code_coverage: true
         )
         slather(
             proj: default_xcodeproj,
             scheme: scheme_iOS,
+            html: true
+        )
+        run_tests(
+            scheme: scheme_macOS,
+            destination: "platform=macOS",
+            code_coverage: true
+        )
+        slather(
+            proj: default_xcodeproj,
+            scheme: scheme_macOS,
+            html: true
+        )
+        run_tests(
+            scheme: scheme_tvOS,
+            devices: ["Apple TV"],
+            code_coverage: true
+        )
+        slather(
+            proj: default_xcodeproj,
+            scheme: scheme_tvOS,
             html: true
         )
     end
