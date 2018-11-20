@@ -59,6 +59,8 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     gem install xcpretty -N --no-ri --no-rdoc;
     gem install cocoapods --pre --no-rdoc --no-ri --no-document;
+    gem uninstall CFPropertyList -v 3.0
+    gem install CFPropertyList -v 2.3.6
     gem install slather;
     brew update;
     brew outdated carthage || brew upgrade carthage;
