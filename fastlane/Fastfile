@@ -98,39 +98,39 @@ platform :ios do
             clean: true,
             code_coverage: true
         )
-        slather(
-            scheme: scheme_iOS,
-            proj: default_xcodeproj,
-            output_directory: "./reports/iOS",
-            html: true,
-            show: true
-        )
+#         slather(
+#             scheme: scheme_iOS,
+#             proj: default_xcodeproj,
+#             output_directory: "./reports/iOS",
+#             html: true,
+#             show: true
+#         )
         run_tests(
             scheme: scheme_macOS,
             destination: "platform=macOS",
             clean: true,
             code_coverage: true
         )
-        slather(
-            scheme: scheme_macOS,
-            proj: default_xcodeproj,
-            output_directory: "./reports/macOS",
-            html: true,
-            show: true
-        )
+#         slather(
+#             scheme: scheme_macOS,
+#             proj: default_xcodeproj,
+#             output_directory: "./reports/macOS",
+#             html: true,
+#             show: true
+#         )
         run_tests(
             scheme: scheme_tvOS,
             devices: ["Apple TV"],
             clean: true,
             code_coverage: true
         )
-        slather(
-            scheme: scheme_tvOS,
-            proj: default_xcodeproj,
-            output_directory: "./reports/tvOS",
-            html: true,
-            show: true
-        )
+#         slather(
+#             scheme: scheme_tvOS,
+#             proj: default_xcodeproj,
+#             output_directory: "./reports/tvOS",
+#             html: true,
+#             show: true
+#         )
     end
 
     ##########################################
