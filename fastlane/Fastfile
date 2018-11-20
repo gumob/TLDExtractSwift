@@ -20,6 +20,10 @@ scheme_iOS = ENV["SCHEME_IOS"]
 scheme_macOS = ENV["SCHEME_MACOS"]
 scheme_tvOS = ENV["SCHEME_TVOS"]
 
+scheme_iOSTests = ENV["SCHEME_IOS_TEST"]
+scheme_macOSTests = ENV["SCHEME_MACOS_TEST"]
+scheme_tvOSTests = ENV["SCHEME_TVOS_TEST"]
+
 framework_info_plist = ENV["FRAMEWORK_INFO_PLIST"]
 test_info_plist = ENV["TEST_INFO_PLIST"]
 
@@ -91,32 +95,41 @@ platform :ios do
         run_tests(
             scheme: scheme_iOS,
             devices: ["iPhone X"],
+            clean: true,
             code_coverage: true
         )
         slather(
-            proj: default_xcodeproj,
             scheme: scheme_iOS,
-            html: true
+            proj: default_xcodeproj,
+            output_directory: "./reports/iOS",
+            html: true,
+            show: true
         )
         run_tests(
             scheme: scheme_macOS,
             destination: "platform=macOS",
+            clean: true,
             code_coverage: true
         )
         slather(
-            proj: default_xcodeproj,
             scheme: scheme_macOS,
-            html: true
+            proj: default_xcodeproj,
+            output_directory: "./reports/macOS",
+            html: true,
+            show: true
         )
         run_tests(
             scheme: scheme_tvOS,
             devices: ["Apple TV"],
+            clean: true,
             code_coverage: true
         )
         slather(
-            proj: default_xcodeproj,
             scheme: scheme_tvOS,
-            html: true
+            proj: default_xcodeproj,
+            output_directory: "./reports/tvOS",
+            html: true,
+            show: true
         )
     end
 
