@@ -15,6 +15,13 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 
 <img src="Metadata/domain-diagram.svg" alt="drawing" width="480"/>
 
+## Feature
+
+- Extract root domain, top level domain, second level domain, subdomain from url and hostname 
+- Foundation URL and String support
+- IDNA support
+- Multi platform support
+
 ## Requirements
 
 - iOS 9.3 or later
@@ -24,7 +31,6 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 - Python 2.7 or Python 3
 
 <small>* No plans to support tvOS 11 or earlier for now</small>
-
 
 ## Installation
 
