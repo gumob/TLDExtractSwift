@@ -24,7 +24,7 @@ public class TLDExtract {
     /// Parameters:
     ///   - host: Hostname to be extracted
     ///   - quick: If true, parse only normal data excluding exceptions and wildcards
-    public func parse<T: TLDExtractable>(input: T, quick: Bool = false) -> TLDResult? {
+    public func parse<T: TLDExtractable>(_ input: T, quick: Bool = false) -> TLDResult? {
         guard let host: String = input.hostname else { return nil }
         if quick {
             return self.tldParser.parseNormals(host: host)
