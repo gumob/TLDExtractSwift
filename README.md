@@ -42,7 +42,8 @@ Add the following to your `Cartfile` and follow [these instructions](https://git
 github "gumob/TLDExtractSwift"
 ```
 
-Do not forget to incorporate Punycode.framework. Otherwise it will fail to build the application.
+Do not forget to include Punycode.framework. Otherwise it will fail to build the application.<br/>
+
 <img src="Metadata/carthage-xcode-config.jpg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
 
 ### CocoaPods
