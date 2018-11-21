@@ -15,6 +15,13 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 
 <img src="Metadata/domain-diagram.svg" alt="drawing" width="480"/>
 
+## Feature
+
+- Extract root domain, top level domain, second level domain, subdomain from url and hostname 
+- Foundation URL and String support
+- IDNA support
+- Multi platform support
+
 ## Requirements
 
 - iOS 9.3 or later
@@ -24,7 +31,6 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 - Python 2.7 or Python 3
 
 <small>* No plans to support tvOS 11 or earlier for now</small>
-
 
 ## Installation
 
@@ -67,7 +73,9 @@ let extractor = try! TLDExtract(useFrozenData: true)
 
 ### Extraction
 
-#### Extract an url string
+#### Passing argument as String
+
+Extract an url:
 
 ```swift
 guard let result: TLDResult = extractor.parse("https://www.github.com/gumob/TLDExtract") else { return }
@@ -78,7 +86,7 @@ print(result.secondLevelDomain) // Optional("github")
 print(result.subDomain)         // Optional("www")
 ```
 
-#### Extract a hostname string
+Extract a hostname:
 
 ```swift
 guard let result: TLDResult = extractor.parse("gumob.com") else { return }
@@ -89,7 +97,7 @@ print(result.secondLevelDomain) // Optional("gumob")
 print(result.subDomain)         // nil
 ```
 
-#### Extract an unicode hostname string
+Extract an unicode hostname:
 
 ```swift
 guard let result: TLDResult = extractor.parse("www.ラーメン.寿司.co.jp") else { return }
@@ -100,7 +108,7 @@ print(result.secondLevelDomain) // Optional("寿司")
 print(result.subDomain)         // Optional("www.ラーメン")
 ```
 
-#### Extract a punycoded hostname (Same as above)
+Extract a punycoded hostname (Same as above):
 
 ```swift
 guard let result: TLDResult = extractor.parse("www.xn--4dkp5a8a.xn--sprr0q.co.jp") else { return }
@@ -111,9 +119,10 @@ print(result.secondLevelDomain) // Optional("xn--sprr0q")
 print(result.subDomain)         // Optional("www.xn--4dkp5a8a")
 ```
 
-#### Extract an unicode url using Foundation URL
+#### Passing argument as Foundation URL
 
-URL class in Foundation Framework does not support unicode URLs by default. You can use URL extension as a workaround:
+Extract an unicode url: <br/>
+URL class in Foundation Framework does not support unicode URLs by default. You can use URL extension as a workaround
 ```swift
 guard let result: TLDResult = extractor.parse(URL(unicodeString: "http://www.ラーメン.寿司.co.jp")) else { return }
 
@@ -123,7 +132,7 @@ print(result.secondLevelDomain) // Optional("xn--sprr0q")
 print(result.subDomain)         // Optional("www.xn--4dkp5a8a")
 ```
 
-Encode an url by passing argument as percent-encoded string:
+Encode an url by passing argument as percent encoded string:
 ```swift
 let urlString: String = "http://www.ラーメン.寿司.co.jp".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 print(urlString)                // http://www.%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3.%E5%AF%BF%E5%8F%B8.co.jp
@@ -136,12 +145,12 @@ print(result.secondLevelDomain) // Optional("寿司")
 print(result.subDomain)         // Optional("www.ラーメン")
 ```
 
-Encode an url by using [`Punycode`](https://github.com/gumob/Punycode) Framework:
+Encode an unicode url by using [`Punycode`](https://github.com/gumob/Punycode) Framework:
 
 ```swift
 import Punycode
 
-let urlString: String = "http://www.ラーメン.寿司.co.jp".punycodeEncoded!
+let urlString: String = "http://www.ラーメン.寿司.co.jp".idnaEncoded!
 print(urlString)                // http://www.xn--4dkp5a8a.xn--sprr0q.co.jp
 
 guard let result: TLDResult = extractor.parse(URL(string: urlString)) else { return }
