@@ -6,7 +6,7 @@
 ![Language](https://img.shields.io/badge/Language-Swift%204.2-orange.svg)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
-# TLDExtractSwift
+# TLDExtract
 <code>TLDExtract</code> is a pure Swift library to allows you to get the public suffix of a domain name using [the Public Suffix List](http://www.publicsuffix.org). You can find alternatives for other languages at [publicsuffix.org](https://publicsuffix.org/learn/).<br/>
 
 ## What are domains?
@@ -50,7 +50,7 @@ To integrate TLDExtract into your project, add the following to your `Podfile`.
 platform :ios, '9.3'
 use_frameworks!
 
-pod 'TLDExtractSwift'
+pod 'TLDExtract'
 ```
 ## Usage
 
@@ -63,13 +63,13 @@ import TLDExtract
 let extractor = try! TLDExtract()
 ```
 
-A safer initialization code to avoid errors by using the frozen Public Suffix List:
-The Public Suffix List is updated every time the framework is built. By setting userFrozenData to true, TLDExtract loads data checked out from the repository.
+A safer initialization code to avoid errors by using the frozen Public Suffix List:<br/>
 ```swift
 import TLDExtract
 
 let extractor = try! TLDExtract(useFrozenData: true)
 ```
+*The Public Suffix List is updated every time the framework is built. By setting userFrozenData to true, TLDExtract loads data which checked out from the repository.
 
 ### Extraction
 
