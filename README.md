@@ -13,7 +13,7 @@
 
 Domain names are the unique, human-readable Internet addresses of websites. They are made up of three parts: a top-level domain (a.k.a. TLD), a second-level domain name, and an optional subdomain.
 
-<img src="Metadata/domain-diagram.svg" alt="drawing" width="480"/>
+<img src="Metadata/domain-diagram.svg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
 
 ## Feature
 
@@ -41,6 +41,9 @@ Add the following to your `Cartfile` and follow [these instructions](https://git
 ```
 github "gumob/TLDExtractSwift"
 ```
+
+Do not forget to incorporate Punycode.framework. Otherwise it will fail to build the application.
+<img src="Metadata/carthage-xcode-config.jpg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
 
 ### CocoaPods
 
