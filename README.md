@@ -78,7 +78,8 @@ let extractor = try! TLDExtract(useFrozenData: true)
 Extract an url:
 
 ```swift
-guard let result: TLDResult = extractor.parse("https://www.github.com/gumob/TLDExtract") else { return }
+let urlString: String = "https://www.github.com/gumob/TLDExtract"
+guard let result: TLDResult = extractor.parse(urlString) else { return }
 
 print(result.rootDomain)        // Optional("github.com")
 print(result.topLevelDomain)    // Optional("com")
@@ -89,7 +90,8 @@ print(result.subDomain)         // Optional("www")
 Extract a hostname:
 
 ```swift
-guard let result: TLDResult = extractor.parse("gumob.com") else { return }
+let hostname: String = "gumob.com"
+guard let result: TLDResult = extractor.parse(hostname) else { return }
 
 print(result.rootDomain)        // Optional("gumob.com")
 print(result.topLevelDomain)    // Optional("com")
@@ -100,7 +102,8 @@ print(result.subDomain)         // nil
 Extract an unicode hostname:
 
 ```swift
-guard let result: TLDResult = extractor.parse("www.ラーメン.寿司.co.jp") else { return }
+let hostname: String = "www.ラーメン.寿司.co.jp"
+guard let result: TLDResult = extractor.parse(hostname) else { return }
 
 print(result.rootDomain)        // Optional("寿司.co.jp")
 print(result.topLevelDomain)    // Optional("co.jp")
@@ -111,7 +114,8 @@ print(result.subDomain)         // Optional("www.ラーメン")
 Extract a punycoded hostname (Same as above):
 
 ```swift
-guard let result: TLDResult = extractor.parse("www.xn--4dkp5a8a.xn--sprr0q.co.jp") else { return }
+let hostname: String = "www.xn--4dkp5a8a.xn--sprr0q.co.jp")"
+guard let result: TLDResult = extractor.parse(hostname) else { return }
 
 print(result.rootDomain)        // Optional("xn--sprr0q.co.jp")
 print(result.topLevelDomain)    // Optional("co.jp")
@@ -124,20 +128,23 @@ print(result.subDomain)         // Optional("www.xn--4dkp5a8a")
 Extract an unicode url: <br/>
 URL class in Foundation Framework does not support unicode URLs by default. You can use URL extension as a workaround
 ```swift
-guard let result: TLDResult = extractor.parse(URL(unicodeString: "http://www.ラーメン.寿司.co.jp")) else { return }
+let urlString: String = "http://www.ラーメン.寿司.co.jp"
+let url: URL = URL(unicodeString: urlString)
+guard let result: TLDResult = extractor.parse(url) else { return }
 
-print(result.rootDomain)        // Optional("xn--sprr0q.co.jp")
+print(result.rootDomain)        // Optional("www.ラーメン.寿司.co.jp")
 print(result.topLevelDomain)    // Optional("co.jp")
-print(result.secondLevelDomain) // Optional("xn--sprr0q")
-print(result.subDomain)         // Optional("www.xn--4dkp5a8a")
+print(result.secondLevelDomain) // Optional("寿司")
+print(result.subDomain)         // Optional("www.ラーメン")
 ```
 
-Encode an url by passing argument as percent encoded string:
+Encode an url by passing argument as percent encoded string (Same as above):
 ```swift
 let urlString: String = "http://www.ラーメン.寿司.co.jp".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+let url: URL = URL(string: urlString)
 print(urlString)                // http://www.%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3.%E5%AF%BF%E5%8F%B8.co.jp
 
-guard let result: TLDResult = extractor.parse(URL(string: urlString)) else { return }
+guard let result: TLDResult = extractor.parse(url) else { return }
 
 print(result.rootDomain)        // Optional("www.ラーメン.寿司.co.jp")
 print(result.topLevelDomain)    // Optional("co.jp")
@@ -151,9 +158,10 @@ Encode an unicode url by using [`Punycode`](https://github.com/gumob/Punycode) F
 import Punycode
 
 let urlString: String = "http://www.ラーメン.寿司.co.jp".idnaEncoded!
+let url: URL = URL(string: urlString)
 print(urlString)                // http://www.xn--4dkp5a8a.xn--sprr0q.co.jp
 
-guard let result: TLDResult = extractor.parse(URL(string: urlString)) else { return }
+guard let result: TLDResult = extractor.parse(url) else { return }
 
 print(result.rootDomain)        // Optional("xn--sprr0q.co.jp")
 print(result.topLevelDomain)    // Optional("co.jp")
