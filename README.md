@@ -7,7 +7,7 @@
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
 # TLDExtractSwift
-<code>TLDExtract</code> is a pure Swift library to allows you to get the public suffix of a domain name using [the Public Suffix List](http://www.publicsuffix.org).<br/>
+<code>TLDExtract</code> is a pure Swift library to allows you to get the public suffix of a domain name using [the Public Suffix List](http://www.publicsuffix.org). You can find alternatives for other languages at [publicsuffix.org](https://publicsuffix.org/learn/).<br/>
 
 ## What are domains?
 
@@ -17,7 +17,7 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 
 ## Feature
 
-- Extract root domain, top level domain, second level domain, subdomain from url and hostname 
+- Extract root domain, top level domain, second level domain, subdomain from url and hostname
 - Foundation URL and String support
 - IDNA support
 - Multi platform support
