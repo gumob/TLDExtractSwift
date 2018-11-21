@@ -64,7 +64,7 @@ let extractor = try! TLDExtract()
 ```
 
 A safer initialization code to avoid errors by using the frozen Public Suffix List:
-The Public Suffix List is updated every time the framework is built. By setting userFrozenData to true, TLDExtract load data checked out from the repository.
+The Public Suffix List is updated every time the framework is built. By setting userFrozenData to true, TLDExtract loads data checked out from the repository.
 ```swift
 import TLDExtract
 
