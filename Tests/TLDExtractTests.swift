@@ -684,7 +684,7 @@ class TLDExtractTests: XCTestCase {
                                                 file: StaticString = #file, line: UInt = #line) {
         let result: String? = input?.hostname
 
-        logTLDExtractable(input, result, expected)
+//        logTLDExtractable(input, result, expected)
 
         XCTAssertEqual(result, expected, file: file, line: line)
     }
@@ -697,7 +697,7 @@ class TLDExtractTests: XCTestCase {
                                               quick: Bool = false,
                                               file: StaticString = #file, line: UInt = #line) {
         guard let input: T = input else { return }
-        let result: TLDResult? = tldExtractor.parse(input: input, quick: quick)
+        let result: TLDResult? = tldExtractor.parse(input, quick: quick)
 
 //        logTLDResult(host, expectedRootDomain, expectedTopLevelDomain, expectedSecondDomain, expectedSubDomain, result)
 
