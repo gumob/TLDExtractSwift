@@ -141,7 +141,7 @@ Encode an url by using [`Punycode`](https://github.com/gumob/Punycode) Framework
 ```swift
 import Punycode
 
-let urlString: String = "http://www.ラーメン.寿司.co.jp".punycodeEncoded!
+let urlString: String = "http://www.ラーメン.寿司.co.jp".idnaEncoded!
 print(urlString)                // http://www.xn--4dkp5a8a.xn--sprr0q.co.jp
 
 guard let result: TLDResult = extractor.parse(URL(string: urlString)) else { return }
