@@ -27,7 +27,7 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 - iOS 9.3 or later
 - macOS 10.12 or later
 - tvOS 12.0 or later
-- Swift 4.2
+- Swift 4.2 or later
 - Python 2.7 or Python 3
 
 <small>* No plans to support tvOS 11 or earlier for now</small>
@@ -39,7 +39,9 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 Add the following to your `Cartfile` and follow [these instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
 ```
-github "gumob/TLDExtractSwift"
+github "gumob/TLDExtractSwift"          # Latest (Swift 5.0)
+github "gumob/TLDExtractSwift" ~> 2.0   # Swift 5.0
+github "gumob/TLDExtractSwift" ~> 1.0   # Swift 4.2
 ```
 
 Do not forget to include Punycode.framework. Otherwise it will fail to build the application.<br/>
@@ -54,7 +56,9 @@ To integrate TLDExtract into your project, add the following to your `Podfile`.
 platform :ios, '9.3'
 use_frameworks!
 
-pod 'TLDExtract'
+pod 'TLDExtract'             # Latest (Swift 5.0)
+pod 'TLDExtract', '~> 2.0'   # Swift 5.0
+pod 'TLDExtract', '~> 1.0'   # Swift 4.2
 ```
 ## Usage
 
