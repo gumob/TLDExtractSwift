@@ -26,11 +26,9 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 
 - iOS 9.3 or later
 - macOS 10.12 or later
-- tvOS 12.0 or later
+- tvOS 10.2 or later
 - Swift 4.2 or later
 - Python 2.7 or Python 3
-
-<small>* No plans to support tvOS 11 or earlier for now</small>
 
 ## Installation
 
@@ -60,6 +58,7 @@ pod 'TLDExtract'             # Latest (Swift 5.0)
 pod 'TLDExtract', '~> 2.0'   # Swift 5.0
 pod 'TLDExtract', '~> 1.0'   # Swift 4.2
 ```
+
 ## Usage
 
 ### Initialization
@@ -176,7 +175,6 @@ print(result.topLevelDomain)    // Optional("co.jp")
 print(result.secondLevelDomain) // Optional("xn--sprr0q")
 print(result.subDomain)         // Optional("www.xn--4dkp5a8a")
 ```
-
 
 ## Copyright
 
