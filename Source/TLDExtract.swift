@@ -21,7 +21,7 @@ public class TLDExtract {
             let url: URL = URL(string: "https://publicsuffix.org/list/public_suffix_list.dat")!
             data = try Data(contentsOf: url)
         }
-        
+
         let dataSet = try PSLParser().parse(data: data)
         self.tldParser = TLDParser(dataSet: dataSet)
         #else
@@ -32,7 +32,6 @@ public class TLDExtract {
         let dataSet = try PSLParser().parse(data: data)
         self.tldParser = TLDParser(dataSet: dataSet)
         #endif
-        
     }
 
     /// Parameters:

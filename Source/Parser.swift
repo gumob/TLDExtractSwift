@@ -23,14 +23,14 @@ internal class PSLParser {
             self.normals.insert(line)
         }
     }
-    
+
     internal func parse(data: Data?) throws -> PSLDataSet {
         guard let data: Data = data,
               let str: String = String(data: data, encoding: .utf8),
               str.count > 0 else {
             throw TLDExtractError.pslParseError(message: nil)
         }
-        
+
         str.components(separatedBy: .newlines).forEach { [weak self] (line: String) in
             if line.isComment {
                 return
@@ -38,20 +38,20 @@ internal class PSLParser {
             if line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 return
             }
-            
+
             self?.addLine(line)
             // this does the same thing as update-psl.py
             #if SWIFT_PACKAGE
-            if let p = line.punycodeEncoded {
-                if !p.hasSuffix("-") && !p.hasPrefix(".") {
-                    self?.addLine("xn--\(p)")
+            if let parsed = line.punycodeEncoded {
+                if !parsed.hasSuffix("-") && !parsed.hasPrefix(".") {
+                    self?.addLine("xn--\(parsed)")
                 }
-                else if p.hasPrefix(".") {
+                else if parsed.hasPrefix(".") {
                     var concat = [String]()
                     for sub in line.split(separator: ".") {
-                        if let p = sub.punycodeEncoded {
-                            if !p.hasSuffix("-") && !p.hasPrefix(".") {
-                                concat.append("xn--\(p)")
+                        if let subparsed = sub.punycodeEncoded {
+                            if !subparsed.hasSuffix("-") && !subparsed.hasPrefix(".") {
+                                concat.append("xn--\(subparsed)")
                             } else {
                                 concat.append("\(sub)")
                             }
