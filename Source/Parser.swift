@@ -40,28 +40,11 @@ internal class PSLParser {
             }
 
             self?.addLine(line)
+
             // this does the same thing as update-psl.py
             #if SWIFT_PACKAGE
-            if let parsed = line.punycodeEncoded {
-                if !parsed.hasSuffix("-") && !parsed.hasPrefix(".") {
-                    self?.addLine("xn--\(parsed)")
-                }
-                else if parsed.hasPrefix(".") {
-                    var concat = [String]()
-                    for sub in line.split(separator: ".") {
-                        if let subparsed = sub.punycodeEncoded {
-                            if !subparsed.hasSuffix("-") && !subparsed.hasPrefix(".") {
-                                concat.append("xn--\(subparsed)")
-                            } else {
-                                concat.append("\(sub)")
-                            }
-                        }
-                    }
-                    let joinedConcat = concat.joined(separator: ".")
-                    if !joinedConcat.isEmpty {
-                        self?.addLine(joinedConcat)
-                    }
-                }
+            if let encoded = line.idnaEncoded {
+                self?.addLine(encoded)
             }
             #endif
         }
