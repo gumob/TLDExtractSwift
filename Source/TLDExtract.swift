@@ -13,12 +13,26 @@ public class TLDExtract {
     private let tldParser: TLDParser
 
     public init(useFrozenData: Bool = false) throws {
+        #if SWIFT_PACKAGE
+        var data: Data
+        if useFrozenData {
+            data = SPM_PSL.data(using: .utf8)!
+        } else {
+            let url: URL = URL(string: "https://publicsuffix.org/list/public_suffix_list.dat")!
+            data = try Data(contentsOf: url)
+        }
+        
+        let dataSet = try PSLParser().parse(data: data)
+        self.tldParser = TLDParser(dataSet: dataSet)
+        #else
         let url: URL = Bundle.current.url(
                 forResource: useFrozenData ? "public_suffix_list_frozen" : "public_suffix_list",
                 withExtension: "dat")!
         let data: Data = try Data(contentsOf: url)
         let dataSet = try PSLParser().parse(data: data)
         self.tldParser = TLDParser(dataSet: dataSet)
+        #endif
+        
     }
 
     /// Parameters:

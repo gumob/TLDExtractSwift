@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Punycode",
+        "repositoryURL": "https://github.com/twodayslate/PunycodeSwift.git",
+        "state": {
+          "branch": "master",
+          "revision": "a06c9efbb707daf102a00e9e11dcf3c553a71288",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

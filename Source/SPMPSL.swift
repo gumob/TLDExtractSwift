@@ -1,3 +1,15 @@
+//
+//  File.swift
+//  
+//
+//  Created by Zachary Gorak on 2/16/20.
+//
+
+import Foundation
+
+#if SWIFT_PACKAGE
+
+let SPM_PSL = """
 ac
 com.ac
 edu.ac
@@ -188,6 +200,7 @@ vic.au
 wa.au
 act.edu.au
 catholic.edu.au
+eq.edu.au
 nsw.edu.au
 nt.edu.au
 qld.edu.au
@@ -770,17 +783,7 @@ net.et
 eu
 fi
 aland.fi
-fj
-ac.fj
-biz.fj
-com.fj
-gov.fj
-info.fj
-mil.fj
-name.fj 
-net.fj
-org.fj
-pro.fj
+*.fj
 *.fk
 fm
 fo
@@ -3986,6 +3989,8 @@ niepce.museum
 norfolk.museum
 north.museum
 nrw.museum
+nuernberg.museum
+nuremberg.museum
 nyc.museum
 nyny.museum
 oceanographic.museum
@@ -5596,6 +5601,12 @@ gov.rs
 in.rs
 org.rs
 ru
+ac.ru
+edu.ru
+gov.ru
+int.ru
+mil.ru
+test.ru
 rw
 ac.rw
 co.rw
@@ -5707,19 +5718,9 @@ perso.sn
 univ.sn
 so
 com.so
-edu.so
-gov.so
-me.so
 net.so
 org.so
 sr
-ss
-biz.ss
-com.ss
-edu.ss
-gov.ss
-net.ss
-org.ss
 st
 co.st
 com.st
@@ -6315,8 +6316,6 @@ xn--lgbbat1ad8j
 xn--wgbh1c
 ею
 xn--e1a4c
-موريتانيا
-xn--mgbah1a3hjkrd
 გე
 xn--node
 ελ
@@ -6541,7 +6540,6 @@ allstate
 ally
 alsace
 alstom
-amazon
 americanexpress
 americanfamily
 amex
@@ -6623,6 +6621,7 @@ bloomberg
 blue
 bms
 bmw
+bnl
 bnpparibas
 boats
 boehringer
@@ -6672,6 +6671,7 @@ care
 career
 careers
 cars
+cartier
 casa
 case
 caseih
@@ -6698,6 +6698,7 @@ cheap
 chintai
 christmas
 chrome
+chrysler
 church
 cipriani
 circle
@@ -6791,6 +6792,7 @@ diy
 dnp
 docs
 doctor
+dodge
 dog
 domains
 dot
@@ -6800,6 +6802,7 @@ dtv
 dubai
 duck
 dunlop
+duns
 dupont
 durban
 dvag
@@ -6826,6 +6829,7 @@ etisalat
 eurovision
 eus
 events
+everbank
 exchange
 expert
 exposed
@@ -6969,6 +6973,7 @@ homegoods
 homes
 homesense
 honda
+honeywell
 horse
 hospital
 host
@@ -7008,6 +7013,7 @@ intuit
 investments
 ipiranga
 irish
+iselect
 ismaili
 ist
 istanbul
@@ -7054,10 +7060,12 @@ kred
 kuokgroup
 kyoto
 lacaixa
+ladbrokes
 lamborghini
 lamer
 lancaster
 lancia
+lancome
 land
 landrover
 lanxess
@@ -7075,6 +7083,7 @@ legal
 lego
 lexus
 lgbt
+liaison
 lidl
 life
 lifeinsurance
@@ -7092,7 +7101,6 @@ live
 living
 lixil
 llc
-llp
 loan
 loans
 locker
@@ -7149,6 +7157,7 @@ mlb
 mls
 mma
 mobile
+mobily
 moda
 moe
 moi
@@ -7156,6 +7165,7 @@ mom
 monash
 money
 monster
+mopar
 mormon
 mortgage
 moscow
@@ -7163,6 +7173,7 @@ moto
 motorcycles
 mov
 movie
+movistar
 msd
 mtn
 mtr
@@ -7249,6 +7260,7 @@ photo
 photography
 photos
 physio
+piaget
 pics
 pictet
 pictures
@@ -7413,15 +7425,16 @@ solutions
 song
 sony
 soy
-spa
 space
 sport
 spot
 spreadbetting
 srl
+srt
 stada
 staples
 star
+starhub
 statebank
 statefarm
 stc
@@ -7461,6 +7474,7 @@ tdk
 team
 tech
 technology
+telefonica
 temasek
 tennis
 teva
@@ -7505,6 +7519,7 @@ tushu
 tvs
 ubank
 ubs
+uconnect
 unicom
 university
 uno
@@ -7545,6 +7560,7 @@ walmart
 walter
 wang
 wanggou
+warman
 watch
 watches
 weather
@@ -7638,8 +7654,6 @@ xn--c1avg
 xn--c2br7g
 ストア
 xn--cck2b3b
-アマゾン
-xn--cckwcxetd
 삼성
 xn--cg4bki
 商标
@@ -7686,8 +7700,6 @@ xn--imr513n
 xn--io0a7i
 ком
 xn--j1aef
-亚马逊
-xn--jlq480n2rg
 诺基亚
 xn--jlq61u9w7b
 食品
@@ -7706,6 +7718,8 @@ xn--mgba7c0bbn0a
 xn--mgbaakc7dvf
 بازار
 xn--mgbab2bd
+موبايلي
+xn--mgbb9fbpob
 ابوظبي
 xn--mgbca7dzdo
 كاثوليك
@@ -7790,14 +7804,10 @@ zuerich
 cc.ua
 inf.ua
 ltd.ua
-adobeaemcloud.com
-adobeaemcloud.net
-*.dev.adobeaemcloud.com
 beep.pl
 barsy.ca
 *.compute.estate
 *.alces.network
-altervista.org
 alwaysdata.net
 cloudfront.net
 *.compute.amazonaws.com
@@ -7880,7 +7890,6 @@ s3-website.eu-central-1.amazonaws.com
 s3-website.eu-west-2.amazonaws.com
 s3-website.eu-west-3.amazonaws.com
 s3-website.us-east-2.amazonaws.com
-amsw.nl
 t3l3p0rt.net
 tele.amune.org
 apigee.io
@@ -7894,6 +7903,9 @@ poivron.org
 potager.org
 sweetpepper.org
 myasustor.com
+go-vip.co
+go-vip.net
+wpcomstaging.com
 myfritz.net
 *.awdev.ca
 *.advisor.ws
@@ -7956,7 +7968,6 @@ c.la
 certmgr.org
 xenapponazure.com
 discourse.group
-discourse.team
 virtueeldomein.nl
 cleverapps.io
 *.lcl.dev
@@ -8000,12 +8011,6 @@ co.nl
 co.no
 webhosting.be
 hosting-cluster.nl
-ac.ru
-edu.ru
-gov.ru
-int.ru
-mil.ru
-test.ru
 dyn.cosidns.de
 dynamisches-dns.de
 dnsupdater.de
@@ -8018,10 +8023,6 @@ static-access.net
 realm.cz
 *.cryptonomic.net
 cupcake.is
-*.customer-oci.com
-*.oci.customer-oci.com
-*.ocp.customer-oci.com
-*.ocs.customer-oci.com
 cyon.link
 cyon.site
 daplie.me
@@ -8039,8 +8040,6 @@ reg.dk
 store.dk
 *.dapps.earth
 *.bzz.dapps.earth
-builtwithdark.com
-edgestack.me
 debian.net
 dedyn.io
 dnshome.de
@@ -8364,7 +8363,6 @@ myddns.rocks
 blogsite.xyz
 dynv6.net
 e4.cz
-en-root.fr
 mytuleap.com
 onred.one
 staging.onred.one
@@ -8513,7 +8511,6 @@ vladikavkaz.su
 vladimir.su
 vologda.su
 channelsdvr.net
-u.channelsdvr.net
 fastly-terrarium.com
 fastlylb.net
 map.fastlylb.net
@@ -8543,7 +8540,6 @@ filegear-sg.me
 firebaseapp.com
 flynnhub.com
 flynnhosting.net
-0e.vc
 freebox-os.com
 freeboxos.com
 fbx-os.fr
@@ -8562,13 +8558,11 @@ futuremailing.at
 service.gov.uk
 gehirn.ne.jp
 usercontent.jp
-gentapps.com
 lab.ms
 github.io
 githubusercontent.com
 gitlab.io
 glitch.me
-lolipop.io
 cloudapps.digital
 london.cloudapps.digital
 homeoffice.gov.uk
@@ -8580,7 +8574,6 @@ a.run.app
 web.app
 *.0emm.com
 appspot.com
-*.r.appspot.com
 blogspot.ae
 blogspot.al
 blogspot.am
@@ -8664,7 +8657,6 @@ pagespeedmobilizer.com
 publishproxy.com
 withgoogle.com
 withyoutube.com
-awsmppl.com
 fin.ci
 free.hr
 caa.li
@@ -8692,7 +8684,6 @@ col.ng
 firm.ng
 gen.ng
 ltd.ng
-ngo.ng
 ng.school
 sch.so
 häkkinen.fi
@@ -8760,7 +8751,6 @@ keymachine.de
 kinghost.net
 uni5.net
 knightpoint.systems
-oya.to
 co.krd
 edu.krd
 git-repos.de
@@ -9031,13 +9021,11 @@ nom.ug
 nom.uy
 nom.vc
 nom.vg
-static.observableusercontent.com
 cya.gg
 cloudycluster.net
 nid.io
 opencraft.hosting
 operaunite.com
-skygearapp.com
 outsystemscloud.com
 ownprovider.com
 own.pm
@@ -9054,7 +9042,6 @@ zakopane.pl
 pantheonsite.io
 gotpantheon.com
 mypep.link
-perspecta.cloud
 on-web.fr
 *.platform.sh
 *.platformsh.site
@@ -9069,12 +9056,9 @@ chirurgiens-dentistes-en-france.fr
 byen.site
 pubtls.org
 qualifioapp.com
-qbuser.com
 instantcloud.cn
 ras.ru
 qa2.com
-qcx.io
-*.sys.qcx.io
 dev-myqnapcloud.com
 alpha-myqnapcloud.com
 myqnapcloud.com
@@ -9083,7 +9067,6 @@ vapor.cloud
 vaporcloud.io
 rackmaze.com
 rackmaze.net
-*.on-k3s.io
 *.on-rancher.cloud
 *.on-rio.io
 readthedocs.io
@@ -9103,7 +9086,6 @@ sandcats.io
 logoip.de
 logoip.com
 schokokeks.net
-gov.scot
 scrysec.com
 firewall-gateway.com
 firewall-gateway.de
@@ -9115,7 +9097,6 @@ firewall-gateway.net
 my-firewall.org
 myfirewall.org
 spdns.org
-senseering.net
 biz.ua
 co.ua
 pp.ua
@@ -9165,7 +9146,6 @@ i234.me
 myds.me
 synology.me
 vpnplus.to
-direct.quickconnect.to
 taifun-dns.de
 gda.pl
 gdansk.pl
@@ -9235,7 +9215,6 @@ lib.de.us
 router.management
 v-info.info
 voorloper.cloud
-v.ua
 wafflecell.com
 *.webhare.dev
 wedeploy.io
@@ -9243,11 +9222,6 @@ wedeploy.me
 wedeploy.sh
 remotewd.com
 wmflabs.org
-myforum.community
-community-pro.de
-diskussionsbereich.de
-community-pro.net
-meinforum.net
 half.host
 xnbay.com
 u2.xnbay.com
@@ -9277,3 +9251,7 @@ basicserver.io
 virtualserver.io
 site.builder.nu
 enterprisecloud.nu
+zone.id
+"""
+
+#endif
