@@ -4,11 +4,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "TLDExtractSwift",
+    name: "TLDExtract",
     products: [
         .library(
-            name: "TLDExtractSwift",
-            targets: ["TLDExtract"]),
+            name: "TLDExtract",
+            targets: ["TLDExtract"])
     ],
     dependencies: [
         .package(url: "https://github.com/twodayslate/PunycodeSwift.git", .branch("master"))
