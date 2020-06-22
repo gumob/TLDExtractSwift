@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "11.0"
   s.swift_version          = '5.0'
 
-  s.dependency "Punycode", "~> 1.0"
+  s.dependency "Punycode", "~> 2.1"
 
 end
