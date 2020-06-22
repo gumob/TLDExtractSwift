@@ -277,7 +277,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods (= 1.9.3)
+  cocoapods
   cocoapods-clean
   cocoapods-deintegrate
   fastlane
