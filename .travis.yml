@@ -24,33 +24,39 @@ env:
 matrix:
   include:
     # iOS Tests
-    - env: SCHEME="$IOS_SCHEME"   DESTINATION="OS=13.5,name=iPhone 11 Pro"  RUN_TESTS="YES" LINT="NO"  CARTHAGE_PLATFORM="iOS" COVERAGE="YES" CODECOV_FLAG="ios13"
-    - env: SCHEME="$IOS_SCHEME"   DESTINATION="OS=12.4,name=iPhone X"       RUN_TESTS="YES" LINT="NO"  CARTHAGE_PLATFORM="iOS" COVERAGE="YES" CODECOV_FLAG="ios12"
-    - env: SCHEME="$IOS_SCHEME"   DESTINATION="OS=11.4,name=iPhone 7"       RUN_TESTS="YES" LINT="YES" CARTHAGE_PLATFORM="iOS" COVERAGE="NO"  CODECOV_FLAG="ios11"
-    - env: SCHEME="$IOS_SCHEME"   DESTINATION="OS=10.3.1,name=iPhone 6"     RUN_TESTS="YES" LINT="NO"  CARTHAGE_PLATFORM="iOS" COVERAGE="NO"  CODECOV_FLAG="ios10"
+    - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=13.5,name=iPhone 11 Pro" CARTHAGE_PLATFORM="iOS"  COVERAGE="YES" CODECOV_FLAG="ios13"
+    - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=12.4,name=iPhone X"      CARTHAGE_PLATFORM="iOS"  COVERAGE="NO"  CODECOV_FLAG="ios12"
+    - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=11.4,name=iPhone 7"      CARTHAGE_PLATFORM="iOS"  COVERAGE="NO"  CODECOV_FLAG="ios11"
+    - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=10.3.1,name=iPhone 6"    CARTHAGE_PLATFORM="iOS"  COVERAGE="NO"  CODECOV_FLAG="ios10"
     # tvOS Tests
-    - env: SCHEME="$TVOS_SCHEME"  DESTINATION="OS=13.4,name=Apple TV 4K"    RUN_TESTS="YES" LINT="NO"  CARTHAGE_PLATFORM="tvOS" COVERAGE="NO"  CODECOV_FLAG="tvos13"
-    - env: SCHEME="$TVOS_SCHEME"  DESTINATION="OS=12.4,name=Apple TV 4K"    RUN_TESTS="YES" LINT="NO"  CARTHAGE_PLATFORM="tvOS" COVERAGE="NO"  CODECOV_FLAG="tvos12"
-    - env: SCHEME="$TVOS_SCHEME"  DESTINATION="OS=11.4,name=Apple TV"       RUN_TESTS="YES" LINT="NO"  CARTHAGE_PLATFORM="tvOS" COVERAGE="NO"  CODECOV_FLAG="tvos11"
+    - env: XCODE_TEST="YES" SCHEME="$TVOS_SCHEME"  DESTINATION="OS=13.4,name=Apple TV 4K"   CARTHAGE_PLATFORM="tvOS" COVERAGE="NO"  CODECOV_FLAG="tvos13"
+    - env: XCODE_TEST="YES" SCHEME="$TVOS_SCHEME"  DESTINATION="OS=12.4,name=Apple TV 4K"   CARTHAGE_PLATFORM="tvOS" COVERAGE="NO"  CODECOV_FLAG="tvos12"
+    - env: XCODE_TEST="YES" SCHEME="$TVOS_SCHEME"  DESTINATION="OS=11.4,name=Apple TV"      CARTHAGE_PLATFORM="tvOS" COVERAGE="NO"  CODECOV_FLAG="tvos11"
     # macOS Tests
-    - env: SCHEME="$MACOS_SCHEME" DESTINATION="arch=x86_64"                 RUN_TESTS="YES" LINT="NO"  CARTHAGE_PLATFORM="Mac" COVERAGE="NO"  CODECOV_FLAG="macos"
+    - env: XCODE_TEST="YES" SCHEME="$MACOS_SCHEME" DESTINATION="arch=x86_64"                CARTHAGE_PLATFORM="Mac"  COVERAGE="NO"  CODECOV_FLAG="macos"
+    # Lint
+    - env: CARTHAGE_TEST="YES"
+    - env: SWIFT_LINT="YES"
+    - env: POD_LINT="NO"
 
 before_install:
-  - if [ "$DESTINATION" == "OS=9.3,name=iPhone 5s" ]; then
-    sudo mkdir "/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 9.3.simruntime/Contents/Resources/RuntimeRoot/usr/lib/swift";
-    fi
-
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-    gem install cocoapods --no-document --quiet;
+  - if [ "$XCODE_TEST" == "YES" ]; then
     gem install xcpretty --no-document --quiet;
-    pod repo update;
+    fi
+  - if [ "$CARTHAGE_TEST" = "YES" ] || [ "$XCODE_TEST" = "YES" ]; then
     brew update;
     brew outdated carthage || brew upgrade carthage;
     carthage bootstrap --platform "$CARTHAGE_PLATFORM" --cache-builds --verbose;
     fi
+  - if [ "$POD_LINT" == "YES" ]; then
+    gem install cocoapods --pre --no-document --quiet;
+    pod repo update;
+    fi
 
 install:
-  - ./install-swiftlint.sh;
+  - if [ "$SWIFT_LINT" == "YES" ]; then
+    ./install-swiftlint.sh;
+    fi
 
 script:
   - set -o pipefail;
@@ -63,16 +69,20 @@ script:
     xcodebuild -list;
     fi
 
-  - if [ "$RUN_TESTS" == "YES" ]; then
+  - if [ "$XCODE_TEST" == "YES" ]; then
     xcodebuild clean test -project "$XCODE_PROJECT" -scheme "$SCHEME" -destination "$DESTINATION" -enableCodeCoverage $COVERAGE | xcpretty -c;
-    elif [ "$RUN_TESTS" == "NO" ]; then
-    xcodebuild clean build -project "$XCODE_PROJECT" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release | xcpretty -c;
     fi
 
-  - if [ "$LINT" == "YES" ]; then
-    swiftlint;
-    carthage build --platform "$CARTHAGE_PLATFORM" --no-skip-current --cache-builds --verbose;
-    pod lib lint --verbose;
+  - if [ "$CARTHAGE_TEST" == "YES" ]; then
+    carthage build --no-skip-current --platform iOS;
+    fi
+
+  - if [ "$SWIFT_LINT" == "YES" ]; then
+    swiftlint lint;
+    fi
+
+  - if [ "$POD_LINT" == "YES" ]; then
+    pod lib lint;
     fi
 
 after_success:
