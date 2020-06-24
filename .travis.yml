@@ -46,7 +46,8 @@ before_install:
   - if [ "$CARTHAGE_TEST" = "YES" ] || [ "$XCODE_TEST" = "YES" ]; then
     brew update;
     brew outdated carthage || brew upgrade carthage;
-    carthage bootstrap --platform "$CARTHAGE_PLATFORM" --cache-builds --verbose;
+    carthage bootstrap --cache-builds --verbose;
+    #carthage bootstrap --platform "$CARTHAGE_PLATFORM" --cache-builds --verbose;
     fi
   - if [ "$POD_LINT" == "YES" ]; then
     gem install cocoapods --pre --no-document --quiet;
