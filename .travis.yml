@@ -24,7 +24,7 @@ env:
 matrix:
   include:
     # iOS Tests
-    - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=13.5,name=iPhone 11 Pro" SWIFT_LINT="YES" COVERAGE="YES" CODECOV_FLAG="ios13"
+    - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=13.5,name=iPhone 11 Pro" SWIFT_LINT="NO" COVERAGE="YES" CODECOV_FLAG="ios13"
     - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=12.4,name=iPhone X"      SWIFT_LINT="NO"  COVERAGE="NO"  CODECOV_FLAG="ios12"
     - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=11.4,name=iPhone 7"      SWIFT_LINT="NO"  COVERAGE="NO"  CODECOV_FLAG="ios11"
     - env: XCODE_TEST="YES" SCHEME="$IOS_SCHEME"   DESTINATION="OS=10.3.1,name=iPhone 6"    SWIFT_LINT="NO"  COVERAGE="NO"  CODECOV_FLAG="ios10"
@@ -36,6 +36,7 @@ matrix:
     - env: XCODE_TEST="YES" SCHEME="$MACOS_SCHEME" DESTINATION="arch=x86_64"                SWIFT_LINT="NO"  COVERAGE="NO"  CODECOV_FLAG="macos"
     # Lint
     - env: CARTHAGE_TEST="YES"
+    - env: SWIFT_LINT="YES"
     - env: POD_LINT="NO"
 
 before_install:
