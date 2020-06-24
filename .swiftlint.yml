@@ -4,7 +4,7 @@ disabled_rules:
   - trailing_whitespace
   - todo
 
-line_length: 480
+line_length: 960
 function_body_length: 100
 
 identifier_name:
@@ -13,6 +13,7 @@ identifier_name:
     - ok
 
 excluded:
+  - Tests
   - Carthage
   - Pods
   - fastlane
