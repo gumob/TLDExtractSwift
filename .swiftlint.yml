@@ -13,6 +13,7 @@ identifier_name:
     - ok
 
 excluded:
+  - Source/SPMPSL.swift
   - Tests
   - Carthage
   - Pods
