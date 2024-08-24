@@ -1,0 +1,19 @@
+[tools]
+ruby = "3.2.5"
+python = "3.11.9"
+
+[env]
+_.python.venv = ".venv"
+EXPANDED_CODE_SIGN_IDENTITY=""
+EXPANDED_CODE_SIGN_IDENTITY_NAME=""
+EXPANDED_PROVISIONING_PROFILE=""
+DEFAULT_XCODEPROJ="TLDExtract.xcodeproj"
+DEFAULT_PODSPEC="TLDExtractSwift.podspec"
+SCHEME_IOS="TLDExtract-iOS"
+SCHEME_MACOS="TLDExtract-macOS"
+SCHEME_TVOS="TLDExtract-tvOS"
+SCHEME_IOS_TEST="TLDExtract-iOSTests"
+SCHEME_MACOS_TEST="TLDExtract-macOSTests"
+SCHEME_TVOS_TEST="TLDExtract-tvOSTests"
+FRAMEWORK_INFO_PLIST="Source/Info.plist"
+TEST_INFO_PLIST="Tests/Info.plist"

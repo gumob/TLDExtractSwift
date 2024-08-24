@@ -11,12 +11,12 @@ let package = Package(
             targets: ["TLDExtract"])
     ],
     dependencies: [
-        .package(url: "https://github.com/gumob/PunycodeSwift.git", .branch("master"))
+        .package(url: "https://github.com/gumob/PunycodeSwift.git", .from: "2.1.0")
     ],
     targets: [
         .target(
             name: "TLDExtract",
-            dependencies: ["Punnycode"],
+            dependencies: ["Punycode"],
             path: "Source"),
         .testTarget(
             name: "TLDExtractSwiftTests",
