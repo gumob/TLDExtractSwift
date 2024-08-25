@@ -224,6 +224,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		A7450B7E2C7B1A0E00D659D7 /* Update Public Suffix List */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
