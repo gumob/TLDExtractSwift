@@ -315,86 +315,86 @@ jobs:
             --cache-builds
     needs: SPM
 
-  # cocoapods:
-  #   name: "Pods: ${{ matrix.platform }}, ${{ matrix.configuration }}"
-  #   runs-on: ${{ matrix.runsOn }}
-  #   env:
-  #     DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}.app/Contents/Developer"
-  #   strategy:
-  #     fail-fast: true
-  #     matrix:
-  #       include:
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "macos"
-  #           configuration: "Release"
-  #           name: "Pods: macOS, Release"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "macos"
-  #           configuration: "Debug"
-  #           name: "Pods: macOS, Debug"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "ios"
-  #           configuration: "Release"
-  #           name: "Pods: iOS, Release"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "ios"
-  #           configuration: "Debug"
-  #           name: "Pods: iOS, Debug"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "tvos"
-  #           configuration: "Release"
-  #           name: "Pods: tvOS, Release"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "tvos"
-  #           configuration: "Debug"
-  #           name: "Pods: tvOS, Debug"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "watchos"
-  #           configuration: "Release"
-  #           name: "Pods: watchOS, Release"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "watchos"
-  #           configuration: "Debug"
-  #           name: "Pods: watchOS, Debug"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "visionos"
-  #           configuration: "Release"
-  #           name: "Pods: visionOS, Release"
-  #         - xcode: "Xcode_15.4"
-  #           runsOn: macOS-14
-  #           platform: "visionos"
-  #           configuration: "Debug"
-  #           name: "Pods: visionOS, Debug"
-  #   steps:
-  #     - name: Update CocoaPods
-  #       if: ${{ matrix.platform == 'visionos' }}
-  #       run: gem install cocoapods
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Pod lib lint
-  #       run: |
-  #         pod lib lint --verbose \
-  #           --configuration=${{ matrix.configuration }} \
-  #           --platforms=${{ matrix.platform }} \
-  #           TLDExtractSwift.podspec
-  #     - name: Pod lib lint - Use Static Frameworks
-  #       run: |
-  #         pod lib lint --verbose --use-static-frameworks \
-  #           --configuration=${{ matrix.configuration }} \
-  #           --platforms=${{ matrix.platform }} \
-  #           TLDExtractSwift.podspec
-  #     # - name: Pod Push
-  #     #   if: github.ref == 'refs/heads/main'
-  #     #   run: |
-  #     #     pod repo update
-  #     #     pod trunk push TLDExtractSwift.podspec --allow-warnings
-  #   needs: carthage
+  cocoapods:
+    name: "Pods: ${{ matrix.platform }}, ${{ matrix.configuration }}"
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}.app/Contents/Developer"
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "macos"
+            configuration: "Release"
+            name: "Pods: macOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "macos"
+            configuration: "Debug"
+            name: "Pods: macOS, Debug"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "ios"
+            configuration: "Release"
+            name: "Pods: iOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "ios"
+            configuration: "Debug"
+            name: "Pods: iOS, Debug"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "tvos"
+            configuration: "Release"
+            name: "Pods: tvOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "tvos"
+            configuration: "Debug"
+            name: "Pods: tvOS, Debug"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "watchos"
+            configuration: "Release"
+            name: "Pods: watchOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "watchos"
+            configuration: "Debug"
+            name: "Pods: watchOS, Debug"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "visionos"
+            configuration: "Release"
+            name: "Pods: visionOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "visionos"
+            configuration: "Debug"
+            name: "Pods: visionOS, Debug"
+    steps:
+      - name: Update CocoaPods
+        if: ${{ matrix.platform == 'visionos' }}
+        run: gem install cocoapods
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Pod lib lint
+        run: |
+          pod lib lint --verbose \
+            --configuration=${{ matrix.configuration }} \
+            --platforms=${{ matrix.platform }} \
+            TLDExtractSwift.podspec
+      - name: Pod lib lint - Use Static Frameworks
+        run: |
+          pod lib lint --verbose --use-static-frameworks \
+            --configuration=${{ matrix.configuration }} \
+            --platforms=${{ matrix.platform }} \
+            TLDExtractSwift.podspec
+      # - name: Pod Push
+      #   if: github.ref == 'refs/heads/main'
+      #   run: |
+      #     pod repo update
+      #     pod trunk push TLDExtractSwift.podspec --allow-warnings
+    needs: carthage
