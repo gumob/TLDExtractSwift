@@ -16,12 +16,10 @@ ENV["EXPANDED_PROVISIONING_PROFILE"] = ""
 xcodeproj_file="TLDExtractSwift.xcodeproj"
 podspec_file="TLDExtractSwift.podspec"
 scheme = "TLDExtractSwift"
-framework_info_plist = "./Source/Info.plist"
-test_info_plist = "./Tests/Info.plist"
 
-desc "Prebuild"
-lane :prebuild do
-    test_all
+desc "Run all jobs"
+lane :run_all do
+    tests
     build_spm
     build_carthage
     lint_cocoapods
@@ -34,7 +32,7 @@ end
 
 desc "Set version number"
 lane :set_version do
-    current_app_version = get_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString')
+    current_app_version = get_version_number_from_xcodeproj(xcodeproj: xcodeproj_file)
     new_app_version = prompt(
         text: "Please enter version number (Current: #{current_app_version}): ",
         ci_input: current_app_version
@@ -42,8 +40,9 @@ lane :set_version do
     regexp = Regexp.new("[0-9]+\.[0-9]+\.[0-9]+")
     matched = regexp.match(new_app_version)
     if matched then
-        set_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
-        set_info_plist_value(path: test_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
+        # Set version number to project
+        increment_version_number_in_xcodeproj(version_number: new_app_version)
+        # Set version number to podspec
         version_bump_podspec(path: podspec_file, version_number: new_app_version)
         UI.message("Changed version from #{current_app_version} to #{new_app_version} ")
     else
@@ -54,7 +53,7 @@ end
 desc "Bump version number"
 lane :bump_version do
     bump_type = UI.select("Select version position to be upgraded: ", ["patch", "minor", "major"])
-    current_app_version = get_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString')
+    current_app_version = get_version_number_from_xcodeproj(xcodeproj: xcodeproj_file)
     current_app_versions = current_app_version.split(".")
     current_app_version_patch = current_app_versions[2].to_i
     current_app_version_minor = current_app_versions[1].to_i
@@ -71,10 +70,11 @@ lane :bump_version do
         current_app_version_major += 1
     end
     new_app_version = [current_app_version_major, current_app_version_minor, current_app_version_patch].join(".")
-    set_info_plist_value(path: framework_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
-    set_info_plist_value(path: test_info_plist, key: 'CFBundleShortVersionString', value: new_app_version)
+    # Set version number to project
+    increment_version_number_in_xcodeproj(version_number: new_app_version)
+    # Set version number to podspec
     version_bump_podspec(path: podspec_file, version_number: new_app_version)
-    UI.message("Changed version from #{current_app_version_major} to #{new_app_version} ")
+    UI.message("Changed version from #{current_app_version} to #{new_app_version} ")
 end
 
 ##########################################
@@ -82,7 +82,7 @@ end
 ##########################################
 
 desc "Run all tests"
-lane :test_all do
+lane :tests do
     xcclean
 
     desc "Run macOS Tests"
