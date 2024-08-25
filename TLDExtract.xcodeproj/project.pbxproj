@@ -132,7 +132,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7450B232C7AF9CE00D659D7 /* Build configuration list for PBXNativeTarget "TLDExtract" */;
 			buildPhases = (
-				A7450B3F2C7B012900D659D7 /* ShellScript */,
+				A7450B3F2C7B012900D659D7 /* Update Public Suffix List */,
 				A7450B0C2C7AF9CE00D659D7 /* Headers */,
 				A7450B0D2C7AF9CE00D659D7 /* Sources */,
 				A7450B0E2C7AF9CE00D659D7 /* Frameworks */,
@@ -223,7 +223,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A7450B3F2C7B012900D659D7 /* ShellScript */ = {
+		A7450B3F2C7B012900D659D7 /* Update Public Suffix List */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,6 +232,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Update Public Suffix List";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -257,7 +258,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
+			shellScript = "# /opt/homebrew/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
