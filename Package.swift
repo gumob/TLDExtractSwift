@@ -4,23 +4,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "TLDExtract",
+    name: "TLDExtractSwift",
     products: [
         .library(
-            name: "TLDExtract",
-            targets: ["TLDExtract"])
+            name: "TLDExtractSwift",
+            targets: ["TLDExtractSwift"])
     ],
     dependencies: [
-        .package(url: "https://github.com/gumob/PunycodeSwift.git", .branch("master"))
+        // .package(url: "https://github.com/gumob/PunycodeSwift.git", .from: "3.0.0"),
+        .package(url: "https://github.com/gumob/PunycodeSwift.git", .branch("release/v3.0.0"))
     ],
     targets: [
         .target(
-            name: "TLDExtract",
-            dependencies: ["Punnycode"],
+            name: "TLDExtractSwift",
+            dependencies: ["Punycode"],
             path: "Source"),
         .testTarget(
             name: "TLDExtractSwiftTests",
-            dependencies: ["TLDExtract"],
+            dependencies: ["TLDExtractSwift"],
             path: "Tests")
     ]
 )
