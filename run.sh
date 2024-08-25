@@ -21,6 +21,7 @@ local option_list=(
 	" "
 	"Carthage - Update all platforms"
 	"Cocoapods - Clean all cache"
+	" "
 	"Public Suffix List - Download latest data"
 )
 
