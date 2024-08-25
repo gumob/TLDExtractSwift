@@ -33,7 +33,7 @@ local xcode_clean() {
 	xcodebuild -alltargets clean || \
 	xcrun --kill-cache || \
 	xcrun simctl erase all || \
-	rm -rf ~/Library/Developer/Xcode/DerivedData/;
+	rm -rf ~/Library/Developer/Xcode/DerivedData/*;
 }
 local xcode_init() {
     bundle_init;
