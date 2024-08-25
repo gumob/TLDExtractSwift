@@ -239,7 +239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "source .venv/bin/activate\n.venv/bin/python ./update-psl.py\n";
+			shellScript = "if [ -x /opt/homebrew/bin/python3 ]; then\n    /opt/homebrew/bin/python3 ./update-psl.py\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
