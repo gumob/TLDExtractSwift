@@ -3,480 +3,217 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A720FBC921A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */ = {isa = PBXBuildFile; fileRef = A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */; };
-		A720FBCA21A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */ = {isa = PBXBuildFile; fileRef = A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */; };
-		A720FBCB21A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */ = {isa = PBXBuildFile; fileRef = A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */; };
-		A7948D6E21A310E40016DFB7 /* Punycode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7948D6B21A310CE0016DFB7 /* Punycode.framework */; };
-		A7948D6F21A310E60016DFB7 /* Punycode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7948D6821A310CE0016DFB7 /* Punycode.framework */; };
-		A7948D7021A310E90016DFB7 /* Punycode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7948D6421A310CE0016DFB7 /* Punycode.framework */; };
-		A7A0ECE7219EB279004FBE05 /* TLDExtract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A0ECDD219EB279004FBE05 /* TLDExtract.framework */; };
-		A7A0ED3A219EC0FD004FBE05 /* TLDExtract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A0ED14219EB6C8004FBE05 /* TLDExtract.framework */; };
-		A7A0ED65219EC8D1004FBE05 /* TLDExtract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A0ED42219EC3E3004FBE05 /* TLDExtract.framework */; };
-		A7A1431A219F008C003FB96A /* TLDExtractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14318219F0075003FB96A /* TLDExtractTests.swift */; };
-		A7A1431B219F008D003FB96A /* TLDExtractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14318219F0075003FB96A /* TLDExtractTests.swift */; };
-		A7A1431C219F008D003FB96A /* TLDExtractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14318219F0075003FB96A /* TLDExtractTests.swift */; };
-		A7A1432D219F00E4003FB96A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14323219F00CA003FB96A /* Parser.swift */; };
-		A7A1432E219F00E4003FB96A /* TLDExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14321219F00CA003FB96A /* TLDExtract.swift */; };
-		A7A14334219F00F3003FB96A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14323219F00CA003FB96A /* Parser.swift */; };
-		A7A14335219F00F3003FB96A /* TLDExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14321219F00CA003FB96A /* TLDExtract.swift */; };
-		A7A1433B219F00F4003FB96A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14323219F00CA003FB96A /* Parser.swift */; };
-		A7A1433C219F00F4003FB96A /* TLDExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14321219F00CA003FB96A /* TLDExtract.swift */; };
-		A7A1433D219F011F003FB96A /* TLDExtract.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A14326219F00CA003FB96A /* TLDExtract.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A1433E219F0120003FB96A /* TLDExtract.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A14326219F00CA003FB96A /* TLDExtract.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A1433F219F0121003FB96A /* TLDExtract.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A14326219F00CA003FB96A /* TLDExtract.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A14342219F0176003FB96A /* public_suffix_list.dat in Resources */ = {isa = PBXBuildFile; fileRef = A7A14341219F0176003FB96A /* public_suffix_list.dat */; };
-		A7A14343219F0176003FB96A /* public_suffix_list.dat in Resources */ = {isa = PBXBuildFile; fileRef = A7A14341219F0176003FB96A /* public_suffix_list.dat */; };
-		A7A14344219F0176003FB96A /* public_suffix_list.dat in Resources */ = {isa = PBXBuildFile; fileRef = A7A14341219F0176003FB96A /* public_suffix_list.dat */; };
-		DFABE00D3E5627088CF1A8CA /* TLDExtractError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE00150DE2E3DAB4AD335 /* TLDExtractError.swift */; };
-		DFABE436F8F95492E8B44A9D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE78E1232DC989B13A5AD /* Model.swift */; };
-		DFABE4A957FD77C74234E72F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE78E1232DC989B13A5AD /* Model.swift */; };
-		DFABE7F5DC38A132A5C60428 /* TLDExtractError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE00150DE2E3DAB4AD335 /* TLDExtractError.swift */; };
-		DFABE862E83374564094A278 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE78E1232DC989B13A5AD /* Model.swift */; };
-		DFABEB1EBAC873A14967945C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE24C2B53C4305AAE373D /* Extension.swift */; };
-		DFABEB7A8BFA160D17EFA477 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE24C2B53C4305AAE373D /* Extension.swift */; };
-		DFABEDE9FA876580FE136AB7 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE24C2B53C4305AAE373D /* Extension.swift */; };
-		DFABEE33046A1A165DAC85D8 /* TLDExtractError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABE00150DE2E3DAB4AD335 /* TLDExtractError.swift */; };
+		A7450B1A2C7AF9CE00D659D7 /* TLDExtract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7450B112C7AF9CE00D659D7 /* TLDExtract.framework */; };
+		A7450B322C7AFA2B00D659D7 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B292C7AFA2B00D659D7 /* Extension.swift */; };
+		A7450B342C7AFA2B00D659D7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B2B2C7AFA2B00D659D7 /* Model.swift */; };
+		A7450B352C7AFA2B00D659D7 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B2C2C7AFA2B00D659D7 /* Parser.swift */; };
+		A7450B362C7AFA2B00D659D7 /* SPMPSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B2D2C7AFA2B00D659D7 /* SPMPSL.swift */; };
+		A7450B372C7AFA2B00D659D7 /* TLDExtract.h in Headers */ = {isa = PBXBuildFile; fileRef = A7450B2E2C7AFA2B00D659D7 /* TLDExtract.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7450B382C7AFA2B00D659D7 /* TLDExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B2F2C7AFA2B00D659D7 /* TLDExtract.swift */; };
+		A7450B392C7AFA2B00D659D7 /* TLDExtractError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B302C7AFA2B00D659D7 /* TLDExtractError.swift */; };
+		A7450B3E2C7AFA4100D659D7 /* TLDExtractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B3B2C7AFA4100D659D7 /* TLDExtractTests.swift */; };
+		A7450B442C7B05EF00D659D7 /* public_suffix_list_frozen.dat in Resources */ = {isa = PBXBuildFile; fileRef = A7450B412C7B05EF00D659D7 /* public_suffix_list_frozen.dat */; };
+		A7450B452C7B05EF00D659D7 /* public_suffix_list.dat in Resources */ = {isa = PBXBuildFile; fileRef = A7450B422C7B05EF00D659D7 /* public_suffix_list.dat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A7A0ECE8219EB279004FBE05 /* PBXContainerItemProxy */ = {
+		A7450B1B2C7AF9CE00D659D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A7A0ECD4219EB279004FBE05 /* Project object */;
+			containerPortal = A7450B082C7AF9CD00D659D7 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A7A0ECDC219EB279004FBE05;
+			remoteGlobalIDString = A7450B102C7AF9CE00D659D7;
 			remoteInfo = TLDExtract;
-		};
-		A7A0ED1E219EB6C9004FBE05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7A0ECD4219EB279004FBE05 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7A0ED13219EB6C8004FBE05;
-			remoteInfo = "TLDExtract-macOS";
-		};
-		A7A0ED4C219EC3E3004FBE05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7A0ECD4219EB279004FBE05 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7A0ED41219EC3E3004FBE05;
-			remoteInfo = "TLDExtract-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = public_suffix_list_frozen.dat; sourceTree = "<group>"; };
-		A7948D6421A310CE0016DFB7 /* Punycode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Punycode.framework; sourceTree = "<group>"; };
-		A7948D6821A310CE0016DFB7 /* Punycode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Punycode.framework; sourceTree = "<group>"; };
-		A7948D6B21A310CE0016DFB7 /* Punycode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Punycode.framework; sourceTree = "<group>"; };
-		A7A0ECDD219EB279004FBE05 /* TLDExtract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLDExtract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7A0ECE6219EB279004FBE05 /* TLDExtract-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TLDExtract-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7A0ED14219EB6C8004FBE05 /* TLDExtract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLDExtract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7A0ED1C219EB6C9004FBE05 /* TLDExtract-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TLDExtract-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7A0ED42219EC3E3004FBE05 /* TLDExtract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLDExtract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7A0ED4A219EC3E3004FBE05 /* TLDExtract-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TLDExtract-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7A14318219F0075003FB96A /* TLDExtractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDExtractTests.swift; sourceTree = "<group>"; };
-		A7A14319219F0075003FB96A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7A14321219F00CA003FB96A /* TLDExtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDExtract.swift; sourceTree = "<group>"; };
-		A7A14323219F00CA003FB96A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		A7A14326219F00CA003FB96A /* TLDExtract.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDExtract.h; sourceTree = "<group>"; };
-		A7A14327219F00CA003FB96A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7A14341219F0176003FB96A /* public_suffix_list.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = public_suffix_list.dat; sourceTree = "<group>"; };
-		DFABE00150DE2E3DAB4AD335 /* TLDExtractError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDExtractError.swift; sourceTree = "<group>"; };
-		DFABE24C2B53C4305AAE373D /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		DFABE78E1232DC989B13A5AD /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A7450B112C7AF9CE00D659D7 /* TLDExtract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLDExtract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7450B192C7AF9CE00D659D7 /* TLDExtractTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TLDExtractTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7450B292C7AFA2B00D659D7 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		A7450B2B2C7AFA2B00D659D7 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A7450B2C2C7AFA2B00D659D7 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		A7450B2D2C7AFA2B00D659D7 /* SPMPSL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPMPSL.swift; sourceTree = "<group>"; };
+		A7450B2E2C7AFA2B00D659D7 /* TLDExtract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDExtract.h; sourceTree = "<group>"; };
+		A7450B2F2C7AFA2B00D659D7 /* TLDExtract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDExtract.swift; sourceTree = "<group>"; };
+		A7450B302C7AFA2B00D659D7 /* TLDExtractError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDExtractError.swift; sourceTree = "<group>"; };
+		A7450B3B2C7AFA4100D659D7 /* TLDExtractTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDExtractTests.swift; sourceTree = "<group>"; };
+		A7450B412C7B05EF00D659D7 /* public_suffix_list_frozen.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = public_suffix_list_frozen.dat; sourceTree = "<group>"; };
+		A7450B422C7B05EF00D659D7 /* public_suffix_list.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = public_suffix_list.dat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A7A0ECDA219EB279004FBE05 /* Frameworks */ = {
+		A7450B0E2C7AF9CE00D659D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7948D6E21A310E40016DFB7 /* Punycode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7A0ECE3219EB279004FBE05 /* Frameworks */ = {
+		A7450B162C7AF9CE00D659D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A0ECE7219EB279004FBE05 /* TLDExtract.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED11219EB6C8004FBE05 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7948D6F21A310E60016DFB7 /* Punycode.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED19219EB6C9004FBE05 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A0ED3A219EC0FD004FBE05 /* TLDExtract.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED3F219EC3E3004FBE05 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7948D7021A310E90016DFB7 /* Punycode.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED47219EC3E3004FBE05 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A0ED65219EC8D1004FBE05 /* TLDExtract.framework in Frameworks */,
+				A7450B1A2C7AF9CE00D659D7 /* TLDExtract.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A7948D6221A310CE0016DFB7 /* tvOS */ = {
+		A7450B072C7AF9CD00D659D7 = {
 			isa = PBXGroup;
 			children = (
-				A7948D6421A310CE0016DFB7 /* Punycode.framework */,
-			);
-			name = tvOS;
-			path = Carthage/Build/tvOS;
-			sourceTree = "<group>";
-		};
-		A7948D6621A310CE0016DFB7 /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				A7948D6821A310CE0016DFB7 /* Punycode.framework */,
-			);
-			name = Mac;
-			path = Carthage/Build/Mac;
-			sourceTree = "<group>";
-		};
-		A7948D6921A310CE0016DFB7 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				A7948D6B21A310CE0016DFB7 /* Punycode.framework */,
-			);
-			name = iOS;
-			path = Carthage/Build/iOS;
-			sourceTree = "<group>";
-		};
-		A7A0ECD3219EB279004FBE05 = {
-			isa = PBXGroup;
-			children = (
-				A7A1431D219F00CA003FB96A /* Source */,
-				A7A14317219F0075003FB96A /* Tests */,
-				A7A14340219F0176003FB96A /* Resources */,
-				A7A0ECDE219EB279004FBE05 /* Products */,
-				A7A0ED36219EB9FD004FBE05 /* Frameworks */,
+				A7450B312C7AFA2B00D659D7 /* Source */,
+				A7450B3C2C7AFA4100D659D7 /* Tests */,
+				A7450B432C7B05EF00D659D7 /* Resources */,
+				A7450B122C7AF9CE00D659D7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A7A0ECDE219EB279004FBE05 /* Products */ = {
+		A7450B122C7AF9CE00D659D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A7A0ECDD219EB279004FBE05 /* TLDExtract.framework */,
-				A7A0ECE6219EB279004FBE05 /* TLDExtract-iOSTests.xctest */,
-				A7A0ED14219EB6C8004FBE05 /* TLDExtract.framework */,
-				A7A0ED1C219EB6C9004FBE05 /* TLDExtract-macOSTests.xctest */,
-				A7A0ED42219EC3E3004FBE05 /* TLDExtract.framework */,
-				A7A0ED4A219EC3E3004FBE05 /* TLDExtract-tvOSTests.xctest */,
+				A7450B112C7AF9CE00D659D7 /* TLDExtract.framework */,
+				A7450B192C7AF9CE00D659D7 /* TLDExtractTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A7A0ED36219EB9FD004FBE05 /* Frameworks */ = {
+		A7450B312C7AFA2B00D659D7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A7948D6921A310CE0016DFB7 /* iOS */,
-				A7948D6621A310CE0016DFB7 /* Mac */,
-				A7948D6221A310CE0016DFB7 /* tvOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A7A14317219F0075003FB96A /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				A7A14319219F0075003FB96A /* Info.plist */,
-				A7A14318219F0075003FB96A /* TLDExtractTests.swift */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		A7A1431D219F00CA003FB96A /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				A7A14327219F00CA003FB96A /* Info.plist */,
-				A7A14326219F00CA003FB96A /* TLDExtract.h */,
-				A7A14321219F00CA003FB96A /* TLDExtract.swift */,
-				DFABE00150DE2E3DAB4AD335 /* TLDExtractError.swift */,
-				A7A14323219F00CA003FB96A /* Parser.swift */,
-				DFABE78E1232DC989B13A5AD /* Model.swift */,
-				DFABE24C2B53C4305AAE373D /* Extension.swift */,
+				A7450B2E2C7AFA2B00D659D7 /* TLDExtract.h */,
+				A7450B2F2C7AFA2B00D659D7 /* TLDExtract.swift */,
+				A7450B302C7AFA2B00D659D7 /* TLDExtractError.swift */,
+				A7450B292C7AFA2B00D659D7 /* Extension.swift */,
+				A7450B2B2C7AFA2B00D659D7 /* Model.swift */,
+				A7450B2C2C7AFA2B00D659D7 /* Parser.swift */,
+				A7450B2D2C7AFA2B00D659D7 /* SPMPSL.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		A7A14340219F0176003FB96A /* Resources */ = {
+		A7450B3C2C7AFA4100D659D7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A7A14341219F0176003FB96A /* public_suffix_list.dat */,
-				A720FBC821A1C47A009D1A73 /* public_suffix_list_frozen.dat */,
+				A7450B3B2C7AFA4100D659D7 /* TLDExtractTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A7450B432C7B05EF00D659D7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A7450B412C7B05EF00D659D7 /* public_suffix_list_frozen.dat */,
+				A7450B422C7B05EF00D659D7 /* public_suffix_list.dat */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A7A0ECD8219EB279004FBE05 /* Headers */ = {
+		A7450B0C2C7AF9CE00D659D7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A1433D219F011F003FB96A /* TLDExtract.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED0F219EB6C8004FBE05 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A1433E219F0120003FB96A /* TLDExtract.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED3D219EC3E3004FBE05 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A1433F219F0121003FB96A /* TLDExtract.h in Headers */,
+				A7450B372C7AFA2B00D659D7 /* TLDExtract.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A7A0ECDC219EB279004FBE05 /* TLDExtract-iOS */ = {
+		A7450B102C7AF9CE00D659D7 /* TLDExtract */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7A0ECF1219EB279004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-iOS" */;
+			buildConfigurationList = A7450B232C7AF9CE00D659D7 /* Build configuration list for PBXNativeTarget "TLDExtract" */;
 			buildPhases = (
-				A7A0ED0E219EB3AD004FBE05 /* Update Public Suffix List */,
-				A7A0ECD8219EB279004FBE05 /* Headers */,
-				A7A0ECD9219EB279004FBE05 /* Sources */,
-				A7A0ECDA219EB279004FBE05 /* Frameworks */,
-				A7A0ECDB219EB279004FBE05 /* Resources */,
+				A7450B3F2C7B012900D659D7 /* ShellScript */,
+				A7450B0C2C7AF9CE00D659D7 /* Headers */,
+				A7450B0D2C7AF9CE00D659D7 /* Sources */,
+				A7450B0E2C7AF9CE00D659D7 /* Frameworks */,
+				A7450B0F2C7AF9CE00D659D7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "TLDExtract-iOS";
+			name = TLDExtract;
 			productName = TLDExtract;
-			productReference = A7A0ECDD219EB279004FBE05 /* TLDExtract.framework */;
+			productReference = A7450B112C7AF9CE00D659D7 /* TLDExtract.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A7A0ECE5219EB279004FBE05 /* TLDExtract-iOSTests */ = {
+		A7450B182C7AF9CE00D659D7 /* TLDExtractTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7A0ECF4219EB279004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-iOSTests" */;
+			buildConfigurationList = A7450B262C7AF9CE00D659D7 /* Build configuration list for PBXNativeTarget "TLDExtractTests" */;
 			buildPhases = (
-				A7A0ECE2219EB279004FBE05 /* Sources */,
-				A7A0ECE3219EB279004FBE05 /* Frameworks */,
-				A7A0ECE4219EB279004FBE05 /* Resources */,
-				A7948D7121A32A990016DFB7 /* Copy Carthage Frameworks */,
+				A7450B152C7AF9CE00D659D7 /* Sources */,
+				A7450B162C7AF9CE00D659D7 /* Frameworks */,
+				A7450B172C7AF9CE00D659D7 /* Resources */,
+				A7450B402C7B019D00D659D7 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A7A0ECE9219EB279004FBE05 /* PBXTargetDependency */,
+				A7450B1C2C7AF9CE00D659D7 /* PBXTargetDependency */,
 			);
-			name = "TLDExtract-iOSTests";
+			name = TLDExtractTests;
 			productName = TLDExtractTests;
-			productReference = A7A0ECE6219EB279004FBE05 /* TLDExtract-iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A7A0ED13219EB6C8004FBE05 /* TLDExtract-macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A7A0ED25219EB6C9004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-macOS" */;
-			buildPhases = (
-				A7A0ED63219EC891004FBE05 /* Update Public Suffix List */,
-				A7A0ED0F219EB6C8004FBE05 /* Headers */,
-				A7A0ED10219EB6C8004FBE05 /* Sources */,
-				A7A0ED11219EB6C8004FBE05 /* Frameworks */,
-				A7A0ED12219EB6C8004FBE05 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "TLDExtract-macOS";
-			productName = "TLDExtract-macOS";
-			productReference = A7A0ED14219EB6C8004FBE05 /* TLDExtract.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		A7A0ED1B219EB6C9004FBE05 /* TLDExtract-macOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A7A0ED28219EB6C9004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-macOSTests" */;
-			buildPhases = (
-				A7A0ED18219EB6C9004FBE05 /* Sources */,
-				A7A0ED19219EB6C9004FBE05 /* Frameworks */,
-				A7A0ED1A219EB6C9004FBE05 /* Resources */,
-				A7948D7221A32ADA0016DFB7 /* Copy Carthage Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A7A0ED1F219EB6C9004FBE05 /* PBXTargetDependency */,
-			);
-			name = "TLDExtract-macOSTests";
-			productName = "TLDExtract-macOSTests";
-			productReference = A7A0ED1C219EB6C9004FBE05 /* TLDExtract-macOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A7A0ED41219EC3E3004FBE05 /* TLDExtract-tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A7A0ED53219EC3E3004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-tvOS" */;
-			buildPhases = (
-				A7A0ED64219EC8A9004FBE05 /* Update Public Suffix List */,
-				A7A0ED3D219EC3E3004FBE05 /* Headers */,
-				A7A0ED3E219EC3E3004FBE05 /* Sources */,
-				A7A0ED3F219EC3E3004FBE05 /* Frameworks */,
-				A7A0ED40219EC3E3004FBE05 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "TLDExtract-tvOS";
-			productName = "TLDExtract-tvOS";
-			productReference = A7A0ED42219EC3E3004FBE05 /* TLDExtract.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		A7A0ED49219EC3E3004FBE05 /* TLDExtract-tvOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A7A0ED56219EC3E3004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-tvOSTests" */;
-			buildPhases = (
-				A7A0ED46219EC3E3004FBE05 /* Sources */,
-				A7A0ED47219EC3E3004FBE05 /* Frameworks */,
-				A7A0ED48219EC3E3004FBE05 /* Resources */,
-				A7948D7421A32B070016DFB7 /* Copy Carthage Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A7A0ED4D219EC3E3004FBE05 /* PBXTargetDependency */,
-			);
-			name = "TLDExtract-tvOSTests";
-			productName = "TLDExtract-tvOSTests";
-			productReference = A7A0ED4A219EC3E3004FBE05 /* TLDExtract-tvOSTests.xctest */;
+			productReference = A7450B192C7AF9CE00D659D7 /* TLDExtractTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A7A0ECD4219EB279004FBE05 /* Project object */ = {
+		A7450B082C7AF9CD00D659D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1010;
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
-				ORGANIZATIONNAME = Gumob;
 				TargetAttributes = {
-					A7A0ECDC219EB279004FBE05 = {
-						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1020;
+					A7450B102C7AF9CE00D659D7 = {
+						CreatedOnToolsVersion = 15.4;
 					};
-					A7A0ECE5219EB279004FBE05 = {
-						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1020;
-					};
-					A7A0ED13219EB6C8004FBE05 = {
-						CreatedOnToolsVersion = 10.1;
-					};
-					A7A0ED1B219EB6C9004FBE05 = {
-						CreatedOnToolsVersion = 10.1;
-					};
-					A7A0ED41219EC3E3004FBE05 = {
-						CreatedOnToolsVersion = 10.1;
-					};
-					A7A0ED49219EC3E3004FBE05 = {
-						CreatedOnToolsVersion = 10.1;
+					A7450B182C7AF9CE00D659D7 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = A7A0ECD7219EB279004FBE05 /* Build configuration list for PBXProject "TLDExtract" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = A7450B0B2C7AF9CD00D659D7 /* Build configuration list for PBXProject "TLDExtract" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = A7A0ECD3219EB279004FBE05;
-			productRefGroup = A7A0ECDE219EB279004FBE05 /* Products */;
+			mainGroup = A7450B072C7AF9CD00D659D7;
+			productRefGroup = A7450B122C7AF9CE00D659D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A7A0ECDC219EB279004FBE05 /* TLDExtract-iOS */,
-				A7A0ECE5219EB279004FBE05 /* TLDExtract-iOSTests */,
-				A7A0ED13219EB6C8004FBE05 /* TLDExtract-macOS */,
-				A7A0ED1B219EB6C9004FBE05 /* TLDExtract-macOSTests */,
-				A7A0ED41219EC3E3004FBE05 /* TLDExtract-tvOS */,
-				A7A0ED49219EC3E3004FBE05 /* TLDExtract-tvOSTests */,
+				A7450B102C7AF9CE00D659D7 /* TLDExtract */,
+				A7450B182C7AF9CE00D659D7 /* TLDExtractTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A7A0ECDB219EB279004FBE05 /* Resources */ = {
+		A7450B0F2C7AF9CE00D659D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A14342219F0176003FB96A /* public_suffix_list.dat in Resources */,
-				A720FBC921A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */,
+				A7450B442C7B05EF00D659D7 /* public_suffix_list_frozen.dat in Resources */,
+				A7450B452C7B05EF00D659D7 /* public_suffix_list.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7A0ECE4219EB279004FBE05 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED12219EB6C8004FBE05 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A14343219F0176003FB96A /* public_suffix_list.dat in Resources */,
-				A720FBCA21A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED1A219EB6C9004FBE05 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED40219EC3E3004FBE05 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A14344219F0176003FB96A /* public_suffix_list.dat in Resources */,
-				A720FBCB21A1C47A009D1A73 /* public_suffix_list_frozen.dat in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED48219EC3E3004FBE05 /* Resources */ = {
+		A7450B172C7AF9CE00D659D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -486,7 +223,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A7948D7121A32A990016DFB7 /* Copy Carthage Frameworks */ = {
+		A7450B3F2C7B012900D659D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "source .venv/bin/activate\n.venv/bin/python ./update-psl.py\n";
+		};
+		A7450B402C7B019D00D659D7 /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -505,193 +259,49 @@
 			shellPath = /bin/zsh;
 			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
 		};
-		A7948D7221A32ADA0016DFB7 /* Copy Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/Punycode.framework",
-			);
-			name = "Copy Carthage Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
-		};
-		A7948D7421A32B070016DFB7 /* Copy Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/tvOS/Punycode.framework",
-			);
-			name = "Copy Carthage Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "/opt/homebrew/bin/carthage copy-frameworks\n";
-		};
-		A7A0ED0E219EB3AD004FBE05 /* Update Public Suffix List */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Update Public Suffix List";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "source .venv/bin/activate\n.venv/bin/python ./Scripts/update-psl.py\n";
-		};
-		A7A0ED63219EC891004FBE05 /* Update Public Suffix List */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Update Public Suffix List";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "source .venv/bin/activate\n.venv/bin/python ./Scripts/update-psl.py\n";
-		};
-		A7A0ED64219EC8A9004FBE05 /* Update Public Suffix List */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Update Public Suffix List";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "source .venv/bin/activate\n.venv/bin/python ./Scripts/update-psl.py\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A7A0ECD9219EB279004FBE05 /* Sources */ = {
+		A7450B0D2C7AF9CE00D659D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A1432D219F00E4003FB96A /* Parser.swift in Sources */,
-				A7A1432E219F00E4003FB96A /* TLDExtract.swift in Sources */,
-				DFABEE33046A1A165DAC85D8 /* TLDExtractError.swift in Sources */,
-				DFABE862E83374564094A278 /* Model.swift in Sources */,
-				DFABEB7A8BFA160D17EFA477 /* Extension.swift in Sources */,
+				A7450B382C7AFA2B00D659D7 /* TLDExtract.swift in Sources */,
+				A7450B392C7AFA2B00D659D7 /* TLDExtractError.swift in Sources */,
+				A7450B322C7AFA2B00D659D7 /* Extension.swift in Sources */,
+				A7450B342C7AFA2B00D659D7 /* Model.swift in Sources */,
+				A7450B352C7AFA2B00D659D7 /* Parser.swift in Sources */,
+				A7450B362C7AFA2B00D659D7 /* SPMPSL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7A0ECE2219EB279004FBE05 /* Sources */ = {
+		A7450B152C7AF9CE00D659D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A1431A219F008C003FB96A /* TLDExtractTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED10219EB6C8004FBE05 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A14334219F00F3003FB96A /* Parser.swift in Sources */,
-				A7A14335219F00F3003FB96A /* TLDExtract.swift in Sources */,
-				DFABE7F5DC38A132A5C60428 /* TLDExtractError.swift in Sources */,
-				DFABE436F8F95492E8B44A9D /* Model.swift in Sources */,
-				DFABEDE9FA876580FE136AB7 /* Extension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED18219EB6C9004FBE05 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A1431B219F008D003FB96A /* TLDExtractTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED3E219EC3E3004FBE05 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A1433B219F00F4003FB96A /* Parser.swift in Sources */,
-				A7A1433C219F00F4003FB96A /* TLDExtract.swift in Sources */,
-				DFABE00D3E5627088CF1A8CA /* TLDExtractError.swift in Sources */,
-				DFABE4A957FD77C74234E72F /* Model.swift in Sources */,
-				DFABEB1EBAC873A14967945C /* Extension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A0ED46219EC3E3004FBE05 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A1431C219F008D003FB96A /* TLDExtractTests.swift in Sources */,
+				A7450B3E2C7AFA4100D659D7 /* TLDExtractTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A7A0ECE9219EB279004FBE05 /* PBXTargetDependency */ = {
+		A7450B1C2C7AF9CE00D659D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A7A0ECDC219EB279004FBE05 /* TLDExtract-iOS */;
-			targetProxy = A7A0ECE8219EB279004FBE05 /* PBXContainerItemProxy */;
-		};
-		A7A0ED1F219EB6C9004FBE05 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A7A0ED13219EB6C8004FBE05 /* TLDExtract-macOS */;
-			targetProxy = A7A0ED1E219EB6C9004FBE05 /* PBXContainerItemProxy */;
-		};
-		A7A0ED4D219EC3E3004FBE05 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A7A0ED41219EC3E3004FBE05 /* TLDExtract-tvOS */;
-			targetProxy = A7A0ED4C219EC3E3004FBE05 /* PBXContainerItemProxy */;
+			target = A7450B102C7AF9CE00D659D7 /* TLDExtract */;
+			targetProxy = A7450B1B2C7AF9CE00D659D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		A7A0ECEF219EB279004FBE05 /* Debug */ = {
+		A7450B212C7AF9CE00D659D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -717,15 +327,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				EXCLUDED_ARCHS = arm64;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -740,26 +348,29 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
-		A7A0ECF0219EB279004FBE05 /* Release */ = {
+		A7450B222C7AF9CE00D659D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -785,15 +396,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				EXCLUDED_ARCHS = arm64;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -802,429 +411,159 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A7A0ECF2219EB279004FBE05 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gumob.TLDExtract;
-				PRODUCT_NAME = "$(PROJECT_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-				XROS_DEPLOYMENT_TARGET = 1.0;
-			};
-			name = Debug;
-		};
-		A7A0ECF3219EB279004FBE05 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gumob.TLDExtract;
-				PRODUCT_NAME = "$(PROJECT_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
-		A7A0ECF5219EB279004FBE05 /* Debug */ = {
+		A7450B242C7AF9CE00D659D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gumob.TLDExtract-iOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-				XROS_DEPLOYMENT_TARGET = 1.0;
-			};
-			name = Debug;
-		};
-		A7A0ECF6219EB279004FBE05 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gumob.TLDExtract-iOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-				XROS_DEPLOYMENT_TARGET = 1.0;
-			};
-			name = Release;
-		};
-		A7A0ED26219EB6C9004FBE05 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gumob.TLDExtract;
-				PRODUCT_NAME = "$(PROJECT_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
-		A7A0ED27219EB6C9004FBE05 /* Release */ = {
+		A7450B252C7AF9CE00D659D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gumob.TLDExtract;
-				PRODUCT_NAME = "$(PROJECT_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
-		A7A0ED29219EB6C9004FBE05 /* Debug */ = {
+		A7450B272C7AF9CE00D659D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gumob.TLDExtract-macOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-				XROS_DEPLOYMENT_TARGET = 1.0;
-			};
-			name = Debug;
-		};
-		A7A0ED2A219EB6C9004FBE05 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gumob.TLDExtract-macOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-				XROS_DEPLOYMENT_TARGET = 1.0;
-			};
-			name = Release;
-		};
-		A7A0ED54219EC3E3004FBE05 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gumob.TLDExtract;
-				PRODUCT_NAME = "$(PROJECT_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gumob.TLDExtractTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
-		A7A0ED55219EC3E3004FBE05 /* Release */ = {
+		A7450B282C7AF9CE00D659D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gumob.TLDExtract;
-				PRODUCT_NAME = "$(PROJECT_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-				XROS_DEPLOYMENT_TARGET = 1.0;
-			};
-			name = Release;
-		};
-		A7A0ED57219EC3E3004FBE05 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gumob.TLDExtract-tvOSTests";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gumob.TLDExtractTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-				XROS_DEPLOYMENT_TARGET = 1.0;
-			};
-			name = Debug;
-		};
-		A7A0ED58219EC3E3004FBE05 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gumob.TLDExtract-tvOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 				XROS_DEPLOYMENT_TARGET = 1.0;
@@ -1234,70 +573,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A7A0ECD7219EB279004FBE05 /* Build configuration list for PBXProject "TLDExtract" */ = {
+		A7450B0B2C7AF9CD00D659D7 /* Build configuration list for PBXProject "TLDExtract" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A7A0ECEF219EB279004FBE05 /* Debug */,
-				A7A0ECF0219EB279004FBE05 /* Release */,
+				A7450B212C7AF9CE00D659D7 /* Debug */,
+				A7450B222C7AF9CE00D659D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7A0ECF1219EB279004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-iOS" */ = {
+		A7450B232C7AF9CE00D659D7 /* Build configuration list for PBXNativeTarget "TLDExtract" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A7A0ECF2219EB279004FBE05 /* Debug */,
-				A7A0ECF3219EB279004FBE05 /* Release */,
+				A7450B242C7AF9CE00D659D7 /* Debug */,
+				A7450B252C7AF9CE00D659D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7A0ECF4219EB279004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-iOSTests" */ = {
+		A7450B262C7AF9CE00D659D7 /* Build configuration list for PBXNativeTarget "TLDExtractTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A7A0ECF5219EB279004FBE05 /* Debug */,
-				A7A0ECF6219EB279004FBE05 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A7A0ED25219EB6C9004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A7A0ED26219EB6C9004FBE05 /* Debug */,
-				A7A0ED27219EB6C9004FBE05 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A7A0ED28219EB6C9004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-macOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A7A0ED29219EB6C9004FBE05 /* Debug */,
-				A7A0ED2A219EB6C9004FBE05 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A7A0ED53219EC3E3004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A7A0ED54219EC3E3004FBE05 /* Debug */,
-				A7A0ED55219EC3E3004FBE05 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A7A0ED56219EC3E3004FBE05 /* Build configuration list for PBXNativeTarget "TLDExtract-tvOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A7A0ED57219EC3E3004FBE05 /* Debug */,
-				A7A0ED58219EC3E3004FBE05 /* Release */,
+				A7450B272C7AF9CE00D659D7 /* Debug */,
+				A7450B282C7AF9CE00D659D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A7A0ECD4219EB279004FBE05 /* Project object */;
+	rootObject = A7450B082C7AF9CD00D659D7 /* Project object */;
 }
