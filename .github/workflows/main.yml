@@ -6,6 +6,7 @@ name: main
 on:
   push:
     branches:
+      - main
       - develop
     paths:
       - .github/workflows/**
