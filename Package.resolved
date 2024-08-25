@@ -5,9 +5,9 @@
         "package": "Punycode",
         "repositoryURL": "https://github.com/gumob/PunycodeSwift.git",
         "state": {
-          "branch": "release/v3.0.0",
-          "revision": "8e7de65d79e7a4bb74a474422bf07f6de57c8fec",
-          "version": null
+          "branch": null,
+          "revision": "d623c012351891002c57f5a44564272ca1353fda",
+          "version": "3.0.0"
         }
       }
     ]
