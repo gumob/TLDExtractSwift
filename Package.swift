@@ -11,8 +11,7 @@ let package = Package(
             targets: ["TLDExtractSwift"])
     ],
     dependencies: [
-        // .package(url: "https://github.com/gumob/PunycodeSwift.git", .from: "3.0.0"),
-        .package(url: "https://github.com/gumob/PunycodeSwift.git", .branch("release/v3.0.0"))
+        .package(url: "https://github.com/gumob/PunycodeSwift.git", .upToNextMajor(from: "3.0.0")),
     ],
     targets: [
         .target(
