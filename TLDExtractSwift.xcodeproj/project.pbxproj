@@ -14,7 +14,7 @@
 		A7450B742C7B18DC00D659D7 /* SPMPSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B6B2C7B18DC00D659D7 /* SPMPSL.swift */; };
 		A7450B762C7B18DC00D659D7 /* TLDExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B6D2C7B18DC00D659D7 /* TLDExtract.swift */; };
 		A7450B772C7B18DC00D659D7 /* TLDExtractError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B6E2C7B18DC00D659D7 /* TLDExtractError.swift */; };
-		A7450B782C7B18DC00D659D7 /* TLDExtractSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = A7450B6F2C7B18DC00D659D7 /* TLDExtractSwift.h */; };
+		A7450B782C7B18DC00D659D7 /* TLDExtractSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = A7450B6F2C7B18DC00D659D7 /* TLDExtractSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7450B7C2C7B191A00D659D7 /* TLDExtractSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7450B792C7B191A00D659D7 /* TLDExtractSwiftTests.swift */; };
 		A7450B822C7B1A4100D659D7 /* public_suffix_list_frozen.dat in Resources */ = {isa = PBXBuildFile; fileRef = A7450B7F2C7B1A4100D659D7 /* public_suffix_list_frozen.dat */; };
 		A7450B832C7B1A4100D659D7 /* public_suffix_list.dat in Resources */ = {isa = PBXBuildFile; fileRef = A7450B802C7B1A4100D659D7 /* public_suffix_list.dat */; };
