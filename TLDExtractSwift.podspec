@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 
-  s.name                       = "TLDExtract"
+  s.name                       = "TLDExtractSwift"
   s.version                    = "3.0.0"
   s.summary                    = "A Pure Swift library for extracting TLD supporting macOS, iOS, tvOS, watchOS, and visionOS."
   s.homepage                   = "https://github.com/gumob/TLDExtractSwift"
