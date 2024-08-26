@@ -240,7 +240,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix --format\nelse\n  echo \"warning: SwiftLint not installed\"\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swift-format >/dev/null; then\n  swift-format --mode lint --recursive . || true\nelse\n  echo \"warning: swift-format not installed\"\nfi\n";
 		};
 		A7450B7E2C7B1A0E00D659D7 /* Update Public Suffix List */ = {
 			isa = PBXShellScriptBuildPhase;
