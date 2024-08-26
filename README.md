@@ -1,9 +1,9 @@
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/gumob/TLDExtractSwift)
-[![Version](http://img.shields.io/cocoapods/v/TLDExtract.svg)](http://cocoadocs.org/docsets/TLDExtract)
-[![Platform](http://img.shields.io/cocoapods/p/TLDExtract.svg)](http://cocoadocs.org/docsets/TLDExtract)
-[![Build Status](https://travis-ci.com/gumob/TLDExtractSwift.svg?branch=master)](https://travis-ci.com/gumob/TLDExtractSwift)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange)](https://github.com/gumob/TLDExtractSwift)
+[![Cocoapods Version](http://img.shields.io/cocoapods/v/TLDExtractSwift.svg)](http://cocoadocs.org/docsets/TLDExtract)
+[![Cocoapods Platform](http://img.shields.io/cocoapods/p/TLDExtractSwift.svg)](http://cocoadocs.org/docsets/TLDExtract)
+[![Build](https://github.com/gumob/TLDExtractSwift/actions/workflows/main.yml/badge.svg)](https://github.com/gumob/TLDExtractSwift/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/gumob/TLDExtractSwift/branch/master/graph/badge.svg)](https://codecov.io/gh/gumob/TLDExtractSwift)
-![Language](https://img.shields.io/badge/Language-Swift%204.2-orange.svg)
+![Language](https://img.shields.io/badge/Language-Swift%205.0-orange.svg)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
 # TLDExtract
@@ -14,6 +14,25 @@
 Domain names are the unique, human-readable Internet addresses of websites. They are made up of three parts: a top-level domain (a.k.a. TLD), a second-level domain name, and an optional subdomain.
 
 <img src="Metadata/domain-diagram.svg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
+
+## Changes in 3.0.0
+
+### Breaking changes
+
+- ‼️ Library name changed from ~~`TLDExtract`~~ to **`TLDExtractSwift`** to resolve namespace conflicts. For more details, please check the issue ([apple/swift#56573](https://github.com/apple/swift/issues/56573)).
+  
+  Please don't forget to update your source code.
+
+  ```diff
+  - import TLDExtract
+  + import TLDExtractSwift
+  ```
+
+### Other changes
+- Dropped support for Swift 4.
+- Added watchOS and visionOS to supported platforms.
+- Changed supported versions for macOS, iOS, and tvOS to match Xcode 15.4.
+
 
 ## Feature
 
@@ -33,15 +52,40 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 
 ## Installation
 
+### Swift Package Manager
+
+Add the following to your `Package.swift` file.
+
+- macOS, iOS, tvOS, watchOS, visionOS, and Swift 5
+    ```swift
+    dependencies: [
+        .package(url: "https://github.com/gumob/TLDExtractSwift.git", .upToNextMajor(from: "3.0.0"))
+    ]
+    ```
+
+- macOS, iOS, tvOS, and Swift 5
+    ```swift
+    dependencies: [
+        .package(url: "https://github.com/gumob/TLDExtractSwift.git", .upToNextMajor(from: "2.1.1"))
+    ]
+    ```
+
 ### Carthage
 
 Add the following to your `Cartfile` and follow [these instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
-```
-github "gumob/TLDExtractSwift" ~> 3.0   # macOS, iOS, tvOS, watchOS, visionOS, and Swift 5
-github "gumob/TLDExtractSwift" ~> 2.0   # macOS, iOS, tvOS, and Swift 5
-github "gumob/TLDExtractSwift" ~> 1.0   # macOS, iOS, tvOS, and Swift 4
-```
+- macOS, iOS, tvOS, watchOS, visionOS, and Swift 5
+    ```
+    github "gumob/TLDExtractSwift" ~> 3.0
+    ```
+- macOS, iOS, tvOS, and Swift 5
+    ```
+    github "gumob/TLDExtractSwift" ~> 2.0
+    ```
+- macOS, iOS, tvOS, and Swift 4
+    ```
+    github "gumob/TLDExtractSwift" ~> 1.0
+    ```
 
 Do not forget to include Punycode.framework. Otherwise it will fail to build the application.<br/>
 
@@ -51,14 +95,18 @@ Do not forget to include Punycode.framework. Otherwise it will fail to build the
 
 To integrate TLDExtract into your project, add the following to your `Podfile`.
 
-```ruby
-platform :ios, '9.3'
-use_frameworks!
-
-pod 'TLDExtract', '~> 3.0'   # macOS, iOS, tvOS, watchOS, visionOS, and Swift 5.0
-pod 'TLDExtract', '~> 2.0'   # macOS, iOS, tvOS, and Swift 5.0
-pod 'TLDExtract', '~> 1.0'   # macOS, iOS, tvOS, and Swift 4.2
-```
+- macOS, iOS, tvOS, watchOS, visionOS, and Swift 5.0
+    ```ruby
+    pod 'TLDExtractSwift', '~> 3.0'
+    ```
+- macOS, iOS, tvOS, and Swift 5.0
+    ```ruby
+    pod 'TLDExtract', '~> 2.0'
+    ```
+- macOS, iOS, tvOS, and Swift 4.2
+    ```ruby
+    pod 'TLDExtract', '~> 1.0'
+    ```
 
 ## Usage
 
@@ -66,14 +114,14 @@ pod 'TLDExtract', '~> 1.0'   # macOS, iOS, tvOS, and Swift 4.2
 
 Basic initialization code. Exceptions will not be raised unless [the Public Suffix List on the server](https://publicsuffix.org/list/public_suffix_list.dat) is broken.
 ```swift
-import TLDExtract
+import TLDExtractSwift
 
 let extractor = try! TLDExtract()
 ```
 
 A safer initialization code to avoid errors by using the frozen Public Suffix List:<br/>
 ```swift
-import TLDExtract
+import TLDExtractSwift
 
 let extractor = try! TLDExtract(useFrozenData: true)
 ```
