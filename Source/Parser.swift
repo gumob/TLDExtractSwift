@@ -49,9 +49,9 @@ internal class PSLParser {
             #endif
         }
         return PSLDataSet(
-                exceptions: exceptions,
-                wildcards: wildcards,
-                normals: normals
+            exceptions: exceptions,
+            wildcards: wildcards,
+            normals: normals
         )
     }
 }
@@ -69,7 +69,7 @@ internal class TLDParser {
         /// Search exceptions first, then search wildcards if not match
         let matchClosure: (PSLData) -> Bool = { $0.matches(hostComponents: hostComponents) }
         let pslData: PSLData? = self.pslDataSet.exceptions.first(where: matchClosure) ??
-                                self.pslDataSet.wildcards.first(where: matchClosure)
+            self.pslDataSet.wildcards.first(where: matchClosure)
         return pslData?.parse(hostComponents: hostComponents)
     }
 
