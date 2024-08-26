@@ -330,7 +330,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run SwiftLint and Build Carthage for ${{ matrix.platform }}
+      - name: Build Carthage for ${{ matrix.platform }}
         run: |
           carthage build \
             --no-skip-current \
