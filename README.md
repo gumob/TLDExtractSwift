@@ -13,7 +13,7 @@
 
 Domain names are the unique, human-readable Internet addresses of websites. They are made up of three parts: a top-level domain (a.k.a. TLD), a second-level domain name, and an optional subdomain.
 
-<img src="Metadata/domain-diagram.svg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
+<img src="Metadata/domain-diagram.webp" alt="drawing" width="100%" style="width:100%; max-width: 100%;"/>
 
 ## Changes in 3.0.0
 
