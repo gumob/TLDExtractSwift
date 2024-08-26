@@ -19,6 +19,7 @@ scheme = "TLDExtractSwift"
 
 desc "Run all jobs"
 lane :run_all do
+    lint_swift
     tests
     build_spm
     build_carthage
@@ -75,6 +76,16 @@ lane :bump_version do
     # Set version number to podspec
     version_bump_podspec(path: podspec_file, version_number: new_app_version)
     UI.message("Changed version from #{current_app_version} to #{new_app_version} ")
+end
+
+##########################################
+# Test
+##########################################
+
+desc "Lint codes with swift-format"
+lane :lint_swift do
+    # sh("swift-format", "format", "--in-place", "--ignore-unparsable-files", "--configuration", "../.swift-format", "--recursive", "../Source", "../Tests")
+    sh("swift-format", "lint", "--ignore-unparsable-files", "--configuration", "../.swift-format", "--recursive", "../Source", "../Tests")
 end
 
 ##########################################

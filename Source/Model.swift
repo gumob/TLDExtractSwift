@@ -1,6 +1,5 @@
 //
-// Created by kojirof on 2018-11-17.
-// Copyright (c) 2018 Gumob. All rights reserved.
+// Created by Kojiro futamura on 2018-11-17.
 //
 
 import Foundation
@@ -66,10 +65,12 @@ extension PSLData {
         let secondDomain: String? = delta == 0 ? nil : hostComponents[delta - 1]
         let subDomain: String? = delta < 2 ? nil : hostComponents.prefix(delta - 1).joined(separator: ".")
 
-        return TLDResult(rootDomain: rootDomain,
-                         topLevelDomain: topLevelDomain,
-                         secondLevelDomain: secondDomain,
-                         subDomain: subDomain)
+        return TLDResult(
+            rootDomain: rootDomain,
+            topLevelDomain: topLevelDomain,
+            secondLevelDomain: secondDomain,
+            subDomain: subDomain
+        )
     }
 }
 

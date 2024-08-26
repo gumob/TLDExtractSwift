@@ -36,18 +36,33 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  swiftlint:
-    name: SwiftLint
-    runs-on: macos-14
+  # lint_code:
+  #   name: Lint Code
+  #   runs-on: macos-14
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - name: Install SwiftLint
+  #       run: brew install swiftlint
+  #     - name: Lint
+  #       run: |
+  #         set -o pipefail
+  #         swiftlint lint --quiet | sed -E 's/^(.*):([0-9]+):([0-9]+): (warning|error|[^:]+): (.*)/::\4 title=Lint error,file=\1,line=\2,col=\3::\5\n\1:\2:\3/'
+
+  lint_code:
+    name: Lint Code
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install SwiftLint
-        run: brew install swiftlint
+        with:
+          fetch-depth: 0 # Full git history is needed to get a proper list of changed files
       - name: Lint
-        run: |
-          set -o pipefail
-          swiftlint lint --quiet | sed -E 's/^(.*):([0-9]+):([0-9]+): (warning|error|[^:]+): (.*)/::\4 title=Lint error,file=\1,line=\2,col=\3::\5\n\1:\2:\3/'
+        uses: mtgto/swift-format-action@main
+        with:
+          configuration_file: .swift-format # Please comment out if you won't specify configuration file
+          all_files: false # default is false
+          max_warnings: -1 # default is -1 (infinity)
 
   ### ref: https://github.com/Alamofire/Alamofire/blob/master/.github/workflows/ci.yml
   test_macOS:
@@ -96,7 +111,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
-    needs: swiftlint
+    needs: lint_code
 
   test_Catalyst:
     name: ${{ matrix.name }}
@@ -118,7 +133,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Catalyst
         run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "platform=macOS" clean test 2>&1 | xcbeautify --renderer github-actions
-    needs: swiftlint
+    needs: lint_code
 
   test_iOS:
     name: ${{ matrix.name }}
@@ -149,7 +164,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: ${{ matrix.name }}
         run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
-    needs: swiftlint
+    needs: lint_code
 
   test_tvOS:
     name: ${{ matrix.name }}
@@ -180,7 +195,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: ${{ matrix.name }}
         run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
-    needs: swiftlint
+    needs: lint_code
 
   test_visionOS:
     name: ${{ matrix.name }}
@@ -202,7 +217,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: ${{ matrix.name }}
         run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "${{ matrix.scheme }}" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
-    needs: swiftlint
+    needs: lint_code
 
   test_watchOS:
     name: ${{ matrix.name }}
@@ -233,7 +248,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: ${{ matrix.name }}
         run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
-    needs: swiftlint
+    needs: lint_code
 
   SPM:
     name: ${{ matrix.name }}
@@ -273,7 +288,15 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test SPM
         run: swift test -c debug 2>&1 | ${{ matrix.outputFilter }}
-    needs: [test_macOS, test_Catalyst, test_iOS, test_tvOS, test_watchOS, test_visionOS]
+    needs:
+      [
+        test_macOS,
+        test_Catalyst,
+        test_iOS,
+        test_tvOS,
+        test_watchOS,
+        test_visionOS,
+      ]
 
   carthage:
     name: ${{ matrix.name }}
@@ -307,7 +330,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run SwiftLint and Build Carthage for ${{ matrix.platform }}
+      - name: Build Carthage for ${{ matrix.platform }}
         run: |
           carthage build \
             --no-skip-current \
