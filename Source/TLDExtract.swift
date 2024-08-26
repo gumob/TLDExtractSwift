@@ -2,8 +2,7 @@
 //  TLDExtract.swift
 //  TLDExtract
 //
-//  Created by kojirof on 2018/11/16.
-//  Copyright © 2018 Gumob. All rights reserved.
+//  Created by Kojiro futamura on 2018/11/16.
 //
 
 import Foundation
