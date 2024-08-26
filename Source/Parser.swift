@@ -3,6 +3,7 @@
 //
 
 import Foundation
+
 #if SWIFT_PACKAGE
 import Punycode
 #endif
@@ -24,9 +25,7 @@ internal class PSLParser {
     }
 
     internal func parse(data: Data?) throws -> PSLDataSet {
-        guard let data: Data = data,
-              let str: String = String(data: data, encoding: .utf8),
-              str.count > 0 else {
+        guard let data: Data = data, let str: String = String(data: data, encoding: .utf8), str.count > 0 else {
             throw TLDExtractError.pslParseError(message: nil)
         }
 
@@ -67,8 +66,7 @@ internal class TLDParser {
         let hostComponents: [String] = host.lowercased().components(separatedBy: ".")
         /// Search exceptions first, then search wildcards if not match
         let matchClosure: (PSLData) -> Bool = { $0.matches(hostComponents: hostComponents) }
-        let pslData: PSLData? = self.pslDataSet.exceptions.first(where: matchClosure) ??
-            self.pslDataSet.wildcards.first(where: matchClosure)
+        let pslData: PSLData? = self.pslDataSet.exceptions.first(where: matchClosure) ?? self.pslDataSet.wildcards.first(where: matchClosure)
         return pslData?.parse(hostComponents: hostComponents)
     }
 
@@ -99,9 +97,11 @@ internal class TLDParser {
         let subDomainRange: Range<Int> = (hostComponents.startIndex)..<(max(secondDomainRange.lowerBound, hostComponents.startIndex))
         let subDomain: String? = subDomainRange.endIndex >= 1 ? hostComponents[subDomainRange].joined(separator: ".") : nil
 
-        return TLDResult(rootDomain: rootDomain,
-                         topLevelDomain: topLevelDomain,
-                         secondLevelDomain: secondDomain,
-                         subDomain: subDomain)
+        return TLDResult(
+            rootDomain: rootDomain,
+            topLevelDomain: topLevelDomain,
+            secondLevelDomain: secondDomain,
+            subDomain: subDomain
+        )
     }
 }

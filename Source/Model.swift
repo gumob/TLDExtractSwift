@@ -65,10 +65,12 @@ extension PSLData {
         let secondDomain: String? = delta == 0 ? nil : hostComponents[delta - 1]
         let subDomain: String? = delta < 2 ? nil : hostComponents.prefix(delta - 1).joined(separator: ".")
 
-        return TLDResult(rootDomain: rootDomain,
-                         topLevelDomain: topLevelDomain,
-                         secondLevelDomain: secondDomain,
-                         subDomain: subDomain)
+        return TLDResult(
+            rootDomain: rootDomain,
+            topLevelDomain: topLevelDomain,
+            secondLevelDomain: secondDomain,
+            subDomain: subDomain
+        )
     }
 }
 

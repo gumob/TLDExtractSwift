@@ -6,6 +6,7 @@
 //
 
 import XCTest
+
 @testable import TLDExtractSwift
 
 class TLDExtractSwiftTests: XCTestCase {
@@ -518,7 +519,8 @@ class TLDExtractSwiftTests: XCTestCase {
         checkPublicSuffix("xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", nil, quick: quick)
         checkPublicSuffix("xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "xn--8nr183j17e", quick: quick)
         checkPublicSuffix("www.xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "www.xn--8nr183j17e", quick: quick)
-        checkPublicSuffix("www.xn--t8j0ayjlb.xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "www.xn--t8j0ayjlb.xn--8nr183j17e", quick: quick)
+        checkPublicSuffix(
+            "www.xn--t8j0ayjlb.xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c", "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "www.xn--t8j0ayjlb.xn--8nr183j17e", quick: quick)
         checkPublicSuffix("xn--wgv71a", nil, nil, nil, nil, quick: quick)
 
     }
@@ -674,13 +676,17 @@ class TLDExtractSwiftTests: XCTestCase {
         checkPublicSuffix(URL(string: "xn--rht138k.xn--bck1b9a5dre4c"), "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", nil, quick: quick)
         checkPublicSuffix(URL(string: "xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c"), "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "xn--8nr183j17e", quick: quick)
         checkPublicSuffix(URL(string: "www.xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c"), "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "www.xn--8nr183j17e", quick: quick)
-        checkPublicSuffix(URL(string: "www.xn--t8j0ayjlb.xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c"), "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "www.xn--t8j0ayjlb.xn--8nr183j17e", quick: quick)
+        checkPublicSuffix(
+            URL(string: "www.xn--t8j0ayjlb.xn--8nr183j17e.xn--rht138k.xn--bck1b9a5dre4c"), "xn--rht138k.xn--bck1b9a5dre4c", "xn--bck1b9a5dre4c", "xn--rht138k", "www.xn--t8j0ayjlb.xn--8nr183j17e",
+            quick: quick)
         checkPublicSuffix(URL(string: "xn--wgv71a"), nil, nil, nil, nil, quick: quick)
     }
 
-    func checkTLDExtractable<T: TLDExtractable>(_ input: T?,
-                                                _ expected: String?,
-                                                file: StaticString = #file, line: UInt = #line) {
+    func checkTLDExtractable<T: TLDExtractable>(
+        _ input: T?,
+        _ expected: String?,
+        file: StaticString = #file, line: UInt = #line
+    ) {
         let result: String? = input?.hostname
 
         //        logTLDExtractable(input, result, expected)
@@ -688,13 +694,15 @@ class TLDExtractSwiftTests: XCTestCase {
         XCTAssertEqual(result, expected, file: file, line: line)
     }
 
-    func checkPublicSuffix<T: TLDExtractable>(_ input: T?,
-                                              _ expectedRootDomain: String?,
-                                              _ expectedTopLevelDomain: String?,
-                                              _ expectedSecondDomain: String?,
-                                              _ expectedSubDomain: String?,
-                                              quick: Bool = false,
-                                              file: StaticString = #file, line: UInt = #line) {
+    func checkPublicSuffix<T: TLDExtractable>(
+        _ input: T?,
+        _ expectedRootDomain: String?,
+        _ expectedTopLevelDomain: String?,
+        _ expectedSecondDomain: String?,
+        _ expectedSubDomain: String?,
+        quick: Bool = false,
+        file: StaticString = #file, line: UInt = #line
+    ) {
         guard let input: T = input else { return }
         let result: TLDResult? = tldExtractor.parse(input, quick: quick)
 
@@ -707,9 +715,11 @@ class TLDExtractSwiftTests: XCTestCase {
     }
 
     /// For debugging
-    func logTLDExtractable(_ input: TLDExtractable?,
-                           _ result: String?,
-                           _ expected: String?) {
+    func logTLDExtractable(
+        _ input: TLDExtractable?,
+        _ result: String?,
+        _ expected: String?
+    ) {
 
         print("----------------------------")
         print("input:            \(input ?? "nil")")
@@ -718,12 +728,14 @@ class TLDExtractSwiftTests: XCTestCase {
         print("")
     }
 
-    func logTLDResult(_ host: String?,
-                      _ expectedRootDomain: String?,
-                      _ expectedTopLevelDomain: String?,
-                      _ expectedSecondDomain: String?,
-                      _ expectedSubDomain: String?,
-                      _ result: TLDResult?) {
+    func logTLDResult(
+        _ host: String?,
+        _ expectedRootDomain: String?,
+        _ expectedTopLevelDomain: String?,
+        _ expectedSecondDomain: String?,
+        _ expectedSubDomain: String?,
+        _ result: TLDResult?
+    ) {
         guard let host = host else { return }
         let hostStr: String = host.padding(toLength: 20, withPad: " ", startingAt: 0)
 
