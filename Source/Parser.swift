@@ -10,12 +10,12 @@ import Punycode
 
 /// PSLParser is responsible for parsing a list of domain names from a given data source.
 /// It categorizes the domain names into exceptions, wildcards, and normal entries.
-/// 
+///
 /// - Properties:
 ///   - exceptions: An array of PSLData representing domain names that are exceptions.
 ///   - wildcards: An array of PSLData representing domain names that are wildcards.
 ///   - normals: A set of unique domain names that are considered normal entries.
-/// 
+///
 /// - Methods:
 ///   - addLine(_ line: String): Adds a line to the appropriate category based on its content.
 ///   - parse(data: Data?): Parses the provided data and returns a PSLDataSet containing the categorized domain names.

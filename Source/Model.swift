@@ -18,7 +18,7 @@ internal struct PSLDataSet {
 }
 
 /// A structure that represents a Public Suffix List (PSL) data entry.
-/// It contains information about whether the entry is an exception, 
+/// It contains information about whether the entry is an exception,
 /// the parts of the top-level domain (TLD) split by dots, and the priority score.
 ///
 /// - Properties:
@@ -128,7 +128,7 @@ extension PSLData: Comparable {
 }
 
 /// An enumeration representing parts of a Public Suffix List (PSL) data entry.
-/// 
+///
 /// This enum categorizes the components of a domain name into two types:
 /// - `wildcard`: Represents a wildcard character that can match any valid sequence of characters in a hostname part.
 /// - `characters(String)`: Represents a specific sequence of characters in a hostname part.

@@ -133,9 +133,8 @@ fileprivate extension String {
     }
 }
 
-
 /// A structure that represents the result of a top-level domain extraction.
-/// 
+///
 /// This structure contains the components of a domain name, including:
 /// - `rootDomain`: The root domain of the URL or domain name.
 /// - `topLevelDomain`: The top-level domain (TLD) of the URL or domain name.
