@@ -79,7 +79,7 @@ lane :bump_version do
 end
 
 ##########################################
-# Test
+# Lint
 ##########################################
 
 desc "Lint codes with swift-format"
