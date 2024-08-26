@@ -1,0 +1,9 @@
+[tools]
+ruby = "3.2.5"
+python = "3.11.9"
+
+[env]
+_.python.venv = ".venv"
+EXPANDED_CODE_SIGN_IDENTITY=""
+EXPANDED_CODE_SIGN_IDENTITY_NAME=""
+EXPANDED_PROVISIONING_PROFILE=""

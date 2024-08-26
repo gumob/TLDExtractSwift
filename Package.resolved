@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "Punycode",
-        "repositoryURL": "https://github.com/twodayslate/PunycodeSwift.git",
+        "repositoryURL": "https://github.com/gumob/PunycodeSwift.git",
         "state": {
-          "branch": "master",
-          "revision": "a06c9efbb707daf102a00e9e11dcf3c553a71288",
-          "version": null
+          "branch": null,
+          "revision": "d623c012351891002c57f5a44564272ca1353fda",
+          "version": "3.0.0"
         }
       }
     ]

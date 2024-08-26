@@ -1,0 +1,401 @@
+# This workflow will build a Swift project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+name: main
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - .github/workflows/**
+      - .swiftlint.yml
+      - Package.swift
+      - TLDExtractSwift.podspec
+      - TLDExtractSwift.xcodeproj/**
+      - Source/**
+      - Tests/**
+  # pull_request:
+  #   branches:
+  #     - develop
+  #   # branches-ignore:
+  #   #   - "release/**"
+  #   #   - "feature/**"
+  #   paths:
+  #     - .github/workflows/**
+  #     - .swiftlint.yml
+  #     - Package.swift
+  #     - TLDExtractSwift.podspec
+  #     - TLDExtractSwift.xcodeproj/**
+  #     - Source/**
+  #     - Tests/**
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swiftlint:
+    name: SwiftLint
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install SwiftLint
+        run: brew install swiftlint
+      - name: Lint
+        run: |
+          set -o pipefail
+          swiftlint lint --quiet | sed -E 's/^(.*):([0-9]+):([0-9]+): (warning|error|[^:]+): (.*)/::\4 title=Lint error,file=\1,line=\2,col=\3::\5\n\1:\2:\3/'
+
+  ### ref: https://github.com/Alamofire/Alamofire/blob/master/.github/workflows/ci.yml
+  test_macOS:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}.app/Contents/Developer"
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - xcode: "Xcode_15.4"
+            runsOn: macos-14
+            name: "Test: macOS 14, Xcode 15.4, Swift 5.10"
+            testPlan: "macOS"
+            outputFilter: xcbeautify --renderer github-actions
+            coverage: YES
+          - xcode: "Xcode_15.2"
+            runsOn: macos-14
+            name: "Test: macOS 14, Xcode 15.2, Swift 5.9.2"
+            testPlan: "macOS"
+            outputFilter: xcbeautify --renderer github-actions
+            coverage: NO
+          - xcode: "Xcode_14.3.1"
+            runsOn: macOS-13
+            name: "Test: macOS 13, Xcode 14.3.1, Swift 5.8.0"
+            testPlan: "macOS"
+            outputFilter: xcbeautify --renderer github-actions
+            coverage: NO
+          - xcode: "Xcode_14.2"
+            runsOn: macOS-12
+            name: "Test: macOS 12, Xcode 14.2, Swift 5.7.2"
+            testPlan: "macOS"
+            outputFilter: xcpretty
+            coverage: NO
+    steps:
+      - uses: actions/checkout@v4
+      - name: ${{ matrix.name }}
+        run: |-
+          set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "platform=macOS" -enableCodeCoverage ${{ matrix.coverage }} clean test | ${{ matrix.outputFilter }}
+      - name: Upload coverage to Codecov
+        if: ${{ matrix.coverage == 'YES' }}
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          verbose: true
+    needs: swiftlint
+
+  test_Catalyst:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: /Applications/${{ matrix.xcode }}.app/Contents/Developer
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - xcode: "Xcode_15.4"
+            name: "Test: Catalyst 15.4"
+            runsOn: macos-14
+          - xcode: "Xcode_14.3.1"
+            name: "Test: Catalyst 14.3.1"
+            runsOn: macOS-13
+    steps:
+      - uses: actions/checkout@v4
+      - name: Catalyst
+        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "platform=macOS" clean test 2>&1 | xcbeautify --renderer github-actions
+    needs: swiftlint
+
+  test_iOS:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}.app/Contents/Developer"
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - destination: "OS=17.5,name=iPhone 15 Pro"
+            name: "Test: iOS 17.6"
+            testPlan: "iOS"
+            xcode: "Xcode_15.4"
+            runsOn: macos-14
+          - destination: "OS=16.4,name=iPhone 14 Pro"
+            name: "Test: iOS 16.4"
+            testPlan: "iOS"
+            xcode: "Xcode_14.3.1"
+            runsOn: macOS-13
+          - destination: "OS=15.5,name=iPhone 13 Pro"
+            name: "Test: iOS 15.5"
+            testPlan: "iOS"
+            xcode: "Xcode_13.4.1"
+            runsOn: macOS-12
+    steps:
+      - uses: actions/checkout@v4
+      - name: ${{ matrix.name }}
+        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
+    needs: swiftlint
+
+  test_tvOS:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: /Applications/${{ matrix.xcode }}.app/Contents/Developer
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - destination: "OS=17.5,name=Apple TV"
+            name: "Test: tvOS 17.5"
+            testPlan: "tvOS"
+            xcode: "Xcode_15.4"
+            runsOn: macos-14
+          - destination: "OS=16.4,name=Apple TV"
+            name: "Test: tvOS 16.4"
+            testPlan: "tvOS"
+            xcode: "Xcode_14.3.1"
+            runsOn: macOS-13
+          - destination: "OS=15.4,name=Apple TV"
+            name: "Test: tvOS 15.4"
+            testPlan: "tvOS"
+            xcode: "Xcode_13.4.1"
+            runsOn: macOS-12
+    steps:
+      - uses: actions/checkout@v4
+      - name: ${{ matrix.name }}
+        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
+    needs: swiftlint
+
+  test_visionOS:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}.app/Contents/Developer"
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - destination: "OS=1.2,name=Apple Vision Pro"
+            name: "Test: visionOS 1.2"
+            testPlan: "visionOS"
+            scheme: "TLDExtractSwift"
+            xcode: "Xcode_15.4"
+            runsOn: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: ${{ matrix.name }}
+        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "${{ matrix.scheme }}" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
+    needs: swiftlint
+
+  test_watchOS:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: /Applications/${{ matrix.xcode }}.app/Contents/Developer
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - destination: "OS=10.5,name=Apple Watch Series 9 (45mm)"
+            name: "Test: watchOS 10.5"
+            testPlan: "watchOS"
+            xcode: "Xcode_15.4"
+            runsOn: macos-14
+          - destination: "OS=9.4,name=Apple Watch Series 8 (45mm)"
+            name: "Test: watchOS 9.4"
+            testPlan: "watchOS"
+            xcode: "Xcode_14.3.1"
+            runsOn: macOS-13
+          - destination: "OS=8.5,name=Apple Watch Series 7 - 45mm"
+            name: "Test: watchOS 8.5"
+            testPlan: "watchOS"
+            xcode: "Xcode_13.4.1"
+            runsOn: macOS-12
+    steps:
+      - uses: actions/checkout@v4
+      - name: ${{ matrix.name }}
+        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
+    needs: swiftlint
+
+  SPM:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}.app/Contents/Developer"
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            name: "SPM: macOS 14, Swift 5.10"
+            outputFilter: xcbeautify --renderer github-actions
+          - xcode: "Xcode_15.2"
+            runsOn: macOS-14
+            name: "SPM: macOS 14, Swift 5.9.2"
+            outputFilter: xcbeautify --renderer github-actions
+          - xcode: "Xcode_14.3.1"
+            runsOn: macOS-13
+            name: "SPM: macOS 13, Swift 5.8.0"
+            outputFilter: xcbeautify --renderer github-actions
+          - xcode: "Xcode_14.2"
+            runsOn: macOS-12
+            name: "SPM: macOS 12, Swift 5.7.2"
+            outputFilter: xcpretty
+          - xcode: "Xcode_13.3.1"
+            runsOn: macOS-12
+            name: "SPM: macOS 12, Swift 5.6.0"
+            outputFilter: xcpretty
+          - xcode: "Xcode_13.2.1"
+            runsOn: macOS-12
+            name: "SPM: macOS 12, Swift 5.5.2"
+            outputFilter: xcpretty
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test SPM
+        run: swift test -c debug 2>&1 | ${{ matrix.outputFilter }}
+    needs: [test_macOS, test_Catalyst, test_iOS, test_tvOS, test_watchOS, test_visionOS]
+
+  carthage:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}.app/Contents/Developer"
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            name: "Carthage: macOS"
+            platform: "macos"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            name: "Carthage: iOS"
+            platform: "ios"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            name: "Carthage: tvOS"
+            platform: "tvos"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            name: "Carthage: watchOS"
+            platform: "watchos"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            name: "Carthage: visionOS"
+            platform: "visionos"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run SwiftLint and Build Carthage for ${{ matrix.platform }}
+        run: |
+          carthage build \
+            --no-skip-current \
+            --platform ${{ matrix.platform }} \
+            --use-xcframeworks \
+            --cache-builds
+    needs: SPM
+
+  cocoapods:
+    name: "Pods: ${{ matrix.platform }}, ${{ matrix.configuration }}"
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}.app/Contents/Developer"
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "macos"
+            configuration: "Release"
+            name: "Pods: macOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "macos"
+            configuration: "Debug"
+            name: "Pods: macOS, Debug"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "ios"
+            configuration: "Release"
+            name: "Pods: iOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "ios"
+            configuration: "Debug"
+            name: "Pods: iOS, Debug"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "tvos"
+            configuration: "Release"
+            name: "Pods: tvOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "tvos"
+            configuration: "Debug"
+            name: "Pods: tvOS, Debug"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "watchos"
+            configuration: "Release"
+            name: "Pods: watchOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "watchos"
+            configuration: "Debug"
+            name: "Pods: watchOS, Debug"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "visionos"
+            configuration: "Release"
+            name: "Pods: visionOS, Release"
+          - xcode: "Xcode_15.4"
+            runsOn: macOS-14
+            platform: "visionos"
+            configuration: "Debug"
+            name: "Pods: visionOS, Debug"
+    steps:
+      - name: Update CocoaPods
+        if: ${{ matrix.platform == 'visionos' }}
+        run: gem install cocoapods
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Pod lib lint
+        run: |
+          pod lib lint --verbose \
+            --configuration=${{ matrix.configuration }} \
+            --platforms=${{ matrix.platform }} \
+            TLDExtractSwift.podspec
+      - name: Pod lib lint - Use Static Frameworks
+        run: |
+          pod lib lint --verbose --use-static-frameworks \
+            --configuration=${{ matrix.configuration }} \
+            --platforms=${{ matrix.platform }} \
+            TLDExtractSwift.podspec
+      # - name: Pod Push
+      #   if: github.ref == 'refs/heads/main'
+      #   run: |
+      #     pod repo update
+      #     pod trunk push TLDExtractSwift.podspec --allow-warnings
+    needs: carthage

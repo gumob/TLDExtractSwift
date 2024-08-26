@@ -1,15 +1,14 @@
 //
-//  TLDExtractTests.swift
-//  TLDExtractTests
+//  TLDExtractSwiftTests.swift
+//  TLDExtractSwiftTests
 //
-//  Created by kojirof on 2018/11/16.
-//  Copyright © 2018 Gumob. All rights reserved.
+//  Created by Kojiro Futamura on 2024/08/25.
 //
 
 import XCTest
-@testable import TLDExtract
+@testable import TLDExtractSwift
 
-class TLDExtractTests: XCTestCase {
+class TLDExtractSwiftTests: XCTestCase {
 
     var tldExtractor: TLDExtract!
 

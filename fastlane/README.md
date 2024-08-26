@@ -1,59 +1,70 @@
 fastlane documentation
-================
+----
+
 # Installation
 
 Make sure you have the latest version of the Xcode command line tools installed:
 
-```
+```sh
 xcode-select --install
 ```
 
-Install _fastlane_ using
-```
-[sudo] gem install fastlane -NV
-```
-or alternatively using `brew cask install fastlane`
+For _fastlane_ installation instructions, see [Installing _fastlane_](https://docs.fastlane.tools/#installing-fastlane)
 
 # Available Actions
-## iOS
-### ios prebuild
+
+### Run all jobs
+
+```sh
+bundle exec fastlane run_all
 ```
-fastlane ios prebuild
+
+### Set version number
+
+```sh
+bundle exec fastlane set_version
 ```
-Prebuild
-### ios set_version
+
+### Bump version number
+
+```sh
+bundle exec fastlane bump_version
 ```
-fastlane ios set_version
+
+### Run all tests
+
+```sh
+bundle exec fastlane tests
 ```
-Set version number
-### ios bump_version
+
+### Build SPM
+
+```sh
+bundle exec fastlane build_spm
 ```
-fastlane ios bump_version
+
+### Build Carthage
+
+```sh
+bundle exec fastlane build_carthage
 ```
-Bump version number
-### ios tests
+
+### Lint Cocoapods
+
+```sh
+bundle exec fastlane lint_cocoapods
 ```
-fastlane ios tests
+
+### Push Cocoapods
+
+```sh
+bundle exec fastlane push_cocoapods
 ```
-Run Tests
-### ios build_carthage
-```
-fastlane ios build_carthage
-```
-Build Carthage
-### ios lint_cocoapods
-```
-fastlane ios lint_cocoapods
-```
-Lint Cocoapods
-### ios push_cocoapods
-```
-fastlane ios push_cocoapods
-```
-Push Cocoapods
 
 ----
 
-This README.md is auto-generated and will be re-generated every time [fastlane](https://fastlane.tools) is run.
-More information about fastlane can be found on [fastlane.tools](https://fastlane.tools).
-The documentation of fastlane can be found on [docs.fastlane.tools](https://docs.fastlane.tools).
+This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
+
+More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).
+
+The documentation of _fastlane_ can be found on [docs.fastlane.tools](https://docs.fastlane.tools).
