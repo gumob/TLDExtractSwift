@@ -4,6 +4,8 @@
 
 import Foundation
 
+/// An internal extension for the Bundle class that provides a way to access the current bundle.
+/// This is useful for loading resources from the framework's bundle.
 internal extension Bundle {
     class ClassForFramework {
     }
@@ -13,6 +15,8 @@ internal extension Bundle {
     }
 }
 
+/// An internal extension for the String class that provides a property to check if the string is a comment.
+/// A string is considered a comment if it starts with "//".
 internal extension String {
     var isComment: Bool {
         return self.starts(with: "//")

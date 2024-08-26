@@ -8,12 +8,25 @@ import Foundation
 import Punycode
 #endif
 
+/// PSLParser is responsible for parsing a list of domain names from a given data source.
+/// It categorizes the domain names into exceptions, wildcards, and normal entries.
+/// 
+/// - Properties:
+///   - exceptions: An array of PSLData representing domain names that are exceptions.
+///   - wildcards: An array of PSLData representing domain names that are wildcards.
+///   - normals: A set of unique domain names that are considered normal entries.
+/// 
+/// - Methods:
+///   - addLine(_ line: String): Adds a line to the appropriate category based on its content.
+///   - parse(data: Data?): Parses the provided data and returns a PSLDataSet containing the categorized domain names.
 internal class PSLParser {
 
     var exceptions: [PSLData] = [PSLData]()
     var wildcards: [PSLData] = [PSLData]()
     var normals = Set<String>()
 
+    /// Adds a line to the appropriate category (wildcards, exceptions, or normals) based on its content.
+    /// - Parameter line: A string representing a line from the PSL data.
     internal func addLine(_ line: String) {
         if line.contains("*") {
             self.wildcards.append(PSLData(raw: line))
@@ -24,6 +37,10 @@ internal class PSLParser {
         }
     }
 
+    /// Parses the provided data and categorizes the domain names into exceptions, wildcards, and normals.
+    /// - Parameter data: The data to be parsed, which should contain PSL entries.
+    /// - Throws: TLDExtractError.pslParseError if the data is invalid or cannot be parsed.
+    /// - Returns: A PSLDataSet containing the categorized domain names.
     internal func parse(data: Data?) throws -> PSLDataSet {
         guard let data: Data = data, let str: String = String(data: data, encoding: .utf8), str.count > 0 else {
             throw TLDExtractError.pslParseError(message: nil)
@@ -54,6 +71,8 @@ internal class PSLParser {
     }
 }
 
+/// A class responsible for parsing top-level domains (TLDs) from a given PSLDataSet.
+/// It provides methods to parse exceptions, wildcards, and normal domains from host strings.
 internal class TLDParser {
 
     private let pslDataSet: PSLDataSet
@@ -62,6 +81,9 @@ internal class TLDParser {
         self.pslDataSet = dataSet
     }
 
+    /// Parses exceptions and wildcards for a given host string.
+    /// - Parameter host: The host string to be parsed.
+    /// - Returns: An optional TLDResult containing the parsed components if a match is found.
     internal func parseExceptionsAndWildcards(host: String) -> TLDResult? {
         let hostComponents: [String] = host.lowercased().components(separatedBy: ".")
         /// Search exceptions first, then search wildcards if not match
@@ -70,6 +92,9 @@ internal class TLDParser {
         return pslData?.parse(hostComponents: hostComponents)
     }
 
+    /// Parses normal domains from a given host string.
+    /// - Parameter host: The host string to be parsed.
+    /// - Returns: An optional TLDResult containing the parsed components if a match is found.
     internal func parseNormals(host: String) -> TLDResult? {
         let tldSet: Set<String> = self.pslDataSet.normals
         /// Split the hostname to components

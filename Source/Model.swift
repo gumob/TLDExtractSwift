@@ -4,12 +4,28 @@
 
 import Foundation
 
+/// A structure that represents a dataset of Public Suffix List (PSL) entries.
+/// It categorizes the entries into exceptions, wildcards, and normal domain names.
+///
+/// - Properties:
+///   - exceptions: An array of PSLData representing domain names that are exceptions.
+///   - wildcards: An array of PSLData representing domain names that are wildcards.
+///   - normals: A set of unique domain names that are considered normal entries.
 internal struct PSLDataSet {
     let exceptions: [PSLData]
     let wildcards: [PSLData]
     let normals: Set<String>
 }
 
+/// A structure that represents a Public Suffix List (PSL) data entry.
+/// It contains information about whether the entry is an exception, 
+/// the parts of the top-level domain (TLD) split by dots, and the priority score.
+///
+/// - Properties:
+///   - isException: A Boolean flag indicating if the data entry is an exception.
+///   - tldParts: An array of PSLDataPart representing the TLD parts split by dots.
+///   - priority: An integer representing the priority score to sort the dataset.
+///     If the hostname matches more than one rule, the one with the highest priority prevails.
 internal struct PSLData {
     /// The flag that indicates data is exception
     let isException: Bool
@@ -28,6 +44,18 @@ internal struct PSLData {
     }
 }
 
+/// An extension of `PSLData` that provides functionality to match domain components
+/// against the Public Suffix List (PSL) rules and to parse the components of a domain.
+///
+/// This extension includes methods to determine if a domain matches a given PSL rule
+/// and to extract the various components of the domain such as root domain, top-level domain,
+/// second-level domain, and subdomain.
+///
+/// - Methods:
+///   - matches(hostComponents: [String]) -> Bool: Checks if the provided host components
+///     match the PSL rule represented by this `PSLData`.
+///   - parse(hostComponents: [String]) -> TLDResult: Parses the provided host components
+///     and returns a `TLDResult` containing the extracted domain components.
 extension PSLData {
     ///
     /// For more information about the public suffix list,
@@ -74,25 +102,44 @@ extension PSLData {
     }
 }
 
+/// An extension of `PSLData` that conforms to the `Comparable` protocol.
+/// This allows `PSLData` instances to be compared based on their priority.
+///
+/// - Parameters:
+///   - lhs: The left-hand side `PSLData` instance to compare.
+///   - rhs: The right-hand side `PSLData` instance to compare.
+///
+/// - Returns: A Boolean value indicating whether the left-hand side instance has a lower priority than the right-hand side instance.
 extension PSLData: Comparable {
     static func < (lhs: PSLData, rhs: PSLData) -> Bool {
         return lhs.priority < rhs.priority
     }
 
+    /// Checks if two `PSLData` instances are equal based on their priority.
+    ///
+    /// - Parameters:
+    ///   - lhs: The left-hand side `PSLData` instance to compare.
+    ///   - rhs: The right-hand side `PSLData` instance to compare.
+    ///
+    /// - Returns: A Boolean value indicating whether the two instances have the same priority.
     static func == (lhs: PSLData, rhs: PSLData) -> Bool {
         return lhs.priority == rhs.priority
     }
 }
 
+/// An enumeration representing parts of a Public Suffix List (PSL) data entry.
+/// 
+/// This enum categorizes the components of a domain name into two types:
+/// - `wildcard`: Represents a wildcard character that can match any valid sequence of characters in a hostname part.
+/// - `characters(String)`: Represents a specific sequence of characters in a hostname part.
+///
+/// For more information about the wildcard character,
+/// check the 'Specification' section at https://publicsuffix.org/list/
+///
+/// The wildcard character * (asterisk) matches any valid sequence of characters in a hostname part.
+/// Wildcards are not restricted to appear only in the leftmost position,
+/// but they must wildcard an entire label. (I.e. *.*.foo is a valid rule: *bar.foo is not.)
 internal enum PSLDataPart {
-    ///
-    /// For more information about the wildcard character,
-    /// See the 'Specification' section at https://publicsuffix.org/list/
-    ///
-    /// The wildcard character * (asterisk) matches any valid sequence of characters in a hostname part.
-    /// Wildcards are not restricted to appear only in the leftmost position,
-    /// but they must wildcard an entire label. (I.e. *.*.foo is a valid rule: *bar.foo is not.)
-    ///
     case wildcard
     case characters(String)
 
@@ -100,6 +147,9 @@ internal enum PSLDataPart {
         self = component == "*" ? .wildcard : .characters(component)
     }
 
+    /// Checks if the given component matches this PSLDataPart.
+    /// - Parameter component: The hostname part to check against.
+    /// - Returns: A Boolean value indicating whether the component matches.
     func matches(component: String) -> Bool {
         switch self {
         case .wildcard:
