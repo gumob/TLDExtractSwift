@@ -12,7 +12,7 @@ internal class PSLParser {
 
     var exceptions: [PSLData] = [PSLData]()
     var wildcards: [PSLData] = [PSLData]()
-    var normals = Set<String>()
+    var normals: Set<String> = Set<String>()
 
     internal func addLine(_ line: String) {
         if line.contains("*") {
