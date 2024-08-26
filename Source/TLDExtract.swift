@@ -30,7 +30,7 @@ public class TLDExtract {
             data = try Data(contentsOf: url)
         }
 
-        let dataSet = try PSLParser().parse(data: data)
+        let dataSet: PSLDataSet = try PSLParser().parse(data: data)
         self.tldParser = TLDParser(dataSet: dataSet)
 
         #else
