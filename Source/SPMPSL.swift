@@ -1,8 +1,7 @@
 //
-//  File.swift
-//
-//
 //  Created by Zachary Gorak on 2/16/20.
+//
+//  swift-format-ignore-file
 //
 
 import Foundation
