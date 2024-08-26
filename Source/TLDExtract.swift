@@ -2,8 +2,7 @@
 //  TLDExtract.swift
 //  TLDExtract
 //
-//  Created by kojirof on 2018/11/16.
-//  Copyright © 2018 Gumob. All rights reserved.
+//  Created by Kojiro futamura on 2018/11/16.
 //
 
 import Foundation
@@ -26,8 +25,9 @@ public class TLDExtract {
         self.tldParser = TLDParser(dataSet: dataSet)
         #else
         let url: URL = Bundle.current.url(
-                forResource: useFrozenData ? "public_suffix_list_frozen" : "public_suffix_list",
-                withExtension: "dat")!
+            forResource: useFrozenData ? "public_suffix_list_frozen" : "public_suffix_list",
+            withExtension: "dat"
+        )!
         let data: Data = try Data(contentsOf: url)
         let dataSet = try PSLParser().parse(data: data)
         self.tldParser = TLDParser(dataSet: dataSet)
@@ -42,8 +42,7 @@ public class TLDExtract {
         if quick {
             return self.tldParser.parseNormals(host: host)
         } else {
-            return self.tldParser.parseExceptionsAndWildcards(host: host) ??
-                   self.tldParser.parseNormals(host: host)
+            return self.tldParser.parseExceptionsAndWildcards(host: host) ?? self.tldParser.parseNormals(host: host)
         }
     }
 }

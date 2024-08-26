@@ -8,6 +8,7 @@ fi
 
 local option_list=(
 	"fastlane run_all"
+	"fastlane lint_swift"
 	"fastlane tests"
 	"fastlane build_spm"
 	"fastlane build_carthage"
