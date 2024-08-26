@@ -24,11 +24,12 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 
 ## Requirements
 
-- iOS 9.3 or later
-- macOS 10.12 or later
-- tvOS 10.2 or later
-- Swift 4.2 or later
-- Python 2.7 or Python 3
+- macOS 10.13 or later
+- iOS 12.0 or later
+- tvOS 12.0 or later
+- watchOS 4.0 or later
+- visionOS 1.0 or later
+- Swift 5.0 or later
 
 ## Installation
 
@@ -37,9 +38,9 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 Add the following to your `Cartfile` and follow [these instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
 ```
-github "gumob/TLDExtractSwift"          # Latest (Swift 5.0)
-github "gumob/TLDExtractSwift" ~> 2.0   # Swift 5.0
-github "gumob/TLDExtractSwift" ~> 1.0   # Swift 4.2
+github "gumob/TLDExtractSwift" ~> 3.0   # macOS, iOS, tvOS, watchOS, visionOS, and Swift 5
+github "gumob/TLDExtractSwift" ~> 2.0   # macOS, iOS, tvOS, and Swift 5
+github "gumob/TLDExtractSwift" ~> 1.0   # macOS, iOS, tvOS, and Swift 4
 ```
 
 Do not forget to include Punycode.framework. Otherwise it will fail to build the application.<br/>
@@ -54,9 +55,9 @@ To integrate TLDExtract into your project, add the following to your `Podfile`.
 platform :ios, '9.3'
 use_frameworks!
 
-pod 'TLDExtract'             # Latest (Swift 5.0)
-pod 'TLDExtract', '~> 2.0'   # Swift 5.0
-pod 'TLDExtract', '~> 1.0'   # Swift 4.2
+pod 'TLDExtract', '~> 3.0'   # macOS, iOS, tvOS, watchOS, visionOS, and Swift 5.0
+pod 'TLDExtract', '~> 2.0'   # macOS, iOS, tvOS, and Swift 5.0
+pod 'TLDExtract', '~> 1.0'   # macOS, iOS, tvOS, and Swift 4.2
 ```
 
 ## Usage
