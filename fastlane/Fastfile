@@ -98,8 +98,8 @@ end
 
 desc "Lint codes with swift-format"
 lane :lint_swift do
-    # sh("swift-format", "format", "--in-place", "--ignore-unparsable-files", "--configuration", "../.swift-format", "--recursive", "../Source", "../Tests")
-    sh("swift-format", "lint", "--ignore-unparsable-files", "--configuration", "../.swift-format", "--recursive", "../Source", "../Tests")
+    # sh("swift-format", "format", "--in-place", "--ignore-unparsable-files", "--configuration", "../.swift-format", "--recursive", "../Sources", "../Tests")
+    sh("swift-format", "lint", "--ignore-unparsable-files", "--configuration", "../.swift-format", "--recursive", "../Sources", "../Tests")
 end
 
 ##########################################
