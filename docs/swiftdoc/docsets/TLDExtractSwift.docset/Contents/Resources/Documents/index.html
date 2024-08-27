@@ -168,18 +168,15 @@
 <p>Add the following to your <code>Cartfile</code> and follow <a href="https://github.com/Carthage/Carthage#adding-frameworks-to-an-application">these instructions</a>.</p>
 
 <ul>
-<li>macOS, iOS, tvOS, watchOS, visionOS, and Swift 5
-<code>
-github &quot;gumob/TLDExtractSwift&quot; ~&gt; 3.0
-</code></li>
-<li>macOS, iOS, tvOS, and Swift 5
-<code>
-github &quot;gumob/TLDExtractSwift&quot; ~&gt; 2.0
-</code></li>
-<li>macOS, iOS, tvOS, and Swift 4
-<code>
-github &quot;gumob/TLDExtractSwift&quot; ~&gt; 1.0
-</code></li>
+<li><p>macOS, iOS, tvOS, watchOS, visionOS, and Swift 5</p>
+<pre class="highlight plaintext"><code>github "gumob/TLDExtractSwift" ~&gt; 3.0
+</code></pre></li>
+<li><p>macOS, iOS, tvOS, and Swift 5</p>
+<pre class="highlight plaintext"><code>github "gumob/TLDExtractSwift" ~&gt; 2.0
+</code></pre></li>
+<li><p>macOS, iOS, tvOS, and Swift 4</p>
+<pre class="highlight plaintext"><code>github "gumob/TLDExtractSwift" ~&gt; 1.0
+</code></pre></li>
 </ul>
 
 <p>Do not forget to include Punycode.framework. Otherwise it will fail to build the application.<br/></p>
@@ -218,6 +215,7 @@ pod &#39;TLDExtract&#39;, &#39;~&gt; 1.0&#39;
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">TLDExtractSwift</span>
 
 <span class="k">let</span> <span class="nv">extractor</span> <span class="o">=</span> <span class="k">try!</span> <span class="kt">TLDExtract</span><span class="p">(</span><span class="nv">useFrozenData</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+
 </code></pre>
 
 <p>*The Public Suffix List is updated every time the framework is built. By setting userFrozenData to true, TLDExtract loads data which checked out from the repository.</p>

@@ -57,6 +57,7 @@ Domain names are the unique, human-readable Internet addresses of websites. They
 Add the following to your `Package.swift` file.
 
 - macOS, iOS, tvOS, watchOS, visionOS, and Swift 5
+
     ```swift
     dependencies: [
         .package(url: "https://github.com/gumob/TLDExtractSwift.git", .upToNextMajor(from: "3.0.0"))
@@ -64,6 +65,7 @@ Add the following to your `Package.swift` file.
     ```
 
 - macOS, iOS, tvOS, and Swift 5
+
     ```swift
     dependencies: [
         .package(url: "https://github.com/gumob/TLDExtractSwift.git", .upToNextMajor(from: "2.1.1"))
@@ -75,14 +77,17 @@ Add the following to your `Package.swift` file.
 Add the following to your `Cartfile` and follow [these instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
 - macOS, iOS, tvOS, watchOS, visionOS, and Swift 5
+
     ```
     github "gumob/TLDExtractSwift" ~> 3.0
     ```
 - macOS, iOS, tvOS, and Swift 5
+
     ```
     github "gumob/TLDExtractSwift" ~> 2.0
     ```
 - macOS, iOS, tvOS, and Swift 4
+
     ```
     github "gumob/TLDExtractSwift" ~> 1.0
     ```
@@ -115,6 +120,7 @@ Full documentation is available at [https://gumob.github.io/TLDExtractSwift/swif
 ### Initialization
 
 Basic initialization code. Exceptions will not be raised unless [the Public Suffix List on the server](https://publicsuffix.org/list/public_suffix_list.dat) is broken.
+
 ```swift
 import TLDExtractSwift
 
@@ -122,10 +128,12 @@ let extractor = try! TLDExtract()
 ```
 
 A safer initialization code to avoid errors by using the frozen Public Suffix List:<br/>
+
 ```swift
 import TLDExtractSwift
 
 let extractor = try! TLDExtract(useFrozenData: true)
+
 ```
 *The Public Suffix List is updated every time the framework is built. By setting userFrozenData to true, TLDExtract loads data which checked out from the repository.
 
@@ -185,6 +193,7 @@ print(result.subDomain)         // Optional("www.xn--4dkp5a8a")
 
 Extract an unicode url: <br/>
 URL class in Foundation Framework does not support unicode URLs by default. You can use URL extension as a workaround
+
 ```swift
 let urlString: String = "http://www.ラーメン.寿司.co.jp"
 let url: URL = URL(unicodeString: urlString)
@@ -197,6 +206,7 @@ print(result.subDomain)         // Optional("www.ラーメン")
 ```
 
 Encode an url by passing argument as percent encoded string (Same as above):
+
 ```swift
 let urlString: String = "http://www.ラーメン.寿司.co.jp".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 let url: URL = URL(string: urlString)
