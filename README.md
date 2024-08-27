@@ -13,7 +13,7 @@
 
 Domain names are the unique, human-readable Internet addresses of websites. They are made up of three parts: a top-level domain (a.k.a. TLD), a second-level domain name, and an optional subdomain.
 
-<img src="Metadata/domain-diagram.webp" alt="drawing" width="100%" style="width:100%; max-width: 100%;"/>
+<img src="https://raw.githubusercontent.com/gumob/TLDExtractSwift/main/Metadata/domain-diagram.webp" alt="drawing" width="100%" style="width:100%; max-width: 100%;"/>
 
 ## Changes in 3.0.0
 
@@ -89,7 +89,7 @@ Add the following to your `Cartfile` and follow [these instructions](https://git
 
 Do not forget to include Punycode.framework. Otherwise it will fail to build the application.<br/>
 
-<img src="Metadata/carthage-xcode-config.jpg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
+<img src="https://raw.githubusercontent.com/gumob/TLDExtractSwift/main/Metadata/carthage-xcode-config.jpg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
 
 ### CocoaPods
 
@@ -109,6 +109,8 @@ To integrate TLDExtract into your project, add the following to your `Podfile`.
     ```
 
 ## Usage
+
+Full documentation is available at [https://gumob.github.io/TLDExtractSwift/swiftdoc/](https://gumob.github.io/TLDExtractSwift/swiftdoc/).
 
 ### Initialization
 
