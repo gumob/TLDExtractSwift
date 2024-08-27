@@ -101,14 +101,17 @@ Do not forget to include Punycode.framework. Otherwise it will fail to build the
 To integrate TLDExtract into your project, add the following to your `Podfile`.
 
 - macOS, iOS, tvOS, watchOS, visionOS, and Swift 5.0
+
     ```ruby
     pod 'TLDExtractSwift', '~> 3.0'
     ```
 - macOS, iOS, tvOS, and Swift 5.0
+
     ```ruby
     pod 'TLDExtract', '~> 2.0'
     ```
 - macOS, iOS, tvOS, and Swift 4.2
+
     ```ruby
     pod 'TLDExtract', '~> 1.0'
     ```
