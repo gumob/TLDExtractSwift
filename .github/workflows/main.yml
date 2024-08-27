@@ -442,14 +442,23 @@ jobs:
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
         run: |
+          # Enable error handling and exit the script on pipe failures
           set -eo pipefail
+          # Retrieve the current version from the project file
           current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
+          echo "Current version: $current_version"
+          # Check if the current version is a valid semantic version
           if [[ ! "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-              echo "Error: Invalid version number"
-              exit 1
+            echo "Error: Invalid version number"
+            exit 1
           fi
-          if pod trunk info TLDExtractSwift | grep "$current_version"; then
-              pod trunk delete TLDExtractSwift $current_version --silent
+          # Check if the current version already exists in the CocoaPods trunk
+          if pod trunk info TLDExtractSwift | grep -q "$current_version"; then
+            echo "Start deleting $current_version"
+            # Delete the existing version from the CocoaPods trunk
+            echo "y" | pod trunk delete TLDExtractSwift $current_version || true
           fi
+          echo "Start pushing $current_version"
+          # Push the new version to the CocoaPods trunk
           pod trunk push TLDExtractSwift.podspec --allow-warnings
     needs: update_tag
