@@ -11,44 +11,18 @@ on:
     paths:
       - .github/workflows/**
       - .swiftlint.yml
+      - Cartfile
       - Package.swift
       - TLDExtractSwift.podspec
       - TLDExtractSwift.xcodeproj/**
       - Sources/**
       - Tests/**
-  # pull_request:
-  #   branches:
-  #     - develop
-  #   # branches-ignore:
-  #   #   - "release/**"
-  #   #   - "feature/**"
-  #   paths:
-  #     - .github/workflows/**
-  #     - .swiftlint.yml
-  #     - Package.swift
-  #     - TLDExtractSwift.podspec
-  #     - TLDExtractSwift.xcodeproj/**
-  #     - Sources/**
-  #     - Tests/**
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  # lint_code:
-  #   name: Lint Code
-  #   runs-on: macos-14
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Install SwiftLint
-  #       run: brew install swiftlint
-  #     - name: Lint
-  #       run: |
-  #         set -o pipefail
-  #         swiftlint lint --quiet | sed -E 's/^(.*):([0-9]+):([0-9]+): (warning|error|[^:]+): (.*)/::\4 title=Lint error,file=\1,line=\2,col=\3::\5\n\1:\2:\3/'
-
   lint_code:
     name: Lint Code
     runs-on: ubuntu-latest
