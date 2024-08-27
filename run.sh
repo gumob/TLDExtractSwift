@@ -23,6 +23,9 @@ local option_list=(
 	" "
 	"Carthage - Update all platforms"
 	"Cocoapods - Clean all cache"
+	"Cocoapods - Trunk push"
+	" "
+	"Github - Update tag"
 	" "
 	"Public Suffix List - Download latest data"
 )
@@ -46,20 +49,67 @@ local xcode_init() {
 	psl_download;
 }
 
-local cocoapods_clean() {
-    pod cache clean --all;
-}
-
-local psl_download() {
-    python update-psl.py;
-}
-
 local carthage_update() {
     carthage update --platform macos;
 	carthage update --platform ios;
 	carthage update --platform tvos;
 	carthage update --platform watchos;
 	carthage update --platform visionos;
+}
+
+local cocoapods_clean() {
+    pod cache clean --all;
+}
+
+local cocoapods_trunk_push() {
+	# Enable error handling and exit the script on pipe failures
+	set -eo pipefail
+	# Retrieve the current version from the project file
+	current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
+	echo "Current version: $current_version"
+	# Check if the current version is a valid semantic version
+	if [[ ! "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+		echo "Error: Invalid version number"
+		exit 1
+	fi
+	# Check if the current version already exists in the CocoaPods trunk
+	if pod trunk info TLDExtractSwift | grep -q "$current_version"; then
+		echo "Start deleting $current_version"
+		# Delete the existing version from the CocoaPods trunk
+		echo "y" | pod trunk delete TLDExtractSwift $current_version || true
+	fi
+	echo "Start pushing $current_version"
+	# Push the new version to the CocoaPods trunk
+	pod trunk push TLDExtractSwift.podspec --allow-warnings
+}
+
+local github_update_tag() {
+	# Enable error handling and exit the script on pipe failures
+	set -eo pipefail
+	# Checkout main branch
+	git checkout main
+	# Retrieve build settings and execute a command to filter MARKETING_VERSION
+	current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
+	echo "Current version: $current_version"
+	# If the current version is found
+	if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+		# Check if a tag for the current version already exists
+		if git tag -l | grep -q "$current_version"; then
+			# If the tag exists, delete it from both local and remote
+			git tag -d "$current_version"
+			git push origin ":refs/tags/$current_version"
+		fi
+		# Create a new tag for the current version and push it to the remote repository
+		git tag "$current_version"
+		git push origin "$current_version"
+	else
+		# If the version could not be retrieved, display an error message
+		echo "Error: Could not retrieve the version."
+	fi
+}
+
+local psl_download() {
+    python update-psl.py;
 }
 
 local bundle_init() {
@@ -77,9 +127,10 @@ case "$selected_option" in
     fastlane*)                                   fastlane_command $selected_option;;
 	"Xcode - Initialize project")                xcode_init;;
 	"Xcode - Clean all build cache")             xcode_clean;;
-	"Cocoapods - Clean all cache")               cocoapods_clean;;
 	"Carthage - Update all platforms")           carthage_update;;
-	"Public Suffix List - Download latest data") psl_download;;
+	"Cocoapods - Clean all cache")               cocoapods_clean;;
+	"Cocoapods - Trunk push")                    cocoapods_trunk_push;;
+	"Github - Update tag")                       github_update_tag;;
 	*)                                           echo "Invalid option $selected_option" && exit 1;;
 esac
 
