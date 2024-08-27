@@ -423,9 +423,9 @@ jobs:
       #     pod trunk push TLDExtractSwift.podspec --allow-warnings
     needs: carthage
 
-  add_tag:
+  update_tag:
+    if: github.ref == 'refs/heads/main'
     runs-on: macOS-latest
-
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
