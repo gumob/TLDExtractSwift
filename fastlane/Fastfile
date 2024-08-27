@@ -24,8 +24,8 @@ lane :run_all do
     build_spm
     build_carthage
     lint_cocoapods
+    gen_docs
 end
-
 
 ##########################################
 # Versioning
@@ -45,6 +45,13 @@ lane :set_version do
         increment_version_number_in_xcodeproj(version_number: new_app_version)
         # Set version number to podspec
         version_bump_podspec(path: podspec_file, version_number: new_app_version)
+        # Set version number to .jazzy.yml
+        if File.exist?("../.jazzy.yml")
+            sh("sed", "-i", "", "s/version: [0-9]*\\.[0-9]*\\.[0-9]*/version: #{new_app_version}/g", "../.jazzy.yml")
+            sh("sed", "-i", "", "s|root_url: https://github.com/gumob/TLDExtractSwift/tree/[0-9]*\\.[0-9]*\\.[0-9]*/docs/|root_url: https://github.com/gumob/TLDExtractSwift/tree/#{new_app_version}/docs/|g", "../.jazzy.yml")
+        else
+            UI.error("No such file or directory: .jazzy.yml")
+        end
         UI.message("Changed version from #{current_app_version} to #{new_app_version} ")
     else
         UI.error("Invalid version number. #{new_app_version}")
@@ -75,6 +82,13 @@ lane :bump_version do
     increment_version_number_in_xcodeproj(version_number: new_app_version)
     # Set version number to podspec
     version_bump_podspec(path: podspec_file, version_number: new_app_version)
+    # Set version number to .jazzy.yml
+    if File.exist?("../.jazzy.yml")
+        sh("sed", "-i", "", "s/version: [0-9]*\\.[0-9]*\\.[0-9]*/version: #{new_app_version}/g", "../.jazzy.yml")
+        sh("sed", "-i", "", "s|root_url: https://github.com/gumob/TLDExtractSwift/tree/[0-9]*\\.[0-9]*\\.[0-9]*/docs/|root_url: https://github.com/gumob/TLDExtractSwift/tree/#{new_app_version}/docs/|g", "../.jazzy.yml")
+    else
+        UI.error("No such file or directory: .jazzy.yml")
+    end
     UI.message("Changed version from #{current_app_version} to #{new_app_version} ")
 end
 
@@ -257,4 +271,15 @@ desc "Push Cocoapods"
 lane :push_cocoapods do |options|
     pod_lib_lint(verbose: true)
     pod_push(path: podspec_file)
+end
+
+##########################################
+# Swift Docs
+##########################################
+
+desc "Generate Swift Docs"
+lane :gen_docs do
+    jazzy(
+        config: ".jazzy.yml"
+    )
 end
