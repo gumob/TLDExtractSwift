@@ -7,9 +7,9 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem "cocoapods"
 gem "cocoapods-deintegrate"
 gem "cocoapods-clean"
-gem "travis"
 gem "fastlane"
 gem "slather"
+gem "jazzy"
 gem "xcpretty"
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')

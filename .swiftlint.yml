@@ -6,7 +6,7 @@ line_length: 960
 function_body_length: 100
 
 excluded:
-  - Source/SPMPSL.swift
+  - Sources/SPMPSL.swift
   - Tests
   - Carthage
   - Pods
