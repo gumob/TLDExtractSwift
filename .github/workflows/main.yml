@@ -313,7 +313,7 @@ jobs:
             --cache-builds
     needs: SPM
 
-  cocoapods:
+  lint_cocoapods:
     name: "Pods: ${{ matrix.platform }}, ${{ matrix.configuration }}"
     runs-on: ${{ matrix.runsOn }}
     env:
@@ -407,52 +407,49 @@ jobs:
           fetch-depth: 2
 
       - name: Extract version and add tag
-        uses: actions/github-script@v7
-        with:
-          script: |
-            // Import the exec function from the child_process module to execute shell commands
-            const { exec } = require('child_process');
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            # Enable error handling and exit the script on pipe failures
+            set -eo pipefail
+            # Retrieve build settings and execute a command to filter MARKETING_VERSION
+            # current_version=$(xcodebuild -showBuildSettings | grep MARKETING_VERSION | awk -F= '{print $2}' | xargs)
+            current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
+            # If the current version is found
+            if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+                # Check if a tag for the current version already exists
+                if git tag -l | grep -q "$current_version"; then
+                    # If the tag exists, delete it from both local and remote
+                    git tag -d "$current_version"
+                    git push origin ":refs/tags/$current_version"
+                fi
+                # Create a new tag for the current version and push it to the remote repository
+                git tag "$current_version"
+                git push origin "$current_version"
+            else
+                # If the version could not be retrieved, display an error message
+                echo "Could not retrieve the version."
+            fi
+    needs: lint_cocoapods
 
-            // Execute the command to get the build settings and filter for MARKETING_VERSION
-            exec('xcodebuild -showBuildSettings | grep MARKETING_VERSION', (error, stdout, stderr) => {
-                // Check for errors in executing the command
-                if (error) {
-                    console.error(`Error: ${error.message}`);
-                    return;
-                }
-                // Check for any standard error output
-                if (stderr) {
-                    console.error(`Error: ${stderr}`);
-                    return;
-                }
-
-                // Extract the current version from the command output
-                const current_version = stdout.trim().split('=')[1].trim();
-
-                // If a current version is found
-                if (current_version && /^\d+\.\d+\.\d+$/.test(current_version)) {
-                    // Check if a tag with the current version already exists
-                    exec(`git tag -l | grep ${current_version}`, (error, stdout) => {
-                        // If the tag exists, delete it both locally and remotely
-                        if (stdout) {
-                            exec(`git tag -d ${current_version} && git push origin :refs/tags/${current_version}`, (error) => {
-                                if (error) {
-                                    console.error(`Error: ${error.message}`);
-                                    return;
-                                }
-                            });
-                        }
-                        // Create a new tag with the current version and push it to the remote repository
-                        exec(`git tag ${current_version} && git push origin ${current_version}`, (error) => {
-                        if (error) {
-                            console.error(`Error: ${error.message}`);
-                            return;
-                        }
-                        });
-                    });
-                } else {
-                    // If no version could be retrieved, log an error message
-                    console.error('Could not retrieve version.');
-                }
-            });
-    needs: cocoapods
+  push_cocoapods:
+    if: github.ref == 'refs/heads/main'
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+      - name: Publish to cocoapods
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+        run: |
+          set -eo pipefail
+          current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
+          if [[ ! "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "Error: Invalid version number"
+              exit 1
+          fi
+          if pod trunk info TLDExtractSwift | grep "$current_version"; then
+              pod trunk delete TLDExtractSwift $current_version --silent
+          fi
+          pod trunk push TLDExtractSwift.podspec --allow-warnings
+    needs: update_tag
