@@ -12,7 +12,7 @@ internal class PSLParser {
 
     var exceptions: [PSLData] = [PSLData]()
     var wildcards: [PSLData] = [PSLData]()
-    var normals = Set<String>()
+    var normals: Set<String> = Set<String>()
 
     internal func addLine(_ line: String) {
         if line.contains("*") {
@@ -28,21 +28,16 @@ internal class PSLParser {
         guard let data: Data = data, let str: String = String(data: data, encoding: .utf8), str.count > 0 else {
             throw TLDExtractError.pslParseError(message: nil)
         }
+        for line: String in str.components(separatedBy: .newlines) {
+            if line.isComment { continue }
+            if line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { continue }
 
-        str.components(separatedBy: .newlines).forEach { [weak self] (line: String) in
-            if line.isComment {
-                return
-            }
-            if line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                return
-            }
-
-            self?.addLine(line)
+            self.addLine(line)
 
             // this does the same thing as update-psl.py
             #if SWIFT_PACKAGE
-            if let encoded = line.idnaEncoded {
-                self?.addLine(encoded)
+            if let encoded: String = line.idnaEncoded {
+                self.addLine(encoded)
             }
             #endif
         }

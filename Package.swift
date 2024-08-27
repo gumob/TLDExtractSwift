@@ -17,7 +17,7 @@ let package = Package(
         .target(
             name: "TLDExtractSwift",
             dependencies: ["Punycode"],
-            path: "Source"),
+            path: "Sources"),
         .testTarget(
             name: "TLDExtractSwiftTests",
             dependencies: ["TLDExtractSwift"],

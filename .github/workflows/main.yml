@@ -14,7 +14,7 @@ on:
       - Package.swift
       - TLDExtractSwift.podspec
       - TLDExtractSwift.xcodeproj/**
-      - Source/**
+      - Sources/**
       - Tests/**
   # pull_request:
   #   branches:
@@ -28,7 +28,7 @@ on:
   #     - Package.swift
   #     - TLDExtractSwift.podspec
   #     - TLDExtractSwift.xcodeproj/**
-  #     - Source/**
+  #     - Sources/**
   #     - Tests/**
 
 concurrency:

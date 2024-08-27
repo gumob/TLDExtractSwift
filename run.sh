@@ -14,6 +14,7 @@ local option_list=(
 	"fastlane build_carthage"
 	"fastlane lint_cocoapods"
 	"fastlane push_cocoapods"
+	"fastlane gen_docs"
 	"fastlane set_version"
 	"fastlane bump_version"
 	" "
