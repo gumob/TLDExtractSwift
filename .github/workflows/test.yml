@@ -6,7 +6,7 @@ name: test
 on:
   pull_request:
     branches:
-      - release/*
+      - release/**
     paths:
       - .github/workflows/**
       - .swiftlint.yml
