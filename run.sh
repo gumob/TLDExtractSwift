@@ -64,8 +64,13 @@ local cocoapods_clean() {
 local cocoapods_trunk_push() {
 	# Enable error handling and exit the script on pipe failures
 	set -eo pipefail
+	# Checkout main branch
+	git checkout main
+	# Find the project name and podspec name
+	project_name=$(find . -maxdepth 1 -name "*.xcodeproj" -exec basename {} .xcodeproj \;)
+	podspec_name=$(find . -maxdepth 1 -name "*.podspec" -exec basename {} .podspec \;)
 	# Retrieve the current version from the project file
-	current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
+	current_version=$(grep -m1 'MARKETING_VERSION' "${project_name}.xcodeproj/project.pbxproj" | sed 's/.*= //;s/;//')
 	echo "Current version: $current_version"
 	# Check if the current version is a valid semantic version
 	if [[ ! "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
@@ -73,23 +78,26 @@ local cocoapods_trunk_push() {
 		exit 1
 	fi
 	# Check if the current version already exists in the CocoaPods trunk
-	if pod trunk info TLDExtractSwift | grep -q "$current_version"; then
+	if pod trunk info ${podspec_name} | grep -q "$current_version"; then
 		echo "Start deleting $current_version"
 		# Delete the existing version from the CocoaPods trunk
-		echo "y" | pod trunk delete TLDExtractSwift $current_version || true
+		echo "y" | pod trunk delete ${podspec_name} $current_version || true
 	fi
 	echo "Start pushing $current_version"
 	# Push the new version to the CocoaPods trunk
-	pod trunk push TLDExtractSwift.podspec --allow-warnings
+	pod trunk push ${podspec_name}.podspec --allow-warnings
 }
 
 local github_update_tag() {
 	# Enable error handling and exit the script on pipe failures
 	set -eo pipefail
-	# Checkout main branch
-	git checkout main
+	# # Checkout main branch
+	# git checkout main
+	# Find the project name and podspec name
+	project_name=$(find . -maxdepth 1 -name "*.xcodeproj" -exec basename {} .xcodeproj)
+	podspec_name=$(find . -maxdepth 1 -name "*.podspec" -exec basename {} .podspec)
 	# Retrieve build settings and execute a command to filter MARKETING_VERSION
-	current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
+	current_version=$(grep -m1 'MARKETING_VERSION' "${project_name}.xcodeproj/project.pbxproj" | sed 's/.*= //;s/;//')
 	echo "Current version: $current_version"
 	# If the current version is found
 	if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
