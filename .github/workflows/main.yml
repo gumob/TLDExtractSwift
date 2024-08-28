@@ -433,9 +433,9 @@ jobs:
           echo "Current version: $current_version"
           ### If the current version is found
           if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            ### Check if a tag for the current version already exists
+            ### If the tag exists, delete it from both local and remote
             if git tag -l | grep -q "$current_version"; then
-              ### If the tag exists, delete it from both local and remote
+              git fetch --tags
               git tag -d "$current_version"
               git push origin ":refs/tags/$current_version"
             fi
