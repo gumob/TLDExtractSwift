@@ -45,8 +45,10 @@ jobs:
           ### If the current version is found
           if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             ### Check if a tag for the current version already exists
-            echo "git tag -l $(git tag -l ${current_version})"
-            echo "check tag $(git tag -l | grep "${current_version}")"
+            tag_exists1=$($(git tag -l ${current_version}))
+            echo "tag_exists1: $tag_exists1"
+            tag_exists2=$(git tag -l | grep ${current_version})
+            echo "tag_exists2: $tag_exists2"
             if git tag -l | grep -q "$current_version"; then
               ### If the tag exists, delete it from both local and remote
               echo "delete tag $current_version"
