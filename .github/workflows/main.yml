@@ -18,6 +18,10 @@ on:
       - Sources/**
       - Tests/**
 
+env:
+  project_name: TLDExtractSwift
+  podspec_name: TLDExtractSwift
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -53,31 +57,36 @@ jobs:
             runsOn: macos-14
             name: "Test: macOS 14, Xcode 15.4, Swift 5.10"
             testPlan: "macOS"
+            scheme: "TLDExtractSwift"
             outputFilter: xcbeautify --renderer github-actions
             coverage: YES
           - xcode: "Xcode_15.2"
             runsOn: macos-14
             name: "Test: macOS 14, Xcode 15.2, Swift 5.9.2"
             testPlan: "macOS"
+            scheme: "TLDExtractSwift"
             outputFilter: xcbeautify --renderer github-actions
             coverage: NO
           - xcode: "Xcode_14.3.1"
             runsOn: macOS-13
             name: "Test: macOS 13, Xcode 14.3.1, Swift 5.8.0"
             testPlan: "macOS"
+            scheme: "TLDExtractSwift"
             outputFilter: xcbeautify --renderer github-actions
             coverage: NO
           - xcode: "Xcode_14.2"
             runsOn: macOS-12
             name: "Test: macOS 12, Xcode 14.2, Swift 5.7.2"
             testPlan: "macOS"
+            scheme: "TLDExtractSwift"
             outputFilter: xcpretty
             coverage: NO
     steps:
       - uses: actions/checkout@v4
       - name: ${{ matrix.name }}
         run: |-
-          set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "platform=macOS" -enableCodeCoverage ${{ matrix.coverage }} clean test | ${{ matrix.outputFilter }}
+          set -o pipefail
+          env NSUnbufferedIO=YES xcodebuild -project "${{ env.project_name }}.xcodeproj" -scheme "${{ matrix.scheme }}" -destination "platform=macOS" -enableCodeCoverage ${{ matrix.coverage }} clean test | ${{ matrix.outputFilter }}
       - name: Upload coverage to Codecov
         if: ${{ matrix.coverage == 'YES' }}
         uses: codecov/codecov-action@v4
@@ -99,14 +108,17 @@ jobs:
         include:
           - xcode: "Xcode_15.4"
             name: "Test: Catalyst 15.4"
+            scheme: "TLDExtractSwift"
             runsOn: macos-14
           - xcode: "Xcode_14.3.1"
             name: "Test: Catalyst 14.3.1"
+            scheme: "TLDExtractSwift"
             runsOn: macOS-13
     steps:
       - uses: actions/checkout@v4
       - name: Catalyst
-        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "platform=macOS" clean test 2>&1 | xcbeautify --renderer github-actions
+        run: |
+          set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "${{ env.project_name }}.xcodeproj" -scheme "${{ matrix.scheme }}" -destination "platform=macOS" clean test 2>&1 | xcbeautify --renderer github-actions
     needs: lint_code
 
   test_iOS:
@@ -122,22 +134,26 @@ jobs:
           - destination: "OS=17.5,name=iPhone 15 Pro"
             name: "Test: iOS 17.6"
             testPlan: "iOS"
+            scheme: "TLDExtractSwift"
             xcode: "Xcode_15.4"
             runsOn: macos-14
           - destination: "OS=16.4,name=iPhone 14 Pro"
             name: "Test: iOS 16.4"
             testPlan: "iOS"
+            scheme: "TLDExtractSwift"
             xcode: "Xcode_14.3.1"
             runsOn: macOS-13
           - destination: "OS=15.5,name=iPhone 13 Pro"
             name: "Test: iOS 15.5"
             testPlan: "iOS"
+            scheme: "TLDExtractSwift"
             xcode: "Xcode_13.4.1"
             runsOn: macOS-12
     steps:
       - uses: actions/checkout@v4
       - name: ${{ matrix.name }}
-        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
+        run: |
+          set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "${{ env.project_name }}.xcodeproj" -scheme "${{ matrix.scheme }}" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
     needs: lint_code
 
   test_tvOS:
@@ -153,22 +169,27 @@ jobs:
           - destination: "OS=17.5,name=Apple TV"
             name: "Test: tvOS 17.5"
             testPlan: "tvOS"
+            scheme: "TLDExtractSwift"
             xcode: "Xcode_15.4"
             runsOn: macos-14
           - destination: "OS=16.4,name=Apple TV"
             name: "Test: tvOS 16.4"
             testPlan: "tvOS"
+            scheme: "TLDExtractSwift"
             xcode: "Xcode_14.3.1"
             runsOn: macOS-13
           - destination: "OS=15.4,name=Apple TV"
             name: "Test: tvOS 15.4"
             testPlan: "tvOS"
+            scheme: "TLDExtractSwift"
             xcode: "Xcode_13.4.1"
             runsOn: macOS-12
     steps:
       - uses: actions/checkout@v4
       - name: ${{ matrix.name }}
-        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "TLDExtractSwift" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
+        run: |
+          set -o pipefail
+          env NSUnbufferedIO=YES xcodebuild -project "${{ env.project_name }}.xcodeproj" -scheme "${{ matrix.scheme }}" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
     needs: lint_code
 
   test_visionOS:
@@ -190,7 +211,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: ${{ matrix.name }}
-        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "TLDExtractSwift.xcodeproj" -scheme "${{ matrix.scheme }}" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
+        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "${{ env.project_name }}.xcodeproj" -scheme "${{ matrix.scheme }}" -destination "${{ matrix.destination }}" clean test 2>&1 | xcbeautify --renderer github-actions
     needs: lint_code
 
   test_watchOS:
@@ -383,18 +404,13 @@ jobs:
           pod lib lint --verbose \
             --configuration=${{ matrix.configuration }} \
             --platforms=${{ matrix.platform }} \
-            TLDExtractSwift.podspec
+            ${podspec_name}.podspec
       - name: Pod lib lint - Use Static Frameworks
         run: |
           pod lib lint --verbose --use-static-frameworks \
             --configuration=${{ matrix.configuration }} \
             --platforms=${{ matrix.platform }} \
-            TLDExtractSwift.podspec
-      # - name: Pod Push
-      #   if: github.ref == 'refs/heads/main'
-      #   run: |
-      #     pod repo update
-      #     pod trunk push TLDExtractSwift.podspec --allow-warnings
+            ${podspec_name}.podspec
     needs: carthage
 
   update_tag:
@@ -410,26 +426,26 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-            # Enable error handling and exit the script on pipe failures
-            set -eo pipefail
-            # Retrieve build settings and execute a command to filter MARKETING_VERSION
-            # current_version=$(xcodebuild -showBuildSettings | grep MARKETING_VERSION | awk -F= '{print $2}' | xargs)
-            current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
-            # If the current version is found
-            if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-                # Check if a tag for the current version already exists
-                if git tag -l | grep -q "$current_version"; then
-                    # If the tag exists, delete it from both local and remote
-                    git tag -d "$current_version"
-                    git push origin ":refs/tags/$current_version"
-                fi
-                # Create a new tag for the current version and push it to the remote repository
-                git tag "$current_version"
-                git push origin "$current_version"
-            else
-                # If the version could not be retrieved, display an error message
-                echo "Could not retrieve the version."
+          # Enable error handling and exit the script on pipe failures
+          set -eo pipefail
+          # Retrieve build settings and execute a command to filter MARKETING_VERSION
+          current_version=$(grep -m1 'MARKETING_VERSION' "${{ env.project_name }}.xcodeproj/project.pbxproj" | sed 's/.*= //;s/;//')
+          echo "Current version: $current_version"
+          # If the current version is found
+          if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            # Check if a tag for the current version already exists
+            if git tag -l | grep -q "$current_version"; then
+              # If the tag exists, delete it from both local and remote
+              git tag -d "$current_version"
+              git push origin ":refs/tags/$current_version"
             fi
+            # Create a new tag for the current version and push it to the remote repository
+            git tag "$current_version"
+            git push origin "$current_version"
+          else
+            # If the version could not be retrieved, display an error message
+            echo "Error: Could not retrieve the version."
+          fi
     needs: lint_cocoapods
 
   push_cocoapods:
@@ -442,14 +458,23 @@ jobs:
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
         run: |
+          # Enable error handling and exit the script on pipe failures
           set -eo pipefail
-          current_version=$(grep -m1 'MARKETING_VERSION' 'TLDExtractSwift.xcodeproj/project.pbxproj' | sed 's/.*= //;s/;//')
+          # Retrieve the current version from the project file
+          current_version=$(grep -m1 'MARKETING_VERSION' "${{ env.project_name }}.xcodeproj/project.pbxproj" | sed 's/.*= //;s/;//')
+          echo "Current version: $current_version"
+          # Check if the current version is a valid semantic version
           if [[ ! "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-              echo "Error: Invalid version number"
-              exit 1
+            echo "Error: Invalid version number"
+            exit 1
           fi
-          if pod trunk info TLDExtractSwift | grep "$current_version"; then
-              pod trunk delete TLDExtractSwift $current_version --silent
+          # Check if the current version already exists in the CocoaPods trunk
+          if pod trunk info ${podspec_name} | grep -q "$current_version"; then
+            echo "Start deleting $current_version"
+            # Delete the existing version from the CocoaPods trunk
+            echo "y" | pod trunk delete ${podspec_name} $current_version || true
           fi
-          pod trunk push TLDExtractSwift.podspec --allow-warnings
+          echo "Start pushing $current_version"
+          # Push the new version to the CocoaPods trunk
+          pod trunk push ${podspec_name}.podspec --allow-warnings
     needs: update_tag
