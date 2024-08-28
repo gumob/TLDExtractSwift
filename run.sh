@@ -64,8 +64,11 @@ local cocoapods_clean() {
 local cocoapods_trunk_push() {
 	# Enable error handling and exit the script on pipe failures
 	set -eo pipefail
-	# Checkout main branch
-	git checkout main
+	# Check if the current branch is 'main'
+	if [[ $(git rev-parse --abbrev-ref HEAD) != "main" ]]; then
+		echo "Warning: You are not on the main branch. Please switch to the main branch and run again."
+		exit 1
+	fi
 	# Find the project name and podspec name
 	project_name=$(find . -maxdepth 1 -name "*.xcodeproj" -exec basename {} .xcodeproj \;)
 	podspec_name=$(find . -maxdepth 1 -name "*.podspec" -exec basename {} .podspec \;)
@@ -91,8 +94,11 @@ local cocoapods_trunk_push() {
 local github_update_tag() {
 	# Enable error handling and exit the script on pipe failures
 	set -eo pipefail
-	# # Checkout main branch
-	# git checkout main
+	# Check if the current branch is 'main'
+	if [[ $(git rev-parse --abbrev-ref HEAD) != "main" ]]; then
+		echo "Warning: You are not on the main branch. Please switch to the main branch and run again."
+		exit 1
+	fi
 	# Find the project name and podspec name
 	project_name=$(find . -maxdepth 1 -name "*.xcodeproj" -exec basename {} .xcodeproj)
 	podspec_name=$(find . -maxdepth 1 -name "*.podspec" -exec basename {} .podspec)
