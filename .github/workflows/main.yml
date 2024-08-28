@@ -426,24 +426,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Enable error handling and exit the script on pipe failures
+          ### Enable error handling and exit the script on pipe failures
           set -eo pipefail
-          # Retrieve build settings and execute a command to filter MARKETING_VERSION
+          ### Retrieve build settings and execute a command to filter MARKETING_VERSION
           current_version=$(grep -m1 'MARKETING_VERSION' "${{ env.project_name }}.xcodeproj/project.pbxproj" | sed 's/.*= //;s/;//')
           echo "Current version: $current_version"
-          # If the current version is found
+          ### If the current version is found
           if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            # Check if a tag for the current version already exists
+            ### Check if a tag for the current version already exists
             if git tag -l | grep -q "$current_version"; then
-              # If the tag exists, delete it from both local and remote
+              ### If the tag exists, delete it from both local and remote
               git tag -d "$current_version"
               git push origin ":refs/tags/$current_version"
             fi
-            # Create a new tag for the current version and push it to the remote repository
+            ### Create a new tag for the current version and push it to the remote repository
             git tag "$current_version"
             git push origin "$current_version"
           else
-            # If the version could not be retrieved, display an error message
+            ### If the version could not be retrieved, display an error message
             echo "Error: Could not retrieve the version."
           fi
     needs: lint_cocoapods
@@ -458,23 +458,23 @@ jobs:
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
         run: |
-          # Enable error handling and exit the script on pipe failures
+          ### Enable error handling and exit the script on pipe failures
           set -eo pipefail
-          # Retrieve the current version from the project file
+          ### Retrieve the current version from the project file
           current_version=$(grep -m1 'MARKETING_VERSION' "${{ env.project_name }}.xcodeproj/project.pbxproj" | sed 's/.*= //;s/;//')
           echo "Current version: $current_version"
-          # Check if the current version is a valid semantic version
+          ### Check if the current version is a valid semantic version
           if [[ ! "$current_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "Error: Invalid version number"
             exit 1
           fi
-          # Check if the current version already exists in the CocoaPods trunk
+          ### Check if the current version already exists in the CocoaPods trunk
           if pod trunk info ${podspec_name} | grep -q "$current_version"; then
             echo "Start deleting $current_version"
-            # Delete the existing version from the CocoaPods trunk
+            ### Delete the existing version from the CocoaPods trunk
             echo "y" | pod trunk delete ${podspec_name} $current_version || true
           fi
           echo "Start pushing $current_version"
-          # Push the new version to the CocoaPods trunk
+          ### Push the new version to the CocoaPods trunk
           pod trunk push ${podspec_name}.podspec --allow-warnings
     needs: update_tag
