@@ -26,8 +26,6 @@ local option_list=(
 	"Cocoapods - Trunk push"
 	" "
 	"Github - Update tag"
-	" "
-	"Public Suffix List - Download latest data"
 )
 
 local fastlane_command() {
