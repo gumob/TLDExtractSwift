@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - name: Extract version and add tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,12 +44,12 @@ jobs:
           echo "Current version: $current_version"
           ### If the current version is found
           if [[ $current_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            git fetch --tags
             ### Check if a tag for the current version already exists
-            tag_exists1=$(git show-ref --tags $current_version)
-            echo "tag_exists1: $tag_exists1"
-            # tag_exists2=$(git tag -l | grep "$current_version")
-            tag_exists2=$(git tag -l)
-            echo "tag_exists2: $tag_exists2"
+            tag_exists1=$(git tag -l "${current_version}")
+            echo "tag_exists1: ${tag_exists1}"
+            tag_exists2=$(git tag -l | grep "${current_version}")
+            echo "tag_exists2: ${tag_exists2}"
             if git tag -l | grep -q "$current_version"; then
               ### If the tag exists, delete it from both local and remote
               echo "delete tag $current_version"
