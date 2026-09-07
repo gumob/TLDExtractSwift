@@ -5,6 +5,12 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- The bundled Public Suffix List is refreshed. `xnbay.com`, `u2.xnbay.com`, `u2-local.xnbay.com`, `demo.datacenter.fi` and `paas.datacenter.fi` are no longer rules, so hosts under them now parse as registrable domains under `com` and `fi`. Seventy-one regional `<region>-01.azurewebsites.net` rules and the `*.p.azurewebsites.net` wildcard are added, along with `*.eth.limo`, `*.eth.link`, `*.builtwithrocket.new`, `canva-code.cn`, `opencloud.me`, `rocketpreview.app`, `tmp.now` and `ia.bo`.
+
 ## [4.0.4] - 2026-09-01
 
 ### Changed
