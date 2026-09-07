@@ -5,6 +5,12 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.5] - 2026-09-08
+
+### Changed
+
+- The bundled Public Suffix List is refreshed. `xnbay.com`, `u2.xnbay.com`, `u2-local.xnbay.com`, `demo.datacenter.fi` and `paas.datacenter.fi` are no longer rules, so hosts under them now parse as registrable domains under `com` and `fi`. Seventy-one regional `<region>-01.azurewebsites.net` rules and the `*.p.azurewebsites.net` wildcard are added, along with `*.eth.limo`, `*.eth.link`, `*.builtwithrocket.new`, `canva-code.cn`, `opencloud.me`, `rocketpreview.app`, `tmp.now` and `ia.bo`.
+
 ## [4.0.4] - 2026-09-01
 
 ### Changed
@@ -140,7 +146,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release: extraction of root domain, top-level domain, second-level domain, and subdomain from URLs and hostnames using the Public Suffix List, with IDNA support.
 
-[Unreleased]: https://github.com/futamura/TLDExtractSwift/compare/4.0.4...HEAD
+[Unreleased]: https://github.com/futamura/TLDExtractSwift/compare/4.0.5...HEAD
+[4.0.5]: https://github.com/futamura/TLDExtractSwift/compare/4.0.4...4.0.5
 [4.0.4]: https://github.com/futamura/TLDExtractSwift/compare/4.0.3...4.0.4
 [4.0.3]: https://github.com/futamura/TLDExtractSwift/compare/4.0.2...4.0.3
 [4.0.2]: https://github.com/futamura/TLDExtractSwift/compare/4.0.1...4.0.2
